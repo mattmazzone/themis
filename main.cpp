@@ -23,7 +23,7 @@ int main()
 
 
     App myApp;
-    
+    bool status =true;
 
 switch (myApp.mainMenu()) {
   case 1:
@@ -37,17 +37,22 @@ switch (myApp.mainMenu()) {
     
     HtmlGenerator htmlGen(path, formattedFile);
     
-    htmlGen.addHeadHtml();
-    htmlGen.addPreparationHtml();
-    htmlGen.addPiecesHtml();
-    htmlGen.addConsommablesHtml();
+    htmlGen.addHeadHtml(status);
+    htmlGen.addPreparationHtml(status);
+    htmlGen.addPiecesHtml(status);
+    htmlGen.addConsommablesHtml(status);
+    htmlGen.addOutilsHtml(status);
+    htmlGen.addTachesHtml(status);
+    htmlGen.addDocrefHtml(status);
+    htmlGen.addSecuriteHtml(status);
+    htmlGen.addChecklistHtml(status);
+    htmlGen.addFinmaintHtml(status);                                                 
     
     
     
     
     
-    
-    htmlGen.writeBuffertohtml();
+    htmlGen.writeBuffertohtml(status);
     
     
     //pass the vector to htmlGen
@@ -65,28 +70,6 @@ switch (myApp.mainMenu()) {
 }
     
         
-
-/*
-    reformatGood();
-
-
-    headHtml(buffPtr);
-
-    preparationHtml(buffPtr);
-    
-    piecesHtml(buffPtr);
-    
-    consommablesHtml(buffPtr);
-
-    writeBuffertohtml(buffPtr);
-
-*/
-    //std::cout << buffPtr->rdbuf();
-
-
-
-
-
 
 
 
