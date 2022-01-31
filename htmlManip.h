@@ -30,8 +30,13 @@ class HtmlGenerator {
         void addTachesHtml(bool release);
         void addDocrefHtml(bool release);
         void addSecuriteHtml(bool release);
-        void addChecklistHtml(bool release);
-        void addFinmaintHtml(bool release);
+        void addChecklistHtml(bool release);            //Static
+        void addRisquesHtml(bool release);              //Static
+        void addFinmaintHtml(bool release);             //Static
+        void addNotesHtml(bool release);                //Static
+        void addBadgefieldHtml(bool release);                //Static
+        void addSubmitbuttonHtml(bool release);             //Static
+        void addPagebreakHtml(bool release);                //Static
         
         void writeBuffertohtml(bool release);
 };
@@ -40,29 +45,4 @@ class HtmlGenerator {
 
 
 
-
-
-
-
-
-
-						
-
-//void pagebreakHtml(std::stringstream *buff);
-
-
-
-//void risquesHtml(std::stringstream *buff);
-
-
-
-
-
-
-
-//void notesHtml(std::stringstream *buff);
-
-//void badgeHtml(std::stringstream *buff);
-
-//void buttonHtml(std::stringstream *buff);
 

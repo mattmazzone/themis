@@ -3,10 +3,6 @@
 #include <vector>
 
 
-
-
-
-
 #include "htmlManip.h"
 #include "textTransforms.h"
 #include "menuApp.h"
@@ -47,7 +43,12 @@ switch (myApp.mainMenu()) {
     htmlGen.addSecuriteHtml(status);
     htmlGen.addChecklistHtml(status);
     htmlGen.addFinmaintHtml(status);                                                 
-    
+    htmlGen.addRisquesHtml(status); 
+    htmlGen.addNotesHtml(status); 
+    htmlGen.addBadgefieldHtml(status); 
+    htmlGen.addSubmitbuttonHtml(status); 
+    //htmlGen.addPagebreakHtml(status); 
+ 
     
     
     
