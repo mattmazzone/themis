@@ -27,13 +27,27 @@ std::string Reformater::onlyString(std::string inp){
 }
 
 std::string Reformater::sameLine(std::string inp) {
-    if (isalpha(inp[0])){
+    
+    size_t found_checkmark = inp.find("( )");
+    size_t found_checkmark1 = inp.find("()");
+    size_t found_title = inp.find("<<");
+    
 
-        return inp;
+    if (found_title != std::string::npos){
+        return "title";
     }
-    else{
-        return "";
+    else if (found_checkmark != std::string::npos){
+        return "checkmark";
     }
+    else if (found_checkmark1 != std::string::npos){
+        return "checkmark";
+    }
+    else {
+        return "plain_text";
+    }
+        
+    
+  
 }
 
 std::vector<std::string> Reformater::reformatGood(){
@@ -61,42 +75,64 @@ std::vector<std::string> Reformater::reformatGood(){
         std::cout << "Unable to open file";
     }
 
+ for (int i = 0; i < formattedTextFile.size(); i++){
+        if (removeWhitespace(formattedTextFile[i]).find("()NEPASMETTREENFONCTIONSI") != std::string::npos){
+            formattedTextFile.erase(formattedTextFile.begin()+i, formattedTextFile.end());
+        }
+    }
+
+
+
+
+
+int lineCombineCounter = 0;
+bool newLine = false;
 
 for (int i = 0; i < formattedTextFile.size(); i++){
     input = formattedTextFile[i];
     input = onlyString(input);
     
     
-    if ((sameLine(input) == "")&&(i != 0)){
+   
+    
+    
+    
+    lineCombineCounter = 0;
+    
+    
+    if (sameLine(input) == "title" ){
+        newLine = true;
+    }
+    else if (sameLine(input) == "checkmark"){
+        newLine = false;
+        
         
     }
-    else {
-        if (i!=0){
+    else if (sameLine(input) == "plain_text"){
+        
+        if (newLine == false){
+            lineCombineCounter++;
             formattedTextFile[i-1] += (" " + formattedTextFile[i]);
             formattedTextFile.erase(formattedTextFile.begin()+i);
+            i= i -lineCombineCounter;
         }
-    }
         
-    
-    
-}
-
-formattedTextFile.shrink_to_fit();
-
-
-for (int i = 0; i < formattedTextFile.size(); i++){
-    if (formattedTextFile[i].find("( )NE PAS METTRE EN FONCTION SI ÉQUIPEMENT N'EST PAS SÉCURITAIRE") != std::string::npos){
-        formattedTextFile.erase(formattedTextFile.begin()+i, formattedTextFile.end());
+        
+        newLine = false;
     }
+    
+
+    
 }
 
-/*
-//For testing contents of vector
+
+
+//testing
 for (int i = 0; i < formattedTextFile.size(); i++){
     std::cout << formattedTextFile[i] << std::endl;
+    
 }
-
-*/
+ 
     
     return formattedTextFile;
 

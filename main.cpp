@@ -19,7 +19,7 @@ int main()
 
 
     App myApp;
-    bool status =true;
+    bool status =false;
 
 switch (myApp.mainMenu()) {
   case 1:
@@ -32,19 +32,23 @@ switch (myApp.mainMenu()) {
     formattedFile = reformatTxt.reformatGood();
     
     HtmlGenerator htmlGen(path, formattedFile);
-    
+   
     htmlGen.addHeadHtml(status);
     htmlGen.addPreparationHtml(status);
     htmlGen.addPiecesHtml(status);
     htmlGen.addConsommablesHtml(status);
     htmlGen.addOutilsHtml(status);
-    htmlGen.addTachesHtml(status);
     htmlGen.addDocrefHtml(status);
-    htmlGen.addSecuriteHtml(status);
     htmlGen.addChecklistHtml(status);
-    htmlGen.addFinmaintHtml(status);                                                 
     htmlGen.addRisquesHtml(status); 
+  
+    htmlGen.addSecuriteHtml(status);
+ 
+    htmlGen.addTachesHtml(status);
+
     htmlGen.addNotesHtml(status); 
+    htmlGen.addFinmaintHtml(status);                                                 
+    htmlGen.addFinmaintHtml(status);
     htmlGen.addBadgefieldHtml(status); 
     htmlGen.addSubmitbuttonHtml(status); 
     //htmlGen.addPagebreakHtml(status); 

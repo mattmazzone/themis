@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-
+#include <cctype>
 
 
 class Reformater

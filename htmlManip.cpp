@@ -248,17 +248,18 @@ void HtmlGenerator::addConsommablesHtml(bool release) {
                 
             }
         }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
+        else {
+            //Remove Whitespace from string
+            input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
+        }
 
         foundConsom = input.find("<<CONSOMMABLES>>");
         foundConsom1 = input.find("<<CONSOMMABLE>>");
 
         if ((foundConsom != std::string::npos) || (foundConsom1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
+            //Found Consommables (next line until << is good
             inSection = true;
+            //std::cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
         }
     }
     
@@ -361,7 +362,7 @@ else{
     }
     
 buffer << R"(
-</div>
+        </div>
 )";
 
 
@@ -442,7 +443,6 @@ else {
 
 void HtmlGenerator::addSecuriteHtml(bool release){
     std::vector<std::string> securiteStrings;
-
     std::string input;
     
     size_t foundSecurite;
@@ -483,6 +483,31 @@ void HtmlGenerator::addSecuriteHtml(bool release){
         }
     }
     
+    //Remove fake checkboxes from array
+for (int i = 0; i < securiteStrings.size(); i++){
+    std::size_t found = securiteStrings[i].find_first_of(")");
+    securiteStrings[i] = securiteStrings[i].substr(found+1);
+
+}
+//Section title to buffer
+buffer << R"(
+        <div id="Securite" style="page-break-after: always">
+        	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>)" << std::endl;
+	
+//Write array to buffer
+for (int i = 0; i < securiteStrings.size(); i++){
+    buffer << R"(
+            <input type="checkbox" id="sec)" << i << R"(" name="sec)" << i << R"(">
+            <label for="sec)" << i << R"(">)" << securiteStrings[i] << R"(</label><br>)"<< std::endl;
+    
+}
+buffer << R"(
+        </div>
+    )";
+
+    
+    
+    
     
     //RELEASE VS DEBUG MODE
 if (release){
@@ -522,183 +547,184 @@ void HtmlGenerator::addChecklistHtml(bool release){
 			
 			<div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que je dois cadenasser?</label>
-			</div>
+				    <label> Est-ce que je dois cadenasser?</label>
+			    </div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check2">Non</label>
-				<input style="float: right;" type="radio" id="check2" name="check2">
-				<label style="float: right;" for="check2">Oui</label>
-				<input style="float: right;" type="radio" id="check2" name="check2">
-			</div>
+				    <label  style="float: right;" for="check2">Non</label>
+				    <input style="float: right;" type="radio" id="check2" name="check2">
+				    <label style="float: right;" for="check2">Oui</label>
+			    	<input style="float: right;" type="radio" id="check2" name="check2">
+			    </div>
 
-		</div>
+		    </div>
 
-		<div style="clear:both; padding: 10px;">
+	    	<div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label>  Est-ce qu'il y a d'autres sources d'énergie?</label>
-			</div>
+			    	<label>  Est-ce qu'il y a d'autres sources d'énergie?</label>
+			    </div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check3">Non</label>
-				<input style="float: right;" type="radio" id="check3" name="check3">
-				<label style="float: right;" for="check3">Oui</label>
-				<input style="float: right;" type="radio" id="check3" name="check3">
-			</div>
+			    	<label  style="float: right;" for="check3">Non</label>
+			    	<input style="float: right;" type="radio" id="check3" name="check3">
+			    	<label style="float: right;" for="check3">Oui</label>
+			    	<input style="float: right;" type="radio" id="check3" name="check3">
+		    	</div>
 
-		</div>
+	    	</div>
 
-		<div style="clear:both; padding: 10px;">
+		    <div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que je dois me procurer un permis de travail?</label>
-			</div>
+			    	<label> Est-ce que je dois me procurer un permis de travail?</label>
+		    	</div>
 				<div style="float: left; width: 100px;">
 					<label  style="float: right;" for="check4">Non</label>
 					<input style="float: right;" type="radio" id="check4" name="check4">
 					<label style="float: right;" for="check4">Oui</label>
 					<input style="float: right;" type="radio" id="check4" name="check4">
-			</div>
+		    	</div>
 
-		</div>
+	    	</div>
 
 
-		<div style="clear:both; padding: 10px;">
+		    <div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label>Est-ce que j'ai besoin d'aide?</label>
+			        <label>Est-ce que j'ai besoin d'aide?</label>
+			    </div>
+				<div style="float: left; width: 100px;">
+			    	<label  style="float: right;" for="check5">Non</label>
+			    	<input style="float: right;" type="radio" id="check5" name="check5">
+			    	<label style="float: right;" for="check5">Oui</label>
+			    	<input style="float: right;" type="radio" id="check5" name="check5">
+		    	</div>
+
+		    </div>
+
+
+	    	<div style="clear:both; padding: 10px;">
+				<div style="width: 400px; word-wrap: break-word; float: left;">
+			    	<label>Est-ce que mes outils sont appropriés et conformes?</label>
+			    </div>
+				<div style="float: left; width: 100px;">
+			    	<label  style="float: right;" for="check6">Non</label>
+			    	<input style="float: right;" type="radio" id="check6" name="check6">
+			    	<label style="float: right;" for="check6">Oui</label>
+			    	<input style="float: right;" type="radio" id="check6" name="check6">
+		    	</div>
+
+	    	</div>
+
+	    	<div style="clear:both; padding: 10px;">
+				<div style="width: 400px; word-wrap: break-word; float: left;">
+			    	<label>  Est-ce que je peux être frappés ou coincés par un objet?</label>
 			</div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check5">Non</label>
-				<input style="float: right;" type="radio" id="check5" name="check5">
-				<label style="float: right;" for="check5">Oui</label>
-				<input style="float: right;" type="radio" id="check5" name="check5">
-			</div>
+			    	<label  style="float: right;" for="check7">Non</label>
+			    	<input style="float: right;" type="radio" id="check7" name="check7">
+			    	<label style="float: right;" for="check7">Oui</label>
+			    	<input style="float: right;" type="radio" id="check7" name="check7">
+		    	</div>
 
-		</div>
+		    </div>
 
-
-		<div style="clear:both; padding: 10px;">
+		    <div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label>Est-ce que mes outils sont appropriés et conformes?</label>
-			</div>
+			    	<label> Est-ce que je suis exposé a une chute?</label>
+			    </div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check6">Non</label>
-				<input style="float: right;" type="radio" id="check6" name="check6">
-				<label style="float: right;" for="check6">Oui</label>
-				<input style="float: right;" type="radio" id="check6" name="check6">
-			</div>
+			    	<label  style="float: right;" for="check8">Non</label>
+			    	<input style="float: right;" type="radio" id="check8" name="check8">
+			    	<label style="float: right;" for="check8">Oui</label>
+			    	<input style="float: right;" type="radio" id="check8" name="check8">
+		    	</div>
 
-		</div>
-
-		<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label>  Est-ce que je peux être frappés ou coincés par un objet?</label>
-			</div>
-				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check7">Non</label>
-				<input style="float: right;" type="radio" id="check7" name="check7">
-				<label style="float: right;" for="check7">Oui</label>
-				<input style="float: right;" type="radio" id="check7" name="check7">
-			</div>
-
-		</div>
-
-		<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que je suis exposé a une chute?</label>
-			</div>
-				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check8">Non</label>
-				<input style="float: right;" type="radio" id="check8" name="check8">
-				<label style="float: right;" for="check8">Oui</label>
-				<input style="float: right;" type="radio" id="check8" name="check8">
-			</div>
-
-		</div>
+		    </div>
 		
 	
 		
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence
+		    <div style="clear:both; padding: 10px;">
+		    	<div style="width: 400px; word-wrap: break-word; float: left;">
+			    	<label> Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence
 						de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes 
 						travaux?
-				</label>
-			</div>
+			    	</label>
+			    </div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check9">Non</label>
-				<input style="float: right;" type="radio" id="check9" name="check9">
-				<label style="float: right;" for="check9">Oui</label>
-				<input style="float: right;" type="radio" id="check9" name="check9">
-			</div>
-		</div>
+			    	<label  style="float: right;" for="check9">Non</label>
+			    	<input style="float: right;" type="radio" id="check9" name="check9">
+			    	<label style="float: right;" for="check9">Oui</label>
+			    	<input style="float: right;" type="radio" id="check9" name="check9">
+		    	</div>
+		    </div>
 
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que l'état de la propreté des lieux est satisfaisante?</label>
-			</div>
-				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check10">Non</label>
-				<input style="float: right;" type="radio" id="check10" name="check10">
-				<label style="float: right;" for="check1">Oui</label>
-				<input style="float: right;" type="radio" id="check10" name="check10">
-			</div>
+	    	<div style="clear:both; padding: 10px;">
+		    	<div style="width: 400px; word-wrap: break-word; float: left;">
+		    		<label> Est-ce que l'état de la propreté des lieux est satisfaisante?</label>
+		    	</div>
+		   		<div style="float: left; width: 100px;">
+			    	<label  style="float: right;" for="check10">Non</label>
+			    	<input style="float: right;" type="radio" id="check10" name="check10">
+			    	<label style="float: right;" for="check1">Oui</label>
+			    	<input style="float: right;" type="radio" id="check10" name="check10">
+		    	</div>
 
-		</div>
+		    </div>
 
-		<div style="clear:both; padding: 10px;">
+		    <div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que je dois délimiter la zone de travail?</label>
-			</div>
+			    	<label> Est-ce que je dois délimiter la zone de travail?</label>
+			    </div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check1">Non</label>
-				<input style="float: right;" type="radio" id="check11" name="check11">
-				<label style="float: right;" for="check11">Oui</label>
-				<input style="float: right;" type="radio" id="check11" name="check11">
-			</div>
+			    	<label  style="float: right;" for="check1">Non</label>
+			    	<input style="float: right;" type="radio" id="check11" name="check11">
+			    	<label style="float: right;" for="check11">Oui</label>
+			    	<input style="float: right;" type="radio" id="check11" name="check11">
+			    </div>
 
-		</div>
+		    </div>
 			
 			
 			
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label>Est-ce que la tache comporte des efforts excessifs?</label>
+	    	<div style="clear:both; padding: 10px;">
+		    	<div style="width: 400px; word-wrap: break-word; float: left;">
+		    		<label>Est-ce que la tache comporte des efforts excessifs?</label>
+		    	</div>
+		   		<div style="float: left; width: 100px;">
+			    	<label  style="float: right;" for="check12">Non</label>
+			    	<input style="float: right;" type="radio" id="check12" name="check12">
+			    	<label style="float: right;" for="check12">Oui</label>
+			    	<input style="float: right;" type="radio" id="check12" name="check12">
+			    </div>
+	    	</div>
+	    	
+
+	    	<div style="clear:both; padding: 10px;">
+			    <div style="width: 400px; word-wrap: break-word; float: left;">
+			    	<label> Est-ce je peux réaliser cette tache en toute sécurité?</label>
 			</div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check12">Non</label>
-				<input style="float: right;" type="radio" id="check12" name="check12">
-				<label style="float: right;" for="check12">Oui</label>
-				<input style="float: right;" type="radio" id="check12" name="check12">
-			</div>
+			    	<label  style="float: right;" for="check13">Non</label>
+			    	<input style="float: right;" type="radio" id="check13" name="check13">
+			    	<label style="float: right;" for="check13">Oui</label>
+			    	<input style="float: right;" type="radio" id="check13" name="check13">
+		    	</div>
+		    </div>
 
-		</div>
-
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce je peux réaliser cette tache en toute sécurité?</label>
-			</div>
-				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check13">Non</label>
-				<input style="float: right;" type="radio" id="check13" name="check13">
-				<label style="float: right;" for="check13">Oui</label>
-				<input style="float: right;" type="radio" id="check13" name="check13">
-			</div>
-		</div>
-
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 400px; word-wrap: break-word; float: left;">
-				<label> Est-ce que le travail implique une règle cardinale non mentionnée précédemment ? (VIM, 
+		    <div style="clear:both; padding: 10px;">
+		    	<div style="width: 400px; word-wrap: break-word; float: left;">
+			    	<label> Est-ce que le travail implique une règle cardinale non mentionnée précédemment ? (VIM, 
 						Gréage et levage, DFT, sécurité machine)
-				</label>
-			</div>
+			    	</label>
+			    </div>
 				<div style="float: left; width: 100px;">
-				<label  style="float: right;" for="check14">Non</label>
-				<input style="float: right;" type="radio" id="check14" name="check14">
-				<label style="float: right;" for="check14">Oui</label>
-				<input style="float: right;" type="radio" id="check14" name="check14">
-			</div>
-		</div>
-	</div>
+			    	<label  style="float: right;" for="check14">Non</label>
+			    	<input style="float: right;" type="radio" id="check14" name="check14">
+			    	<label style="float: right;" for="check14">Oui</label>
+			    	<input style="float: right;" type="radio" id="check14" name="check14">
+		    	</div>
+	    	</div>
+	    </div>
 
 )" << std::endl;
+
 
     if (release)  {
         if (before < buffer.gcount()){
@@ -872,7 +898,7 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release){
     <div style="text-align: center;">
 	<button id="submitBtn">Submit</button>
     </div>
-</div>
+
     
     )" << std::endl;
     
@@ -935,6 +961,7 @@ void HtmlGenerator::addPagebreakHtml(bool release){
 }
 
 void HtmlGenerator::addTachesHtml(bool release) {
+   
     std::vector<std::string> tachesStrings;
 
     std::string input;
@@ -963,10 +990,10 @@ void HtmlGenerator::addTachesHtml(bool release) {
                 
             }
         }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
+        else {
+            //Remove Whitespace from string
+            input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
+        }
 
         foundTaches = input.find("<<TÂCHE>>");
         foundTaches1 = input.find("<<TÂCHES>>");
@@ -976,19 +1003,103 @@ void HtmlGenerator::addTachesHtml(bool release) {
             inSection = true;
         }
     }
+    
+    
+    
+    //Section title to buffer
+        buffer << R"(
+        <div id="Taches">
+        	<h3 style="text-align: left; text-decoration: underline;">Tâches</h3>)" << std::endl;
+    
+    
+    for (int i = 0; i < tachesStrings.size(); i++){
 
-if (release){
-    if (tachesStrings.size()!=0){
-        std::cout << "Writing Taches Références to buffer..." << std::endl;
+    size_t found_checkmark = tachesStrings[i].find("( )");
+    size_t found_checkmark1 = tachesStrings[i].find("()");
+
+    if ((found_checkmark != std::string::npos) || (found_checkmark1 != std::string::npos)) {
+        
+        //Is a task with checkbox case
+        std::size_t found = tachesStrings[i].find_first_of(")");
+        tachesStrings[i] = tachesStrings[i].substr(found+1);
+       
+        
+        
+	
+        //Write array to buffer
+        buffer << R"(
+
+            <div style="clear: both; padding-bottom: 50px;">
+        	    <div>
+    	        	<input type="checkbox" id="tache)" << i <<   R"(" name="tache)" << i << R"(">
+    	        	<label for="tache)" << i << R"(">)" << tachesStrings[i] << R"(</label><br>
+	    	    </div>
+	
+	            <div>
+
+		            <div style="float:left; padding-left: 20px;">
+			            <input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+			            <label for="tache)" << i << R"(">Conforme</label><br>
+		            </div> 	
+		
+	            	<div style="float:left; padding-left: 20px;">
+		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+		            	<label for="tache)" << i << R"(">Repare</label><br>
+		            </div>
+		
+		            <div style="float:left; padding-left: 20px;">
+		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+		            	<label for="tache)" << i << R"(">Remplace</label><br>
+		            </div>
+		
+		            <div style="float:left; padding-left: 20px;">
+		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+		            	<label for="tache)" << i << R"(">Avis Creer:</label><br>
+		            </div>
+		
+		            <div style="float:left; padding-left: 5px;">
+		            	<input type="text" id="tache)" << i << R"(" name="tache)" << i << R"(">
+			
+		            </div>
+	
+                </div>
+
+            </div>
+        )" << std::endl;
+
+    }
+    //Task doesnt need a checkbox
+    else {
+        
+         buffer << R"(
+            <p>)" << tachesStrings[i] << R"(</p>)" << std::endl;
     }
     
-}
-else {
-    std::cout << "Taches Array content:" << std::endl;
-    for (auto i: tachesStrings){
-        std::cout << i << std::endl;
+ } 
+ //closing tag for main section div
+    buffer << R"(
+        </div>)" << std::endl;
+
+    
+    
+
+    if (release){
+        if (tachesStrings.size()!=0){
+            std::cout << "Writing Taches to buffer..." << std::endl;
+        }
+        else {
+            std::cout << "Did not detect any Taches in file..." << std::endl;
+        }
     }
-}
+    else {
+        std::cout << "Taches Array content:" << std::endl;
+            for (auto i: tachesStrings){
+                std::cout << i << std::endl;
+            }
+    }
+
+    
+    
 }
 
 void HtmlGenerator::writeBuffertohtml(bool release) {
