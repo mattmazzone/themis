@@ -16,6 +16,9 @@ class HtmlGenerator {
         std::string outputPath;
         std::stringstream buffer;
         std::vector<std::string> formattedFile;
+        
+        std::vector<int> fileTitlesLN;
+        int unknownTimesUsed = 0;
     
     
     public:
@@ -23,13 +26,16 @@ class HtmlGenerator {
         
         
         void addHeadHtml(bool release);
-        void addPreparationHtml(bool release);
-        void addPiecesHtml(bool release);
-        void addConsommablesHtml(bool release);
-        void addOutilsHtml(bool release);
-        void addTachesHtml(bool release);
-        void addDocrefHtml(bool release);
-        void addSecuriteHtml(bool release);
+        void addPreparationHtml(bool release, int start, int end);
+        void addPiecesHtml(bool release, int start, int end);
+        void addConsommablesHtml(bool release, int start, int end);
+        void addOutilsHtml(bool release, int start, int end);
+        void addTachesHtml(bool release, int start, int end);
+        void addDocrefHtml(bool release, int start, int end);
+        void addSecuriteHtml(bool release, int start, int end);
+        
+        void addUnknownsHtml(bool release,int start, int end);             //Prototype
+        
         void addChecklistHtml(bool release);            //Static
         void addRisquesHtml(bool release);              //Static
         void addFinmaintHtml(bool release);             //Static
@@ -37,6 +43,8 @@ class HtmlGenerator {
         void addBadgefieldHtml(bool release);                //Static
         void addSubmitbuttonHtml(bool release);             //Static
         void addPagebreakHtml(bool release);                //Static
+        
+        void callInOrder(bool release);
         
         void writeBuffertohtml(bool release);
 };

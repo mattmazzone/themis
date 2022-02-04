@@ -19,7 +19,7 @@ int main()
 
 
     App myApp;
-    bool status =false;
+    bool status =true;
 
 switch (myApp.mainMenu()) {
   case 1:
@@ -33,29 +33,7 @@ switch (myApp.mainMenu()) {
     
     HtmlGenerator htmlGen(path, formattedFile);
    
-    htmlGen.addHeadHtml(status);
-    htmlGen.addPreparationHtml(status);
-    htmlGen.addPiecesHtml(status);
-    htmlGen.addConsommablesHtml(status);
-    htmlGen.addOutilsHtml(status);
-    htmlGen.addDocrefHtml(status);
-    htmlGen.addChecklistHtml(status);
-    htmlGen.addRisquesHtml(status); 
-  
-    htmlGen.addSecuriteHtml(status);
- 
-    htmlGen.addTachesHtml(status);
-
-    htmlGen.addNotesHtml(status); 
-    htmlGen.addFinmaintHtml(status);                                                 
-    htmlGen.addFinmaintHtml(status);
-    htmlGen.addBadgefieldHtml(status); 
-    htmlGen.addSubmitbuttonHtml(status); 
-    //htmlGen.addPagebreakHtml(status); 
- 
-    
-    
-    
+    htmlGen.callInOrder(status);
     
     htmlGen.writeBuffertohtml(status);
     
@@ -65,13 +43,33 @@ switch (myApp.mainMenu()) {
     
     
     break;
-  case 2:
-    cout << "Tuesday";
+    
+    case 2:
+    {
+        std::cout << "Load a PM.html" << std::endl;
+    }
     break;
+    
+    case 3:
+    {
+        std::cout << "Instructions" << std::endl;
+    }
+    break;
+    
+    case 4:
+    {
+        std::cout << "Exit" << std::endl;
+        return 0;
+        
+    }
     default:
     cout << "Error";
 }
 
+
+
+
+return 0;
 }
     
         

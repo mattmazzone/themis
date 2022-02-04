@@ -28,7 +28,7 @@ std::string App::selectFile(std::string extension)
         
         if(entry.path().extension() == extension) {
             std::cout << counter << " - " << entry.path() << std::endl;
-            listPaths.push_back(entry.path());
+            listPaths.push_back(entry.path().u8string());
             counter++;
         }
     }

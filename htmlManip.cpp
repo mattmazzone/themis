@@ -34,7 +34,7 @@ void HtmlGenerator::addHeadHtml(bool release) {
 
 }
 
-void HtmlGenerator::addPreparationHtml(bool release){
+void HtmlGenerator::addPreparationHtml(bool release, int start, int end){
     
     
     
@@ -50,47 +50,19 @@ void HtmlGenerator::addPreparationHtml(bool release){
     
 
     std::string input;
-    
-    size_t foundPrep;
-    size_t foundPrep1;
-    size_t foundEnd;
-
-    bool inSection = false;
 
 
-
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
         
-        if (inSection) {
-            foundEnd = input.find("<<");
-
-            if (foundEnd == std::string::npos) {
-                    prepStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
-
-        foundPrep = input.find("<<PREPARATION>>");
-        foundPrep1 = input.find("<<PRÉPARATION>>");
-
-        if ((foundPrep != std::string::npos) || (foundPrep1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
-            inSection = true;
-        }
+        prepStrings.push_back(input);
+         
     }
 
+
 //Remove fake checkboxes from array
-for (int i = 0; i < prepStrings.size(); i++){
+for (size_t i = 0; i < prepStrings.size(); i++){
     std::size_t found = prepStrings[i].find_first_of(")");
     prepStrings[i] = prepStrings[i].substr(found+1);
 
@@ -117,66 +89,37 @@ buffer << R"(
 if (release){
     if (prepStrings.size()!=0){
         std::cout << "Writing Preparation to buffer..." << std::endl;
+        
+    } 
+    else {
+        std::cout << "Preparation vector EMPTY..." << std::endl;
     }
     
 }
 else {
-    std::cout << "Preparation Array content:" << std::endl;
+    std::cout << "--------------------------------" << std::endl << "Preparation Array content:" << std::endl;
     for (auto i: prepStrings){
         std::cout << i << std::endl;
     }
+    std::cout << "--------------------------------" << std::endl;
 
 }
 
 }
 
-void HtmlGenerator::addPiecesHtml(bool release) {
+void HtmlGenerator::addPiecesHtml(bool release, int start, int end) {
 
     std::vector<std::string> piecesStrings;
-    
 
     std::string input;
-    
-    size_t foundPieces;
-    size_t foundPieces1;
-    size_t foundEnd;
-
-    bool inSection = false;
 
 
-
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
         
-        if (inSection) {
-            foundEnd = input.find("<<");
-
-            if (foundEnd == std::string::npos) {
-                    piecesStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
-
-        foundPieces = input.find("<<PIECES>>");
-        foundPieces1 = input.find("<<PIÈCES>>");
-
-        if ((foundPieces != std::string::npos) || (foundPieces1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
-            inSection = true;
-        }
+        piecesStrings.push_back(input);
     }
-
-
-
 
 //Section title to buffer
 buffer << R"(
@@ -206,6 +149,9 @@ if (release){
     if (piecesStrings.size()!=0){
         std::cout << "Writing Pieces to buffer..." << std::endl;
     }
+    else {
+        std::cout << "Pieces vector is EMPTY..." << std::endl;
+    }
     
 }
 else {
@@ -218,51 +164,20 @@ else {
 
 }
 
-void HtmlGenerator::addConsommablesHtml(bool release) {
+void HtmlGenerator::addConsommablesHtml(bool release, int start, int end) {
     
     std::vector<std::string> consomStrings;
 
     std::string input;
     
-    size_t foundConsom;
-    size_t foundConsom1;
-    size_t foundEnd;
-
-    bool inSection = false;
-
-
-
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
         
-        if (inSection) {
-            foundEnd = input.find("<<");
-
-            if (foundEnd == std::string::npos) {
-                    consomStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-        else {
-            //Remove Whitespace from string
-            input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-        }
-
-        foundConsom = input.find("<<CONSOMMABLES>>");
-        foundConsom1 = input.find("<<CONSOMMABLE>>");
-
-        if ((foundConsom != std::string::npos) || (foundConsom1 != std::string::npos)) {
-            //Found Consommables (next line until << is good
-            inSection = true;
-            //std::cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
-        }
+        consomStrings.push_back(input);
+      
     }
-    
+
 //Section title to buffer
 buffer << R"(
         <div id="Consommables">
@@ -289,6 +204,10 @@ buffer << R"(
 if (release){
     if (consomStrings.size()!=0){
         std::cout << "Writing Consommables to buffer..." << std::endl;
+
+    }
+    else {
+        std::cout << "Consommables vector is EMPTY..." << std::endl;
     }
     
 }
@@ -303,47 +222,19 @@ else {
 
 }
 
-void HtmlGenerator::addOutilsHtml(bool release){
+void HtmlGenerator::addOutilsHtml(bool release, int start, int end){
     std::vector<std::string> outilsStrings;
 
     std::string input;
     
-    size_t foundOutils;
-    size_t foundOutils1;
-    size_t foundEnd;
-
-    bool inSection = false;
 
 
 
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
-        
-        if (inSection) {
-            foundEnd = input.find("<<");
-
-            if (foundEnd == std::string::npos) {
-                    outilsStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
-
-        foundOutils = input.find("<<OUTILS>>");
-        foundOutils1 = input.find("<<OUTIL>>");
-
-        if ((foundOutils != std::string::npos) || (foundOutils1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
-            inSection = true;
-        }
+       
+        outilsStrings.push_back(input);
     }
 
 //Section title to buffer
@@ -370,6 +261,10 @@ buffer << R"(
 if (release){
     if (outilsStrings.size()!=0){
         std::cout << "Writing Outils to buffer..." << std::endl;
+
+    }
+    else{
+        std::cout << "Outils vector is EMPTY..." << std::endl;
     }
     
 }
@@ -383,125 +278,94 @@ else {
 }
 }
 
-void HtmlGenerator::addDocrefHtml(bool release){
+void HtmlGenerator::addDocrefHtml(bool release, int start, int end){
     std::vector<std::string> docrefStrings;
 
     std::string input;
     
-    size_t foundDocref;
-    size_t foundDocref1;
-    size_t foundEnd;
 
-    bool inSection = false;
-
-
-
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
-        
-        if (inSection) {
-            foundEnd = input.find("<<");
-
-            if (foundEnd == std::string::npos) {
-                    docrefStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
-
-        foundDocref = input.find("<<DOCUMENTRÉFÉRENCE>>");
-        foundDocref1 = input.find("<<DOCUMENTSRÉFÉRENCES>>");
-
-        if ((foundDocref != std::string::npos) || (foundDocref1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
-            inSection = true;
-        }
-    }
-
-//RELEASE VS DEBUG MODE
-if (release){
-    if (docrefStrings.size()!=0){
-        std::cout << "Writing Documents Références to buffer..." << std::endl;
+       
+        docrefStrings.push_back(input);
+                   
     }
     
-}
-else {
-    std::cout << "Documents Références Array content:" << std::endl;
-    for (auto i: docrefStrings){
-        std::cout << i << std::endl;
+    //Section title to buffer
+    buffer << R"(
+        <div id="DocRef" style="page-break-after: always">
+        	<h3 style="text-align: left; text-decoration: underline;">Documents Reference</h3>)" << std::endl;
+	
+    //Write array to buffer
+    if (docrefStrings.size() != 0){
+        for (int i = 0; i < docrefStrings.size(); i++){
+            buffer << "<p>" << docrefStrings[i]<< "</p>" << std::endl;
+        }
+    }
+    else{
+        // <p> pas de pieces necessaires    
+        }
+        
+    buffer << R"(
+            </div>
+    )";
+
+    //RELEASE VS DEBUG MODE
+    if (release){
+        if (docrefStrings.size()!=0){
+            std::cout << "Writing Documents Références to buffer..." << std::endl;
+    
+        }
+        else {
+            std::cout << "Documents Reference vector is EMPTY..." << std::endl;
+        }
+        
+    }
+    else {
+        std::cout << "Documents Références Array content:" << std::endl;
+        for (auto i: docrefStrings){
+            std::cout << i << std::endl;
+        }
     }
 }
-}
 
-void HtmlGenerator::addSecuriteHtml(bool release){
+void HtmlGenerator::addSecuriteHtml(bool release, int start, int end){
     std::vector<std::string> securiteStrings;
     std::string input;
-    
-    size_t foundSecurite;
-    size_t foundSecurite1;
-    size_t foundEnd;
-
-    bool inSection = false;
 
 
 
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
         
-        if (inSection) {
-            foundEnd = input.find("<<");
-
-            if (foundEnd == std::string::npos) {
-                    securiteStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-            else {
-                //Remove Whitespace from string
-                input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-            }
-
-        foundSecurite = input.find("<<SECURITE>>");
-        foundSecurite1 = input.find("<<SÉCURITÉ>>");
-
-        if ((foundSecurite != std::string::npos) || (foundSecurite1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
-            inSection = true;
-        }
+        securiteStrings.push_back(input);
     }
+
+
+
     
     //Remove fake checkboxes from array
-for (int i = 0; i < securiteStrings.size(); i++){
-    std::size_t found = securiteStrings[i].find_first_of(")");
-    securiteStrings[i] = securiteStrings[i].substr(found+1);
+    for (int i = 0; i < securiteStrings.size(); i++){
+        std::size_t found = securiteStrings[i].find_first_of(")");
+        securiteStrings[i] = securiteStrings[i].substr(found+1);
 
-}
-//Section title to buffer
-buffer << R"(
+    }
+    //Section title to buffer
+    buffer << R"(
         <div id="Securite" style="page-break-after: always">
         	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>)" << std::endl;
 	
 //Write array to buffer
-for (int i = 0; i < securiteStrings.size(); i++){
-    buffer << R"(
+    for (int i = 0; i < securiteStrings.size(); i++){
+        buffer << R"(
             <input type="checkbox" id="sec)" << i << R"(" name="sec)" << i << R"(">
             <label for="sec)" << i << R"(">)" << securiteStrings[i] << R"(</label><br>)"<< std::endl;
     
-}
-buffer << R"(
+    }
+    
+    buffer << R"(
         </div>
     )";
 
@@ -513,6 +377,10 @@ buffer << R"(
 if (release){
     if (securiteStrings.size()!=0){
         std::cout << "Writing Securite to buffer..." << std::endl;
+
+    }
+    else {
+        std::cout << "Securite vector is EMPTY..." << std::endl;
     }
     
 }
@@ -526,11 +394,11 @@ else {
 }
 
 void HtmlGenerator::addChecklistHtml(bool release){
-    int before = buffer.gcount();
+    int before = buffer.str().size();
     
     buffer << R"(
         <div id="Checklist" style="page-break-after: always;">
-		   <h3 style="text-align: left; text-decoration: underline;">CHECKLIST</h3>
+		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
 			
 			<div style="clear:both; padding: 10px;">
 				<div style="width: 400px; word-wrap: break-word; float: left;">
@@ -738,7 +606,7 @@ void HtmlGenerator::addChecklistHtml(bool release){
 }
 
 void HtmlGenerator::addRisquesHtml(bool release){
-     int before = buffer.gcount();
+	int before = buffer.str().size();
     
     //HTML CODE
     buffer << R"(
@@ -830,7 +698,7 @@ void HtmlGenerator::addRisquesHtml(bool release){
 }
 
 void HtmlGenerator::addFinmaintHtml(bool release) {
-        int before = buffer.gcount();
+	int before = buffer.str().size();
     
     
     //STATIC CODE ADD TO BUFFER
@@ -850,7 +718,7 @@ void HtmlGenerator::addFinmaintHtml(bool release) {
 }
 
 void HtmlGenerator::addNotesHtml(bool release){
-     int before = buffer.gcount();
+	int before = buffer.str().size();
     
     
     //STATIC CODE ADD TO BUFFER
@@ -870,7 +738,7 @@ void HtmlGenerator::addNotesHtml(bool release){
 }
 
 void HtmlGenerator::addBadgefieldHtml(bool release){
-    int before = buffer.gcount();
+	int before = buffer.str().size();
     
     
     //STATIC CODE ADD TO BUFFER
@@ -889,7 +757,7 @@ void HtmlGenerator::addBadgefieldHtml(bool release){
 }
 
 void HtmlGenerator::addSubmitbuttonHtml(bool release){
-    int before = buffer.gcount();
+	int before = buffer.str().size();
     
     
     //HTML CODE
@@ -943,7 +811,7 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release){
 
 void HtmlGenerator::addPagebreakHtml(bool release){
     
-    int before = buffer.gcount();
+	int before = buffer.str().size();
     
     buffer << R"(<div class="html2pdf__pagebreak"></div>)" << std::endl;
     
@@ -960,50 +828,25 @@ void HtmlGenerator::addPagebreakHtml(bool release){
     }
 }
 
-void HtmlGenerator::addTachesHtml(bool release) {
+void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
    
     std::vector<std::string> tachesStrings;
 
     std::string input;
     
-    size_t foundTaches;
-    size_t foundTaches1;
-    size_t foundEnd;
+  
 
     bool inSection = false;
 
 
 
-    for (int i = 0; i < formattedFile.size(); i++){
+    for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
-        
-        if (inSection) {
-            foundEnd = input.find("<<");
 
-            if (foundEnd == std::string::npos) {
-                    tachesStrings.push_back(input);
-                    //*buff << input << std::endl;
-            }
-            else {
-                inSection = false;
-                
-            }
-        }
-        else {
-            //Remove Whitespace from string
-            input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-        }
-
-        foundTaches = input.find("<<TÂCHE>>");
-        foundTaches1 = input.find("<<TÂCHES>>");
-
-        if ((foundTaches != std::string::npos) || (foundTaches1 != std::string::npos)) {
-            //Found Prepartion (next line until << is good
-            inSection = true;
-        }
+        tachesStrings.push_back(input);
     }
-    
+
     
     
     //Section title to buffer
@@ -1086,9 +929,10 @@ void HtmlGenerator::addTachesHtml(bool release) {
     if (release){
         if (tachesStrings.size()!=0){
             std::cout << "Writing Taches to buffer..." << std::endl;
+            
         }
         else {
-            std::cout << "Did not detect any Taches in file..." << std::endl;
+            std::cout << "Tache vector is EMPTY..." << std::endl;
         }
     }
     else {
@@ -1101,6 +945,342 @@ void HtmlGenerator::addTachesHtml(bool release) {
     
     
 }
+
+void HtmlGenerator::addUnknownsHtml(bool release, int start, int end){
+    
+    
+    std::vector<std::string> unknownStrings;
+    
+
+    std::string input;
+    
+   
+    
+    for (int i = start+1; i < end; i++){
+        
+        input = formattedFile[i];
+        
+        unknownStrings.push_back(input);
+       
+    }
+    
+    input = formattedFile[start];
+    input = input.substr(2, input.size()-4);
+        
+        buffer << R"(
+        <div id=")" << input << R"(">
+	<h3 style="text-align: left; text-decoration: underline;">)" << input << R"(</h3>)";
+
+            
+            
+    for (int i = 0; i < unknownStrings.size(); i++){
+
+        size_t found_checkmark = unknownStrings[i].find("( )");
+        size_t found_checkmark1 = unknownStrings[i].find("()");
+
+        if ((found_checkmark != std::string::npos) || (found_checkmark1 != std::string::npos)) {
+        
+        //Is a task with checkbox case
+        std::size_t found = unknownStrings[i].find_first_of(")");
+        unknownStrings[i] = unknownStrings[i].substr(found+1);
+       
+	
+        //Write array to buffer
+        buffer << R"(
+
+            <div style="clear: both; padding-bottom: 50px;">
+        	    <div>
+    	        	<input type="checkbox" id="tache)" << i << unknownTimesUsed <<   R"(" name="tache)" << i << unknownTimesUsed << R"(">
+    	        	<label for="tache)" << i << unknownTimesUsed << R"(">)" << unknownStrings[i] << R"(</label><br>
+	    	    </div>
+	
+	            <div>
+
+		            <div style="float:left; padding-left: 20px;">
+			            <input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
+			            <label for="tache)" << i << unknownTimesUsed<< R"(">Conforme</label><br>
+		            </div> 	
+		
+	            	<div style="float:left; padding-left: 20px;">
+		            	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i<< unknownTimesUsed << R"(">
+		            	<label for="tache)" << i<< unknownTimesUsed << R"(">Repare</label><br>
+		            </div>
+		
+		            <div style="float:left; padding-left: 20px;">
+		            	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
+		            	<label for="tache)" << i << unknownTimesUsed << R"(">Remplace</label><br>
+		            </div>
+		
+		            <div style="float:left; padding-left: 20px;">
+		            	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
+		            	<label for="tache)" << i << unknownTimesUsed << R"(">Avis Creer:</label><br>
+		            </div>
+		
+		            <div style="float:left; padding-left: 5px;">
+		            	<input type="text" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
+			
+		            </div>
+	
+                </div>
+
+            </div>
+        )" << std::endl;
+
+        }
+        //Unkown doesnt need a checkbox
+        else {
+        
+            buffer << R"(
+                <p>)" << unknownStrings[i] << R"(</p>)" << std::endl;
+        }
+    }
+    
+    
+ //closing tag for main section div
+    buffer << R"(
+        </div>)" << std::endl;    
+    
+
+    
+    
+
+    if (release){
+        if (unknownStrings.size()!=0){
+            std::cout << "Writing Unknowns to buffer..." << std::endl;
+            
+        }
+        else {
+            std::cout << "Unknowns vector is EMPTY..." << std::endl;
+        }
+    }
+    else {
+        std::cout << "Unknowns Array content:" << std::endl;
+            for (auto i: unknownStrings){
+                std::cout << i << std::endl;
+            }
+    }
+    
+    
+
+    
+    
+    
+    unknownTimesUsed++;
+    
+    
+}
+
+void HtmlGenerator::callInOrder(bool release){
+   
+    //Start
+    addHeadHtml(release);
+
+    std::string input;
+    size_t foundTitle;
+    int functionToCall =0;
+    bool callFunction =false;
+    bool inSection = false;
+    int start = 0;
+    int end = 0;
+    
+    int last= 0;
+    
+    //Look at formatted File for titles and add them all to array. If not recognized, call unknown. Unkown should add the name to the array so as not to read it twice
+    for (int i = 0; i < formattedFile.size(); i++) {
+        input = formattedFile[i];
+        
+        foundTitle = input.find("<<");
+        
+        if (foundTitle != std::string::npos || i == formattedFile.size()-1){
+            
+            
+           
+            input = input.substr(2, input.size()-4);
+          
+         
+            
+            
+            if (i == formattedFile.size()-1){
+                inSection = true;
+                last = 1;
+                
+            }
+            
+            if (!inSection){
+                start = i;
+                
+            }
+            else{
+                start = end;
+                end = i+last;
+                switch (functionToCall){
+                
+                    case 1:
+                    {
+                    addPreparationHtml(release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                    case 2:
+                    {
+                    addSecuriteHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                    case 3:
+                    {
+                    addPiecesHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                    case 4:
+                    {
+                    addConsommablesHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                    case 5:
+                    {
+                    addOutilsHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                    case 6:
+                    {
+                    addDocrefHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                     case 7:
+                    {
+                    addTachesHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                    case 10:
+                    {
+                    addUnknownsHtml (release, start, end);
+                    callFunction = false;
+                    inSection = false;
+                    functionToCall = 0;
+                    break;
+                    }
+                
+                
+                
+                }
+            }
+            
+            input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
+            
+            if (input == "PRÉPARATION"|| input == "PREPARATION"){
+                
+                functionToCall = 1;
+                inSection = true;
+            }
+            else if (input.find("SÉCURITÉ") != std::string::npos || input.find("SECURITE") != std::string::npos){
+                
+                functionToCall = 2;
+                inSection = true;
+            }
+            else if (input.find("PIÈCES")!= std::string::npos || input.find("PIECES") != std::string::npos){
+                functionToCall = 3;
+                inSection = true;
+            }
+            else if (input.find("CONSOMMABLES")!= std::string::npos || input.find("CONSOMMABLE") != std::string::npos){
+                functionToCall = 4;
+                inSection = true;
+            }
+            else if (input.find("OUTILS")!= std::string::npos || input.find("OUTIL") != std::string::npos){
+                functionToCall = 5;
+                inSection = true;
+            }
+            else if (input.find("DOCUMENTRÉFÉRENCE")!= std::string::npos || input.find("DOCUMENTSRÉFÉRENCES") != std::string::npos
+                    || input.find("DOCUMENTREFERENCE")!= std::string::npos || input.find("DOCUMENTSREFERENCES") != std::string::npos){
+                        
+                functionToCall = 6;
+                inSection = true;
+            }
+            else if (input == "TÂCHES" || input == "TACHES" || input == "TACHE "|| input == "TÂCHE" ){
+                functionToCall = 7;
+                inSection = true;
+            }
+            else {
+                //CALL UNKNOWN FUNCTION
+                functionToCall =10;
+                inSection =true;
+            }
+        }
+        
+        
+       
+        
+    }
+    
+    //Static Parts
+    addChecklistHtml(release);
+    addRisquesHtml(release);
+    
+    
+
+
+    
+
+    //Static Parts
+    addFinmaintHtml(release);
+    addNotesHtml(release);
+    addBadgefieldHtml(release);
+    addSubmitbuttonHtml(release);
+    
+    
+}
+    
+    
+   
+   
+   
+   
+   
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+           
+   
+
+
+
+
+
+    
+   
+    
+        
+    
+    
+    
+
 
 void HtmlGenerator::writeBuffertohtml(bool release) {
 
