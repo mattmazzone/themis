@@ -27,31 +27,60 @@ std::string Reformater::onlyString(std::string inp){
 }
 
 std::string Reformater::sameLine(std::string inp) {
+
+	std::string str = inp;
+
+	//Random ish variable. May increase for tuning parser
+	int startOfLine = 4;
+
+	str = removeWhitespace(str);
     
-    size_t found_checkmark = inp.find("( )");
-    size_t found_checkmark1 = inp.find("()");
-    size_t found_title = inp.find("<<");
-    size_t found_dash = inp.find("-");
+    size_t found_checkmark = str.find("()");
+    size_t found_title = str.find("<<");
+    size_t found_dash = str.find("-");
+	size_t found_ex = str.find("EX:");
+	size_t found_endingColon = str.rfind(":");
     
 
-    if (found_title != std::string::npos){
+    if (found_title < std::string::npos){
         return "title";
     }
-    else if (found_checkmark != std::string::npos){
+    else if (found_checkmark < startOfLine){
         return "checkmark";
     }
-    else if (found_checkmark1 != std::string::npos){
-        return "checkmark";
-    }
-    else if (found_dash != std::string::npos){
+    else if (found_dash < startOfLine){
         return "dash";
     }
+	else if (found_ex < startOfLine) {
+		return "ex";
+	}
+	else if (found_endingColon < startOfLine) {
+		return "colon";
+	}
     else {
         return "plain_text";
     }
         
     
   
+}
+
+std::string Reformater::detectTextFields(std::string inp) {
+    int countUnderscores = 0;
+    
+    for (int i = 0; i < inp.length(); i++){
+        if (inp[i] == '_'){
+            countUnderscores++;
+        }
+    }
+    
+    if (countUnderscores > 5) {
+        return "-INSERT_TEXTBOX" + inp;
+    } else{
+        return inp;
+    }
+    
+    
 }
 
 std::vector<std::string> Reformater::reformatGood(){
@@ -70,8 +99,11 @@ std::vector<std::string> Reformater::reformatGood(){
         while (getline(inFile, input)) {
             
             input = onlyString(input);
+            input = detectTextFields(input);
+            
             if (!input.empty()){
-                formattedTextFile.push_back(onlyString(input));
+                
+                formattedTextFile.push_back(input);
             }
         }
         inFile.close();
@@ -112,7 +144,7 @@ std::vector<std::string> Reformater::reformatGood(){
         str = removeWhitespace(str);
         size_t finder = str.find("()CONFORME");
         if (finder != std::string::npos){
-         formattedTextFile.erase(formattedTextFile.begin()+i, formattedTextFile.end()); 
+         formattedTextFile.erase(formattedTextFile.begin()+i); 
         }
  }
  
@@ -141,6 +173,12 @@ for (int i = 0; i < formattedTextFile.size(); i++){
     else if (sameLine(input) == "dash"){
         newLine = false;
     }
+	else if (sameLine(input) == "ex") {
+		newLine = false;
+	}
+	else if (sameLine(input) == "colon") {
+		newLine = false;
+	}
     else if (sameLine(input) == "plain_text"){
         
         if (newLine == false){

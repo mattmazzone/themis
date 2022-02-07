@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cctype>
 #include "textTransforms.h"
 
 
@@ -43,6 +44,7 @@ class HtmlGenerator {
         void addBadgefieldHtml(bool release);                //Static
         void addSubmitbuttonHtml(bool release);             //Static
         void addPagebreakHtml(bool release);                //Static
+        bool addTextFieldHtml(std::string, bool release);
         
         void callInOrder(bool release);
         

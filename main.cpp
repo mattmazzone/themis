@@ -26,6 +26,11 @@ switch (myApp.mainMenu()) {
   {
     string path;
     path = myApp.selectFile(".txt");
+
+	//Exit Program if no files found
+	if (path == "") {
+		return 0;
+	}
     
     Reformater reformatTxt(path);
     vector <string> formattedFile;

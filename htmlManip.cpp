@@ -828,25 +828,70 @@ void HtmlGenerator::addPagebreakHtml(bool release){
     }
 }
 
+bool HtmlGenerator::addTextFieldHtml(std::string inp, bool release){
+    
+    
+    size_t found = inp.find("-INSERT_TEXTBOX");
+    if (found != std::string::npos){
+        buffer << R"(<textarea rows="2" cols="75" placeholder=")" << inp.substr(15, inp.length()) << R"("></textarea>)";
+        
+        return true;
+    } else{
+        return false;
+    }
+    
+    
+}
+
 void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
    
     std::vector<std::string> tachesStrings;
+    std::vector<int> subStepIndeces;
 
     std::string input;
     
   
 
     bool inSection = false;
+    bool subStep = false;
 
 
 
     for (int i = start+1; i < end; i++){
         
         input = formattedFile[i];
-
+        
         tachesStrings.push_back(input);
+        
+    }
+    
+    
+    
+    //Check if substep
+    for (int i = 0; i < tachesStrings.size(); i++){
+        std::string str;
+        str = tachesStrings[i];
+        int counter = 0;
+        //Remove everything before the number in string
+        for (int j = 0; j < str.length(); j++ ){
+            if (isdigit(str[j]) == false){
+                counter++;
+            }
+            else {
+                break;
+            }
+        }
+        
+        str = str.substr(counter);
+        
+        
+        if (isalpha(str[1]) || !isdigit(str[0])){
+            //tstd::cout << str << std::endl;
+            subStepIndeces.push_back(i);
+        }
     }
 
+    
     
     
     //Section title to buffer
@@ -854,69 +899,79 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
         <div id="Taches">
         	<h3 style="text-align: left; text-decoration: underline;">Tâches</h3>)" << std::endl;
     
-    
     for (int i = 0; i < tachesStrings.size(); i++){
-
-    size_t found_checkmark = tachesStrings[i].find("( )");
-    size_t found_checkmark1 = tachesStrings[i].find("()");
-
-    if ((found_checkmark != std::string::npos) || (found_checkmark1 != std::string::npos)) {
         
-        //Is a task with checkbox case
-        std::size_t found = tachesStrings[i].find_first_of(")");
-        tachesStrings[i] = tachesStrings[i].substr(found+1);
-       
-        
-        
-	
-        //Write array to buffer
-        buffer << R"(
-
-            <div style="clear: both; padding-bottom: 50px;">
-        	    <div>
-    	        	<input type="checkbox" id="tache)" << i <<   R"(" name="tache)" << i << R"(">
-    	        	<label for="tache)" << i << R"(">)" << tachesStrings[i] << R"(</label><br>
-	    	    </div>
-	
-	            <div>
-
-		            <div style="float:left; padding-left: 20px;">
-			            <input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
-			            <label for="tache)" << i << R"(">Conforme</label><br>
-		            </div> 	
-		
-	            	<div style="float:left; padding-left: 20px;">
-		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
-		            	<label for="tache)" << i << R"(">Repare</label><br>
-		            </div>
-		
-		            <div style="float:left; padding-left: 20px;">
-		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
-		            	<label for="tache)" << i << R"(">Remplace</label><br>
-		            </div>
-		
-		            <div style="float:left; padding-left: 20px;">
-		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
-		            	<label for="tache)" << i << R"(">Avis Creer:</label><br>
-		            </div>
-		
-		            <div style="float:left; padding-left: 5px;">
-		            	<input type="text" id="tache)" << i << R"(" name="tache)" << i << R"(">
-			
-		            </div>
-	
+        if (addTextFieldHtml(tachesStrings[i], true)){
+          i++;  
+        } 
+    
+        size_t found_checkmark = tachesStrings[i].find("( )");
+        size_t found_checkmark1 = tachesStrings[i].find("()");
+    
+        if ((found_checkmark != std::string::npos) || (found_checkmark1 != std::string::npos)) {
+            
+            //Is a task with checkbox case
+            std::size_t found = tachesStrings[i].find_first_of(")");
+            tachesStrings[i] = tachesStrings[i].substr(found+1);
+           
+            if (std::find(subStepIndeces.begin(),subStepIndeces.end(), i) != subStepIndeces.end()){
+                buffer << R"(
+    
+                <div style="clear: both; padding-bottom: 50px; padding-left: 50px;">)" << std::endl;
+            } 
+            else {
+                buffer << R"(
+    
+                <div style="clear: both; padding-bottom: 50px;">)" << std::endl;
+            }
+            
+    	
+            //Write array to buffer
+            buffer << R"(
+            	    <div>
+        	        	<input type="checkbox" id="tache)" << i <<   R"(" name="tache)" << i << R"(">
+        	        	<label for="tache)" << i << R"(">)" << tachesStrings[i] << R"(</label><br>
+    	    	    </div>
+    	
+    	            <div>
+    
+    		            <div style="float:left; padding-left: 20px;">
+    			            <input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+    			            <label for="tache)" << i << R"(">Conforme</label><br>
+    		            </div> 	
+    		
+    	            	<div style="float:left; padding-left: 20px;">
+    		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+    		            	<label for="tache)" << i << R"(">Repare</label><br>
+    		            </div>
+    		
+    		            <div style="float:left; padding-left: 20px;">
+    		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+    		            	<label for="tache)" << i << R"(">Remplace</label><br>
+    		            </div>
+    		
+    		            <div style="float:left; padding-left: 20px;">
+    		            	<input type="checkbox" id="tache)" << i << R"(" name="tache)" << i << R"(">
+    		            	<label for="tache)" << i << R"(">Avis Creer:</label><br>
+    		            </div>
+    		
+    		            <div style="float:left; padding-left: 5px;">
+    		            	<input type="text" id="tache)" << i << R"(" name="tache)" << i << R"(">
+    			
+    		            </div>
+    	
+                    </div>
+    
                 </div>
-
-            </div>
-        )" << std::endl;
-
-    }
-    //Task doesnt need a checkbox
-    else {
-        
-         buffer << R"(
-            <p>)" << tachesStrings[i] << R"(</p>)" << std::endl;
-    }
+            )" << std::endl;
+    
+        }
+        //Task doesnt need a checkbox
+        else {
+            
+             buffer << R"(
+                <p>)" << tachesStrings[i] << R"(</p>)" << std::endl;
+        }
     
  } 
  //closing tag for main section div
@@ -950,6 +1005,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end){
     
     
     std::vector<std::string> unknownStrings;
+    std::vector<int> subStepIndeces;
     
 
     std::string input;
@@ -961,8 +1017,37 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end){
         input = formattedFile[i];
         
         unknownStrings.push_back(input);
+         
        
     }
+    
+    
+    //Check if substep
+    for (int i = 0; i < unknownStrings.size(); i++){
+        std::string str;
+        str = unknownStrings[i];
+        int counter = 0;
+        //Remove everything before the number in string
+        for (int j = 0; j < str.length(); j++ ){
+            if (isdigit(str[j]) == false){
+                counter++;
+            }
+            else {
+                break;
+            }
+        }
+        
+        str = str.substr(counter);
+       
+        
+        if (isalpha(str[1]) || !isdigit(str[0])){
+            //tstd::cout << str << std::endl;
+            subStepIndeces.push_back(i);
+        }
+    }
+    
+    
+    
     
     input = formattedFile[start];
     input = input.substr(2, input.size()-4);
@@ -971,10 +1056,24 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end){
         <div id=")" << input << R"(">
 	<h3 style="text-align: left; text-decoration: underline;">)" << input << R"(</h3>)";
 
+    
+            
             
             
     for (int i = 0; i < unknownStrings.size(); i++){
-
+        
+        
+        
+        /* SHIT IS FKN BROKEN 
+        std::cout << unknownStrings[i].substr(0, 15) << std::endl;
+        
+        if (addTextFieldHtml(unknownStrings[i], true)){
+          i++;  
+          std::cout<< " ||||||||||||||||||||||||";
+        } else
+        
+        
+        */
         size_t found_checkmark = unknownStrings[i].find("( )");
         size_t found_checkmark1 = unknownStrings[i].find("()");
 
@@ -985,10 +1084,22 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end){
         unknownStrings[i] = unknownStrings[i].substr(found+1);
        
 	
+	
+	    if (std::find(subStepIndeces.begin(),subStepIndeces.end(), i) != subStepIndeces.end()){
+            buffer << R"(
+
+            <div style="clear: both; padding-bottom: 50px; padding-left: 50px;">)" << std::endl;
+        } 
+        else {
+            buffer << R"(
+
+            <div style="clear: both; padding-bottom: 50px;">)" << std::endl;
+        }
+	
+	
         //Write array to buffer
         buffer << R"(
 
-            <div style="clear: both; padding-bottom: 50px;">
         	    <div>
     	        	<input type="checkbox" id="tache)" << i << unknownTimesUsed <<   R"(" name="tache)" << i << unknownTimesUsed << R"(">
     	        	<label for="tache)" << i << unknownTimesUsed << R"(">)" << unknownStrings[i] << R"(</label><br>
@@ -1166,6 +1277,7 @@ void HtmlGenerator::callInOrder(bool release){
                      case 7:
                     {
                     addTachesHtml (release, start, end);
+                    std::cout << start << " " << end;
                     callFunction = false;
                     inSection = false;
                     functionToCall = 0;
@@ -1249,39 +1361,6 @@ void HtmlGenerator::callInOrder(bool release){
     
 }
     
-    
-   
-   
-   
-   
-   
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-           
-   
-
-
-
-
-
-    
-   
-    
-        
-    
-    
-    
-
-
 void HtmlGenerator::writeBuffertohtml(bool release) {
 
 //Write buffer to created file

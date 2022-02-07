@@ -28,16 +28,24 @@ std::string App::selectFile(std::string extension)
         
         if(entry.path().extension() == extension) {
             std::cout << counter << " - " << entry.path() << std::endl;
-            listPaths.push_back(entry.path().u8string());
+            listPaths.push_back(entry.path());
             counter++;
         }
     }
-    
-    std::cout << std::endl << "Enter selection: ";
-    std::cin >> selection;
-    
-    std::cout << "Selected: " << listPaths[selection-1] << std::endl;
-    return listPaths[selection-1];
+
+	if (listPaths.size() != 0) {
+
+		std::cout << std::endl << "Enter selection: ";
+		std::cin >> selection;
+
+		std::cout << "Selected: " << listPaths[selection - 1] << std::endl;
+		return listPaths[selection - 1];
+
+	}
+	else {
+		std::cout << "Didn't find any corresponding files, make sure they are in the same directory as the executable." << std::endl;
+		return "";
+	}
     
     
     
