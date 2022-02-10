@@ -10,10 +10,6 @@
 
 using namespace std;
 
-
-
-
-
 int main()
 {
 
@@ -21,31 +17,28 @@ int main()
     App myApp;
     bool status =true;
 
-switch (myApp.mainMenu()) {
-  case 1:
-  {
-    string path;
-    path = myApp.selectFile(".txt");
+    switch (myApp.mainMenu()) {
+        case 1:
+        {
+        string path;
+        path = myApp.selectFile(".txt");
 
-	//Exit Program if no files found
-	if (path == "") {
-		return 0;
-	}
+	    //Exit Program if no files found
+	    if (path == "") {
+		    return 0;
+	    }
     
-    Reformater reformatTxt(path);
-    vector <string> formattedFile;
-    formattedFile = reformatTxt.reformatGood();
+        Reformater reformatTxt(path);
+        vector <string> formattedFile;
+        formattedFile = reformatTxt.reformatGood();
     
-    HtmlGenerator htmlGen(path, formattedFile);
+        HtmlGenerator htmlGen(path, formattedFile);
    
-    htmlGen.callInOrder(status);
+        htmlGen.callInOrder(status);
     
-    htmlGen.writeBuffertohtml(status);
+        htmlGen.writeBuffertohtml(status);
     
-    
-    //pass the vector to htmlGen
-  } 
-    
+        } 
     
     break;
     
@@ -70,9 +63,6 @@ switch (myApp.mainMenu()) {
     default:
     cout << "Error";
 }
-
-
-
 
 return 0;
 }

@@ -35,7 +35,9 @@ class HtmlGenerator {
         void addDocrefHtml(bool release, int start, int end);
         void addSecuriteHtml(bool release, int start, int end);
         
-        void addUnknownsHtml(bool release,int start, int end);             //Prototype
+        void addCadenassageHtml(bool release);
+        
+        void addUnknownsHtml(bool release,int start, int end);            
         
         void addChecklistHtml(bool release);            //Static
         void addRisquesHtml(bool release);              //Static
@@ -44,7 +46,7 @@ class HtmlGenerator {
         void addBadgefieldHtml(bool release);                //Static
         void addSubmitbuttonHtml(bool release);             //Static
         void addPagebreakHtml(bool release);                //Static
-        bool addTextFieldHtml(std::string, bool release);
+        bool addTextFieldHtml(std::string);
         
         void callInOrder(bool release);
         

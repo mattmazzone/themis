@@ -31,7 +31,7 @@ std::string Reformater::sameLine(std::string inp) {
 	std::string str = inp;
 
 	//Random ish variable. May increase for tuning parser
-	int startOfLine = 4;
+	int startOfLine = 1;
 
 	str = removeWhitespace(str);
     
@@ -40,7 +40,7 @@ std::string Reformater::sameLine(std::string inp) {
     size_t found_dash = str.find("-");
 	size_t found_ex = str.find("EX:");
 	size_t found_endingColon = str.rfind(":");
-    
+    size_t found_asterisk = str.rfind("*");
 
     if (found_title < std::string::npos){
         return "title";
@@ -56,6 +56,9 @@ std::string Reformater::sameLine(std::string inp) {
 	}
 	else if (found_endingColon < startOfLine) {
 		return "colon";
+	}
+	else if (found_asterisk < startOfLine) {
+		return "asterisk";
 	}
     else {
         return "plain_text";
@@ -179,6 +182,9 @@ for (int i = 0; i < formattedTextFile.size(); i++){
 	else if (sameLine(input) == "colon") {
 		newLine = false;
 	}
+	else if (sameLine(input) == "asterisk") {
+		newLine = false;
+	}
     else if (sameLine(input) == "plain_text"){
         
         if (newLine == false){
@@ -196,9 +202,9 @@ for (int i = 0; i < formattedTextFile.size(); i++){
     
 }
 
-
-
 /*
+
+
  for (auto i : formattedTextFile){
     std::cout<<i <<std::endl;
 }
