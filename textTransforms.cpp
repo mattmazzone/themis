@@ -3,214 +3,219 @@
 
 
 
-Reformater::Reformater(std::string path){
-    filePath = path;
+
+Reformater::Reformater(std::wstring path) {
+	filePath = path;
+
 }
 
 
 
 
-std::string Reformater::removeWhitespace(std::string input)
+std::wstring Reformater::removeWhitespace(std::wstring input)
 {
-    input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
-    return input;
+	input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
+	return input;
 }
 
 
 
-std::string Reformater::onlyString(std::string inp){
+std::wstring Reformater::onlyString(std::wstring inp) {
 
-    const char* WhiteSpace = " \t\v\r\n";
-    size_t start = inp.find_first_not_of(WhiteSpace);
-    size_t end = inp.find_last_not_of(WhiteSpace);
-    return start == end ? std::string() : inp.substr(start, end - start + 1);
+	const wchar_t* WhiteSpace = L" \t\v\r\n";
+	size_t start = inp.find_first_not_of(WhiteSpace);
+	size_t end = inp.find_last_not_of(WhiteSpace);
+	return start == end ? std::wstring() : inp.substr(start, end - start + 1);
 }
 
-std::string Reformater::sameLine(std::string inp) {
+std::wstring Reformater::sameLine(std::wstring inp) {
 
-	std::string str = inp;
+	std::wstring str = inp;
 
 	//Random ish variable. May increase for tuning parser
-	int startOfLine = 1;
+	size_t startOfLine = 1;
 
 	str = removeWhitespace(str);
-    
-    size_t found_checkmark = str.find("()");
-    size_t found_title = str.find("<<");
-    size_t found_dash = str.find("-");
-	size_t found_ex = str.find("EX:");
-	size_t found_endingColon = str.rfind(":");
-    size_t found_asterisk = str.rfind("*");
 
-    if (found_title < std::string::npos){
-        return "title";
-    }
-    else if (found_checkmark < startOfLine){
-        return "checkmark";
-    }
-    else if (found_dash < startOfLine){
-        return "dash";
-    }
+	size_t found_checkmark = str.find(L"()");
+	size_t found_title = str.find(L"<<");
+	size_t found_dash = str.find(L"-");
+	size_t found_ex = str.find(L"EX:");
+	size_t found_endingColon = str.rfind(L":");
+	size_t found_asterisk = str.rfind(L"*");
+
+	if (found_title < std::wstring::npos) {
+		return L"title";
+	}
+	else if (found_checkmark < startOfLine) {
+		return L"checkmark";
+	}
+	else if (found_dash < startOfLine) {
+		return L"dash";
+	}
 	else if (found_ex < startOfLine) {
-		return "ex";
+		return L"ex";
 	}
 	else if (found_endingColon < startOfLine) {
-		return "colon";
+		return L"colon";
 	}
 	else if (found_asterisk < startOfLine) {
-		return "asterisk";
+		return L"asterisk";
 	}
-    else {
-        return "plain_text";
-    }
-        
-    
-  
+	else {
+		return L"plain_text";
+	}
+
+
+
 }
 
-std::string Reformater::detectTextFields(std::string inp) {
-    int countUnderscores = 0;
-    
-    for (int i = 0; i < inp.length(); i++){
-        if (inp[i] == '_'){
-            countUnderscores++;
-        }
-    }
-    
-    if (countUnderscores > 5) {
-        return "-INSERT_TEXTBOX" + inp;
-    } else{
-        return inp;
-    }
-    
-    
+std::wstring Reformater::detectTextFields(std::wstring inp) {
+	int countUnderscores = 0;
+
+	for (size_t i = 0; i < inp.length(); i++) {
+		if (inp[i] == L'_') {
+			countUnderscores++;
+		}
+	}
+
+	if (countUnderscores > 5) {
+		return L"-INSERT_TEXTBOX" + inp;
+	}
+	else {
+		return inp;
+	}
+
+
 }
 
-std::vector<std::string> Reformater::reformatGood(){
-    
-    
-    std::vector<std::string> formattedTextFile;
+std::vector<std::wstring> Reformater::reformatGood() {
 
-    std::string input;
 
-    
+	std::vector<std::wstring> formattedTextFile;
 
-    std::ifstream inFile(filePath);
-    //Get section names and line numbers
-    if (inFile.is_open()) {
-
-        while (getline(inFile, input)) {
-            
-            input = onlyString(input);
-            input = detectTextFields(input);
-            
-            if (!input.empty()){
-                
-                formattedTextFile.push_back(input);
-            }
-        }
-        inFile.close();
-    } else {
-        std::cout << "Unable to open file";
-    }
+	std::wstring input;
 
 
 
+	std::wifstream inFile(filePath);
+	//Get section names and line numbers
+	if (inFile.is_open()) {
 
- for (int i = 0 ; i < formattedTextFile.size(); i++){
-        std::string str = formattedTextFile[i];
-        str = removeWhitespace(str);
-        size_t finder = str.find("()NEPASMETTREEN");
-        if (finder != std::string::npos){
-         formattedTextFile.erase(formattedTextFile.begin()+i, formattedTextFile.end()); 
-        }
- }
-  for (int i = 0 ; i < formattedTextFile.size(); i++){
-        std::string str = formattedTextFile[i];
-        str = removeWhitespace(str);
-        size_t finder = str.find("()S'ASSURERQUELESLIEUX");
-        if (finder != std::string::npos){
-         formattedTextFile.erase(formattedTextFile.begin()+i, formattedTextFile.end()); 
-        }
- }
- 
-  for (int i = 0 ; i < formattedTextFile.size(); i++){
-        std::string str = formattedTextFile[i];
-        str = removeWhitespace(str);
-        size_t finder = str.find("BADGE:");
-        if (finder != std::string::npos){
-         formattedTextFile.erase(formattedTextFile.begin()+i, formattedTextFile.end()); 
-        }
- }
-   for (int i = 0 ; i < formattedTextFile.size(); i++){
-        std::string str = formattedTextFile[i];
-        str = removeWhitespace(str);
-        size_t finder = str.find("()CONFORME");
-        if (finder != std::string::npos){
-         formattedTextFile.erase(formattedTextFile.begin()+i); 
-        }
- }
- 
+		while (getline(inFile, input)) {
 
-int lineCombineCounter = 0;
-bool newLine = false;
 
-for (int i = 0; i < formattedTextFile.size(); i++){
-    input = formattedTextFile[i];
-    input = onlyString(input);
-    
-    
-   
-    
-    
-    
-    lineCombineCounter = 0;
-    
-    
-    if (sameLine(input) == "title" ){
-        newLine = true;
-    }
-    else if (sameLine(input) == "checkmark"){
-        newLine = false;
-    }
-    else if (sameLine(input) == "dash"){
-        newLine = false;
-    }
-	else if (sameLine(input) == "ex") {
-		newLine = false;
+			input = onlyString(input);
+			input = detectTextFields(input);
+
+			if (!input.empty()) {
+
+				formattedTextFile.push_back(input);
+			}
+		}
+		inFile.close();
 	}
-	else if (sameLine(input) == "colon") {
-		newLine = false;
+	else {
+		std::cout << "Unable to open file";
 	}
-	else if (sameLine(input) == "asterisk") {
-		newLine = false;
+
+
+
+
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"()NEPASMETTREEN");
+		if (finder != std::string::npos) {
+			formattedTextFile.erase(formattedTextFile.begin() + i, formattedTextFile.end());
+		}
 	}
-    else if (sameLine(input) == "plain_text"){
-        
-        if (newLine == false){
-            lineCombineCounter++;
-            formattedTextFile[i-1] += (" " + formattedTextFile[i]);
-            formattedTextFile.erase(formattedTextFile.begin()+i);
-            i= i -lineCombineCounter;
-        }
-        
-        
-        newLine = false;
-    }
-    
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"()S'ASSURERQUELESLIEUX");
+		if (finder != std::string::npos) {
+			formattedTextFile.erase(formattedTextFile.begin() + i, formattedTextFile.end());
+		}
+	}
 
-    
-}
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"BADGE:");
+		if (finder != std::string::npos) {
+			formattedTextFile.erase(formattedTextFile.begin() + i, formattedTextFile.end());
+		}
+	}
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"()CONFORME");
+		if (finder != std::string::npos) {
+			formattedTextFile.erase(formattedTextFile.begin() + i);
+		}
+	}
 
-/*
+
+	int lineCombineCounter = 0;
+	bool newLine = false;
+
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		input = formattedTextFile[i];
+		input = onlyString(input);
 
 
- for (auto i : formattedTextFile){
-    std::cout<<i <<std::endl;
-}
-*/
-    
-    return formattedTextFile;
+
+
+
+
+		lineCombineCounter = 0;
+
+
+		if (sameLine(input) == L"title") {
+			newLine = true;
+		}
+		else if (sameLine(input) == L"checkmark") {
+			newLine = false;
+		}
+		else if (sameLine(input) == L"dash") {
+			newLine = false;
+		}
+		else if (sameLine(input) == L"ex") {
+			newLine = false;
+		}
+		else if (sameLine(input) == L"colon") {
+			newLine = false;
+		}
+		else if (sameLine(input) == L"asterisk") {
+			newLine = false;
+		}
+		else if (sameLine(input) == L"plain_text") {
+
+			if (newLine == false) {
+				lineCombineCounter++;
+				formattedTextFile[i - 1] += (L" " + formattedTextFile[i]);
+				formattedTextFile.erase(formattedTextFile.begin() + i);
+				i = i - lineCombineCounter;
+			}
+
+
+			newLine = false;
+		}
+
+
+
+	}
+
+	/*
+
+
+	 for (auto i : formattedTextFile){
+		std::wcout<<i <<std::endl;
+	}
+	*/
+
+	return formattedTextFile;
 
 }
 
