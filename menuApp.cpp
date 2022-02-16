@@ -2,51 +2,51 @@
 
 
 int App::mainMenu() {
+ 
+    int userSelect;
+    std::cout << "PM Conversion Tool - Developped by Matteo Mazzone" << std::endl << std::endl;
 
-	int userSelect;
-	std::wcout << L"PM Conversion Tool - Developped by Matteo Mazzone" << std::endl << std::endl;
-
-
-	std::wcout << std::endl << L"Menu Options: " << std::endl << L"   1 - Load a PM.txt file" << std::endl << L"   2 - Load a PM.html file" << std::endl << L"   3 - Instructions" << std::endl << L"   4 - Exit" << std::endl;
-
-	std::wcout << L"Enter selection: ";
-	std::cin >> userSelect;
-
-	return userSelect;
+    
+    std::cout << std::endl << "Menu Options: " << std::endl << "   1 - Load a PM.txt file" << std::endl << "   2 - Load a PM.html file" << std::endl << "   3 - Instructions" << std::endl << "   4 - Exit" << std::endl;    
+    
+    std::cout << "Enter selection: ";
+    std::cin >> userSelect;
+    
+    return userSelect;
 }
 
-std::wstring App::selectFile(std::wstring extension)
+std::string App::selectFile(std::string extension)
 {
-
-	int counter = 1;
-	int selection = 0;
-
-	std::vector<std::filesystem::path> listPaths;
-
-	for (const auto & entry : std::filesystem::directory_iterator(std::filesystem::current_path())) {
-
-
-		if (entry.path().extension() == extension) {
-			std::wcout << counter << L" - " << entry.path() << std::endl;
-			listPaths.push_back(entry.path());
-			counter++;
-		}
-	}
+    
+    int counter = 1;
+    int selection = 0;
+    
+    std::vector<std::string> listPaths;
+    
+    for (const auto & entry : std::filesystem::directory_iterator(std::filesystem::current_path())){
+            
+        
+        if(entry.path().extension() == extension) {
+            std::cout << counter << " - " << entry.path() << std::endl;
+            listPaths.push_back(entry.path());
+            counter++;
+        }
+    }
 
 	if (listPaths.size() != 0) {
 
-		std::wcout << std::endl << L"Enter selection: ";
+		std::cout << std::endl << "Enter selection: ";
 		std::cin >> selection;
 
-		std::wcout << L"Selected: " << listPaths[selection - 1] << std::endl;
-		return listPaths[selection - 1].wstring();
+		std::cout << "Selected: " << listPaths[selection - 1] << std::endl;
+		return listPaths[selection - 1];
 
 	}
 	else {
-		std::wcout << L"Didn't find any corresponding files, make sure they are in the same directory as the executable." << std::endl;
-		return L"";
+		std::cout << "Didn't find any corresponding files, make sure they are in the same directory as the executable." << std::endl;
+		return "";
 	}
-
-
-
+    
+    
+    
 }
