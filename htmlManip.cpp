@@ -23,21 +23,25 @@ void HtmlGenerator::addHeadHtml(bool release) {
 <html lang="en">
    <head>
       <title>)" << pageTitle << R"(</title>
-      <meta charset="ansi"/>
+      <meta charset="windows-1252"/>
       <meta name=" viewport " content=" width = device - width, initial - scale = 1 " />
       <meta name=" description " content=" " />
+      <style>
+         #imgCadenassage {
+         height: 100px;
+         border-style: dashed;
+         }
+         @media print
+         {    
+            .no-print, .no-print *
+            {
+            display: none !important;
+            }
+         }
+      </style>
    </head>
    <body>
-   <style>
-   @media print
-   {    
-       .no-print, .no-print *
-       {
-           display: none !important;
-       }
-   }
-	</style>
-	<form onsubmit="return false">
+   <form onsubmit="return false">
 
 )";
 }
@@ -544,7 +548,7 @@ void HtmlGenerator::addChecklistHtml(bool release) {
 		   		<div style="float: left; width: 100px;">
 			    	<label  style="float: right;" for="check10">Non</label>
 			    	<input style="float: right;" type="radio" id="check10" name="check10">
-			    	<label style="float: right;" for="check1">Oui</label>
+			    	<label style="float: right;" for="check10">Oui</label>
 			    	<input style="float: right;" type="radio" id="check10" name="check10">
 		    	</div>
 
@@ -625,14 +629,16 @@ void HtmlGenerator::addChecklistHtml(bool release) {
 			<label>)" << checklistStrings[i] << R"(</label>
 			</div>
 			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "check)" << i << R"(">Non</label>
+			<label style = "float: right;" for = "checkno)" << i << R"(">Non</label>
 			<input style = "float: right;" type = "radio" id = "checkno)" << i << R"(" name = "check)" << i << R"(" required>
-			<label style = "float: right;" for = "check)" << i << R"(">Oui</label>
+			<label style = "float: right;" for = "checkyes)" << i << R"(">Oui</label>
 			<input style = "float: right;" type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(">
 			</div>
 		</div>)";
 
 		}
+		buffer << R"(
+   </div>)";
 	}
 
 
@@ -778,9 +784,9 @@ void HtmlGenerator::addBadgefieldHtml(bool release) {
     <div style="float: left; padding: 50px;">
          <div style="clear:both; float: left; padding: 10px;">
             <label>Badge: </label>
-            <input>
+            <input type="text" id="badgefield" required>
             <label># Ordre Travail: </label>
-            <input>
+            <input type="text" id="ordernum" required>
          </div>
          <div style="clear:both; float: left; padding: 10px;">
             <label>Temps: </label>
@@ -857,16 +863,10 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 
 	//HTML CODE
 	buffer << R"(
-    
-   <div style="float: left; padding: 50px;" id="cadenassage">
-      <a href="https://www.google.com"><img id="imgCadenassage" src="https://i.imgur.com/Sf9u25n.png""/></a>
+  <div style="float: left; padding: 50px;" id="cadenassage">
+      <a href="https://www.google.com"><img id="imgCadenassage" src="https://i.imgur.com/QqwPOTx.png"/></a>
    </div>
-   <style>
-      #imgCadenassage {
-      height: 200px;
-	  border-style: dashed;
-	  }
-   </style>)" << std::endl;
+   )" << std::endl;
 
 	if (release) {
 		if (before < buffer.str().size()) {
@@ -885,16 +885,17 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	buffer << R"(
    </form>
     <div style="text-align: center;">
-	<button id="submitBtn">Submit</button>
+	<button id="submitBtn" class="no-print">Submit</button>
     </div>
 
     
     
-
 <script>
     function generatePDF(){
-	
+	//Initialize to true
 	var printPage = true;
+	var printTitle
+	
 	//Checkboxes
 	var checkboxes = document.getElementsByClassName('mustcheck');
 	for (var i =0; i < checkboxes.length; i++) {
@@ -920,8 +921,26 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	}
 	
 	
+	//Badge Field
+	var badge = document.getElementById('badgefield').value;
+		if (badge === '') {
+			printPage = false;
+		} 
+		else {
+			printTitle = badge;
+		}
+	var order = document.getElementById('ordernum').value;
+		if (order === '') {
+			printPage = false;
+		} 
+		else {
+		printTitle += '-'
+			printTitle += order;
+		}	
 	
 	if (printPage){
+	
+		document.title = printTitle;
 		window.print();  
 	}
 	
@@ -989,7 +1008,7 @@ bool HtmlGenerator::addPictureHtml(std::wstring inp) {
 
 	size_t found = inp.find(L"-INSERT_PICTURE");
 	if (found != std::string::npos) {
-		buffer << R"(<img style="height: 400px" src=")" << inp.substr(15, inp.length()) << R"("></img>)";
+		buffer << R"(<img style="height: 400px" src=")" << inp.substr(15, inp.length()) << R"(">)";
 		std::wcout << "FOUND PICTURE!";
 
 		return true;
@@ -1095,27 +1114,27 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			//Write array to buffer
 			buffer << R"(
                <div>
-        	      <input type="checkbox" id="taskCheckbox)" << i << R"(" name="taskCheckbox)" << i << R"("class="mustcheck" required>
-        	      <label for="taskLabel)" << i << R"(">)" << tachesStrings[i] << R"(</label><br>
+        	      <input type="checkbox" id="taskCheckbox)" << i << R"(" name="taskCheckbox)" << i << R"(" class="mustcheck" required>
+        	      <label for="taskCheckbox)" << i << R"(">)" << tachesStrings[i] << R"(</label><br>
     	       </div>
     	       <div>
     	          <div style="float:left; padding-left: 20px;">
     			     <input type="checkbox" id="taskConforme)" << i << R"(" name="taskConforme)" << i << R"(">
-    			     <label for="labelConforme)" << i << R"(">Conforme</label><br>
+    			     <label for="taskConforme)" << i << R"(">Conforme</label><br>
     		      </div> 	
     		
     	          <div style="float:left; padding-left: 20px;">
     		         <input type="checkbox" id="taskRepare)" << i << R"(" name="taskRepare)" << i << R"(">
-    		         <label for="labelRepare)" << i << R"(">Réparé</label><br>
+    		         <label for="taskRepare)" << i << R"(">Réparé</label><br>
     		      </div>
     		
     		      <div style="float:left; padding-left: 20px;">
     		         <input type="checkbox" id="taskRemplace)" << i << R"(" name="taskRemplace)" << i << R"(">
-    		         <label for="labelRemplace)" << i << R"(">Remplacé</label><br>
+    		         <label for="taskRemplace)" << i << R"(">Remplacé</label><br>
     		      </div>
     		      <div style="float:left; padding-left: 20px;">
     		         <input type="checkbox" id="taskAvis)" << i << R"(" name="taskAvis)" << i << R"(">
-    		         <label for="labelAvis)" << i << R"(">Avis Créer:</label><br>
+    		         <label for="taskAvis)" << i << R"(">Avis Créer:</label><br>
     		      </div>
     		
     		      <div style="float:left; padding-left: 5px;">
