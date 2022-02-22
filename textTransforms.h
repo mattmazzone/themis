@@ -11,18 +11,18 @@
 
 class Reformater
 {
-    private:
-        std::string filePath;
-    
-    public:
-        Reformater(std::string path);
-    
-        std::string removeWhitespace(std::string input);
-        std::string onlyString(std::string inp);                //Removes escape characters
-        std::string sameLine(std::string inp);
-        std::string detectTextFields(std::string inp);
-        std::vector<std::string> reformatGood();
-    
+private:
+	std::wstring filePath;
+
+public:
+	Reformater(std::wstring path);
+
+	std::wstring removeWhitespace(std::wstring input);
+	std::wstring onlyString(std::wstring inp);                //Removes escape characters
+	std::wstring sameLine(std::wstring inp);
+	std::wstring detectTextFields(std::wstring inp);
+	std::vector<std::wstring> reformatGood();
+
 };
 
 
