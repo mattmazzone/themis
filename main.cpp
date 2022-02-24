@@ -5,14 +5,13 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-
+#include <windows.h>
 #include <vector>
 
 #include "htmlManip.h"
 #include "textTransforms.h"
 #include "menuApp.h"
 
-#include "Header.h"
 
 
 
@@ -20,7 +19,9 @@ using namespace std;
 
 int main()
 {
-	
+	HANDLE hConsole;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 15);
 	//Set Console mode
 	_setmode(_fileno(stdout), _O_U8TEXT);
 
@@ -37,6 +38,7 @@ int main()
 
 		//Exit Program if no files found
 		if (path == L"") {
+			system("pause");
 			return 0;
 		}
 
@@ -56,44 +58,24 @@ int main()
 
 	case 2:
 	{
-		wcout << L"Load a PM.html" << std::endl;
-
-		int width, height;
-
-		cin >> width;
-		cin >> height;
-		
-
-		Matrix array(width, height);
-
-		for (int j = 0; j < height; j++) {
-			for (int i = 0; i < width; i++) {
-				wcout << array.at(i, j) << L" ";
-			}
-			wcout << endl;
-		}
-		wcout << array.at(5, 6);
-
-	
-
 
 	}
 	break;
 
 	case 3:
 	{
-		std::cout << "Instructions" << std::endl;
+		std::cout << L"See Documentation.docx" << std::endl;
 	}
 	break;
 
 	case 4:
 	{
-		std::cout << "Exit" << std::endl;
+		std::cout << L"Exit" << std::endl;
 		return 0;
 
 	}
 	default:
-		cout << "Error";
+		cout << L"Error";
 	}
 
 

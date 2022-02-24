@@ -10,6 +10,9 @@ HtmlGenerator::HtmlGenerator(std::wstring path, std::vector<std::wstring> format
 	//Create file with same name but .html extension
 	outputPath.replace(outputPath.end() - 4, outputPath.end(), L".html");
 
+	//Setup console colors
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
 }
 
 void HtmlGenerator::addHeadHtml(bool release) {
@@ -23,7 +26,7 @@ void HtmlGenerator::addHeadHtml(bool release) {
 <html lang="en">
    <head>
       <title>)" << pageTitle << R"(</title>
-      <meta charset="windows-1252"/>
+      <meta charset="ansi"/>
       <meta name=" viewport " content=" width = device - width, initial - scale = 1 " />
       <meta name=" description " content=" " />
       <style>
@@ -100,11 +103,15 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 	//RELEASE VS DEBUG MODE
 	if (release) {
 		if (prepStrings.size() != 0) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Preparation to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Preparation vector EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 
@@ -158,15 +165,19 @@ void HtmlGenerator::addPiecesHtml(bool release, int start, int end) {
 	//RELEASE VS DEBUG MODE
 	if (release) {
 		if (piecesStrings.size() != 0) {
-			std::cout << "Writing Pieces to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, green);
+			std::wcout << L"Writing Pieces to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
-			std::cout << "Pieces vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, red);
+			std::wcout << L"Pieces vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 
 	}
 	else {
-		std::cout << "Pieces Array content:" << std::endl;
+		std::wcout << L"Pieces Array content:" << std::endl;
 		for (auto i : piecesStrings) {
 			std::wcout << i << std::endl;
 		}
@@ -213,14 +224,18 @@ void HtmlGenerator::addConsommablesHtml(bool release, int start, int end) {
 	//RELEASE VS DEBUG MODE
 	if (release) {
 		if (consomStrings.size() != 0) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Consommables to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Consommables vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 	else {
-		std::cout << "Consommables Array content:" << std::endl;
+		std::wcout << L"Consommables Array content:" << std::endl;
 		for (auto i : consomStrings) {
 			std::wcout << i << std::endl;
 		}
@@ -264,15 +279,19 @@ void HtmlGenerator::addOutilsHtml(bool release, int start, int end) {
 	//RELEASE VS DEBUG MODE
 	if (release) {
 		if (outilsStrings.size() != 0) {
-			std::cout << "Writing Outils to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, green);
+			std::wcout << L"Writing Outils to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
-			std::cout << "Outils vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, red);
+			std::wcout << L"Outils vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 
 	}
 	else {
-		std::cout << "Outils Array content:" << std::endl;
+		std::wcout << L"Outils Array content:" << std::endl;
 		for (auto i : outilsStrings) {
 			std::wcout << i << std::endl;
 		}
@@ -315,11 +334,14 @@ void HtmlGenerator::addDocrefHtml(bool release, int start, int end) {
 	//RELEASE VS DEBUG MODE
 	if (release) {
 		if (docrefStrings.size() != 0) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Documents Références to buffer..." << std::endl;
-
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Documents Reference vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 
 	}
@@ -332,6 +354,7 @@ void HtmlGenerator::addDocrefHtml(bool release, int start, int end) {
 }
 
 void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
+
 	std::vector<std::wstring> securiteStrings;
 	std::wstring input;
 
@@ -372,23 +395,27 @@ void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
 	//RELEASE VS DEBUG MODE
 	if (release) {
 		if (securiteStrings.size() != 0) {
-			std::cout << "Writing Securite to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, green);
+			std::wcout << L"Writing Securite to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
-			std::cout << "Securite vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, red);
+			std::wcout << L"Securite vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 
 	}
 	else {
-		std::cout << "Securite Array content:" << std::endl;
+		std::wcout << L"Securite Array content:" << std::endl;
 		for (auto i : securiteStrings) {
 			std::wcout << i << std::endl;
 		}
 	}
-
+	
 }
 
-void HtmlGenerator::addChecklistHtml(bool release) {
+void HtmlGenerator::addChecklistHtml(bool release)   {
 	size_t before = buffer.str().size();
 
 	std::vector<std::wstring> checklistStrings;
@@ -411,7 +438,9 @@ void HtmlGenerator::addChecklistHtml(bool release) {
 		inFile.close();
 	}
 	else {
-		std::cout << "Unable to open file";
+		SetConsoleTextAttribute(hConsole, red);
+		std::wcout << L"Unable to open A3 file, default values printed";
+		SetConsoleTextAttribute(hConsole, white);
 
 
 		buffer << R"(
@@ -640,7 +669,7 @@ void HtmlGenerator::addChecklistHtml(bool release) {
 		buffer << R"(
    </div>)";
 	}
-
+	   
 
 
 
@@ -650,10 +679,14 @@ void HtmlGenerator::addChecklistHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Checklist to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
-			std::cout << "Failed to write Checklist to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, red);
+			std::wcout << L"Failed to write Checklist to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 
@@ -734,10 +767,14 @@ void HtmlGenerator::addRisquesHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Risques to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
-			std::cout << "Failed to write Risques to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, red);
+			std::wcout << L"Failed to write Risques to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 }
@@ -752,10 +789,14 @@ void HtmlGenerator::addFinmaintHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Fin Maintenance to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Failed to write Fin Maintenance to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 
@@ -768,10 +809,14 @@ void HtmlGenerator::addNotesHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Notes to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Failed to write Notes to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 
@@ -849,10 +894,14 @@ void HtmlGenerator::addBadgefieldHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Badge Field to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Failed to write Badge Field to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 }
@@ -870,10 +919,14 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Cadenassage to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Failed to write Cadenassage to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 }
@@ -960,10 +1013,14 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Submit Button to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Failed to write Submit Button to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 }
@@ -979,10 +1036,14 @@ void HtmlGenerator::addPagebreakHtml(bool release) {
 
 	if (release) {
 		if (before < buffer.gcount()) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Page break to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Failed to write Page break to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 }
@@ -993,6 +1054,9 @@ bool HtmlGenerator::addTextFieldHtml(std::wstring inp) {
 	size_t found = inp.find(L"-INSERT_TEXTBOX");
 	if (found != std::string::npos) {
 		buffer << R"(<textarea rows="2" cols="75" placeholder=")" << inp.substr(15, inp.length()) << R"("></textarea>)";
+		SetConsoleTextAttribute(hConsole, green);
+		std::wcout << L"Inserting Text Area..." << std::endl;
+		SetConsoleTextAttribute(hConsole, white);
 
 		return true;
 	}
@@ -1008,8 +1072,10 @@ bool HtmlGenerator::addPictureHtml(std::wstring inp) {
 
 	size_t found = inp.find(L"-INSERT_PICTURE");
 	if (found != std::string::npos) {
-		buffer << R"(<img style="height: 400px" src=")" << inp.substr(15, inp.length()) << R"(">)";
-		std::wcout << "FOUND PICTURE!";
+		buffer << R"(<img style="height: 300px; padding-bottom: 30px;" src=")" << inp.substr(15, inp.length()) << R"(">)";
+		SetConsoleTextAttribute(hConsole, green);
+		std::wcout << L"Inserting Picture..." << std::endl;
+		SetConsoleTextAttribute(hConsole, white);
 
 		return true;
 	}
@@ -1068,10 +1134,6 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 		if (counter == 0 && prev == true) {
 			subStepIndeces.push_back(i);
 		}
-
-
-
-
 	}
 
 
@@ -1145,7 +1207,7 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
             )" << std::endl;
 
 		}
-		//<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name'], ENT_QUOTES) : ''; ?>
+		
 		//Task doesnt need a checkbox
 		else {
 
@@ -1162,11 +1224,14 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
 	if (release) {
 		if (tachesStrings.size() != 0) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Taches to buffer..." << std::endl;
-
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Tache vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 	else {
@@ -1341,11 +1406,14 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 	if (release) {
 		if (unknownStrings.size() != 0) {
+			SetConsoleTextAttribute(hConsole, green);
 			std::wcout << L"Writing Unknowns to buffer..." << std::endl;
-
+			SetConsoleTextAttribute(hConsole, white);
 		}
 		else {
+			SetConsoleTextAttribute(hConsole, red);
 			std::wcout << L"Unknowns vector is EMPTY..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
 		}
 	}
 	else {
@@ -1555,9 +1623,31 @@ void HtmlGenerator::writeBuffertohtml(bool release) {
 		outFile << buffer.rdbuf();
 
 		outFile.close();
+
+
+
+
+		SetConsoleTextAttribute(hConsole, 32);
+		for (int i = 0; i < 70; i++) {
+			
+		
+			std::wcout << L" ";
+			Sleep(10);
+		}
+
+		SetConsoleTextAttribute(hConsole, white);
+
+		std::wcout << std::endl;
+
+
+		SetConsoleTextAttribute(hConsole, green);
+		std::wcout << L"Finished writing to .html file" << std::endl;
+		SetConsoleTextAttribute(hConsole, white);
 	}
 	else {
-		std::wcout << L"Unable to open file";
+		SetConsoleTextAttribute(hConsole, red);
+		std::wcout << L"Error writing to .html file";
+		SetConsoleTextAttribute(hConsole, green);
 	}
 
 

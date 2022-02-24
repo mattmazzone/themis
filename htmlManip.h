@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <windows.h>
 
 #include "textTransforms.h"
 
@@ -20,6 +21,14 @@ private:
 
 	std::vector<int> fileTitlesLN;
 	int unknownTimesUsed = 0;
+
+	HANDLE hConsole;
+	const int green = 10;
+	const int yellow = 14;
+	const int red = 12;
+	const int white = 15;
+
+
 
 
 public:
