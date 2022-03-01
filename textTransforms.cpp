@@ -80,7 +80,8 @@ std::wstring Reformater::detectTextFields(std::wstring inp) {
 	}
 
 	if (countUnderscores > 5) {
-		return L"-INSERT_TEXTBOX" + inp;
+		return inp;
+		//return L"-INSERT_TEXTBOX" + inp;
 	}
 	else {
 		return inp;
