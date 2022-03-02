@@ -1,0 +1,23 @@
+***Recipients***
+marc-andre.blouin@pwc.ca
+benjamin.antaya@pwc.ca
+Nacer.Hidja@prattwhitney.com
+Anthony.rich.martineau@prattwhitney.com
+
+***CC***
+marc-andre.blouin@pwc.ca
+benjamin.antaya@pwc.ca
+Nacer.Hidja@prattwhitney.com
+Anthony.rich.martineau@prattwhitney.com
+
+***Subject***
+Test Subject
+
+***Body***
+This is the content of the email. You can add extra info here -> 
+
+
+and more info here ->
+
+***Attachment Path***
+

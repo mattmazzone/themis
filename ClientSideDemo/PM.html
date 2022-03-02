@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>PM.html</title>
+      <meta charset="ansi"/>
+      <meta name=" viewport " content=" width = device - width, initial - scale = 1 " />
+      <meta name=" description " content=" " />
+      <style>
+         #imgCadenassage {
+         height: 100px;
+         border-style: dashed;
+         }
+         @media print
+         {    
+            .no-print, .no-print *
+            {
+            display: none !important;
+            }
+         }
+		 
+		 .radio label:before {
+			border-radius: 8px;
+		  }
+		 .checkbox label:before {
+			border-radius: 3px;
+		}
+:root {
+  --form-control-color: rebeccapurple;
+  --form-control-disabled: #959495;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+h1, h2{
+ font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+ 
+  line-height: 1.1;
+
+  gap: 0.5em;
+  }
+h3{
+  font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+ 
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+#top-logo {
+height: 200px;
+}
+
+form {
+   padding-left: 20px;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
+
+.form-control {
+  font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+ 
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+      </style>
+   </head>
+   <body>
+   <form onsubmit="return false">
+<img id="top-logo" src="Pratt_&_Whitney_logo.png">
+    
+      <h1 style="text-align: center;">Maintenance Préventive TFM</h1>
+      <h2 style="text-align: center;">TCX-XX</h2>
+      <h2 style="text-align: center;">MXXXXX-XX</h2>
+      <h2 style="text-align: center;">TXXXXX-XXXX<a href="#" onclick="someFunction(); return false;">LINK</a></h2>
+    
+      <div id="Preparation">
+         <h3 style="text-align: left; text-decoration: underline;">Préparation</h3>
+		 <label class="form-control">
+         <input type="checkbox" name="checkbox" id="prep0" name="prep0" required>
+		 COMMUNIQUER AU CLIENT LES TERMES DE CETTE INSPECTION.
+		 </label>
+          <br>
+
+         
+		 <label class="form-control">
+		 <input type="checkbox" id="prep1" name="prep1" required>
+         COORDONNER AVEC UN AUTRE MÉTIER SI NÉCESSAIRE.
+         </label>
+         <br>
+		 
+		 <label class="form-control">
+         <input type="checkbox" id="prep2" name="prep2" required>
+        INSTALLER "AVIS DE MAINTENANCE" DANS LA SALLE DE CONTRÔLE ET REMPLIR LA FICHE DE COMMUNICATION.
+		</label>
+		<br>
+      </div>
+    
+        <div id="Securite" style="page-break-after: always">
+        	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>
+
+			<label class="form-control">
+            <input type="checkbox" id="sec0" name="sec0">
+            APPLIQUER TOUTES LES PROCÉDURES DE SÉCURITÉ RELATIVES AUX TRAVAUX; RÈGLES CARDINALES, CADENASSAGE, PERMIS DIVERS, EPI.
+			</label>
+			<br>
+			
+			<label class="form-control">
+            <input type="checkbox" id="sec1" name="sec1">
+            <label for="sec1"> VALIDER LA FICHE DE CADENASSAGE; PROPRE, LISIBLE ET À JOUR
+			</label>
+			<br>
+
+        </div>
+    
+      <div id="Taches">
+         <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox0" name="taskCheckbox0" class="mustcheck" required>
+        	      <label for="taskCheckbox0"> 1 - OUVRIR LA TRAPPE DU PUIT</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme0" name="taskConforme0">
+    			     <label for="taskConforme0">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare0" name="taskRepare0">
+    		         <label for="taskRepare0">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace0" name="taskRemplace0">
+    		         <label for="taskRemplace0">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis0" name="taskAvis0">
+    		         <label for="taskAvis0">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText0" name="taskAvisText0" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox1" name="taskCheckbox1" class="mustcheck" required>
+        	      <label for="taskCheckbox1"> 2 - OUVRIR LA VALVE DE DRAIN DE LA CRÉPINE</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme1" name="taskConforme1">
+    			     <label for="taskConforme1">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare1" name="taskRepare1">
+    		         <label for="taskRepare1">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace1" name="taskRemplace1">
+    		         <label for="taskRemplace1">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis1" name="taskAvis1">
+    		         <label for="taskAvis1">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText1" name="taskAvisText1" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox2" name="taskCheckbox2" class="mustcheck" required>
+        	      <label for="taskCheckbox2"> 3 - LAISSER L’EAU S’ÉCOULER SUR LA PAN ET DANS LE PUIT(UNE PANNE AVEC UN FILTRE SE TROUVE DANS LA SALLE DES POMPES)</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme2" name="taskConforme2">
+    			     <label for="taskConforme2">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare2" name="taskRepare2">
+    		         <label for="taskRepare2">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace2" name="taskRemplace2">
+    		         <label for="taskRemplace2">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis2" name="taskAvis2">
+    		         <label for="taskAvis2">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText2" name="taskAvisText2" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox3" name="taskCheckbox3" class="mustcheck" required>
+        	      <label for="taskCheckbox3"> 4 - DÉVISSER LES BOULONS DU COUVERCLE DE LA CRÉPINE ET ENLEVER LE COUVERCLE  ( ) 5 - RETIRER L’ÉLEMENT FILTRANT</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme3" name="taskConforme3">
+    			     <label for="taskConforme3">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare3" name="taskRepare3">
+    		         <label for="taskRepare3">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace3" name="taskRemplace3">
+    		         <label for="taskRemplace3">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis3" name="taskAvis3">
+    		         <label for="taskAvis3">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText3" name="taskAvisText3" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox4" name="taskCheckbox4" class="mustcheck" required>
+        	      <label for="taskCheckbox4"> 6 - NETTOYER L’ELEMENT FILTRANT</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme4" name="taskConforme4">
+    			     <label for="taskConforme4">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare4" name="taskRepare4">
+    		         <label for="taskRepare4">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace4" name="taskRemplace4">
+    		         <label for="taskRemplace4">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis4" name="taskAvis4">
+    		         <label for="taskAvis4">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText4" name="taskAvisText4" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox5" name="taskCheckbox5" class="mustcheck" required>
+        	      <label for="taskCheckbox5"> 7 - REMETTRE EN PLACE L’ÉLEMENT FILTRANT</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme5" name="taskConforme5">
+    			     <label for="taskConforme5">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare5" name="taskRepare5">
+    		         <label for="taskRepare5">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace5" name="taskRemplace5">
+    		         <label for="taskRemplace5">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis5" name="taskAvis5">
+    		         <label for="taskAvis5">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText5" name="taskAvisText5" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox6" name="taskCheckbox6" class="mustcheck" required>
+        	      <label for="taskCheckbox6"> 8 – REMETTRE LE COUVERCLE DE LA CRÉPINE</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme6" name="taskConforme6">
+    			     <label for="taskConforme6">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare6" name="taskRepare6">
+    		         <label for="taskRepare6">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace6" name="taskRemplace6">
+    		         <label for="taskRemplace6">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis6" name="taskAvis6">
+    		         <label for="taskAvis6">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText6" name="taskAvisText6" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox7" name="taskCheckbox7" class="mustcheck" required>
+        	      <label for="taskCheckbox7"> 9 – FERMER LA VALVE DE DRAIN DE LA CRÉPINE</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme7" name="taskConforme7">
+    			     <label for="taskConforme7">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare7" name="taskRepare7">
+    		         <label for="taskRepare7">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace7" name="taskRemplace7">
+    		         <label for="taskRemplace7">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis7" name="taskAvis7">
+    		         <label for="taskAvis7">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText7" name="taskAvisText7" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+            <div style="clear: both; padding-bottom: 50px;">
+               <div>
+        	      <input type="checkbox" id="taskCheckbox8" name="taskCheckbox8" class="mustcheck" required>
+        	      <label for="taskCheckbox8"> 10 – REFERMER LA TRAPPE DU PUIT</label><br>
+    	       </div>
+    	       <div>
+    	          <div style="float:left; padding-left: 20px;">
+    			     <input type="checkbox" id="taskConforme8" name="taskConforme8">
+    			     <label for="taskConforme8">Conforme</label><br>
+    		      </div> 	
+    		
+    	          <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRepare8" name="taskRepare8">
+    		         <label for="taskRepare8">Réparé</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskRemplace8" name="taskRemplace8">
+    		         <label for="taskRemplace8">Remplacé</label><br>
+    		      </div>
+    		      <div style="float:left; padding-left: 20px;">
+    		         <input type="checkbox" id="taskAvis8" name="taskAvis8">
+    		         <label for="taskAvis8">Avis Créer:</label><br>
+    		      </div>
+    		
+    		      <div style="float:left; padding-left: 5px;">
+    		         <input  type="text" id="taskAvisText8" name="taskAvisText8" value="">
+    			  </div>
+    	       </div>
+            </div>
+            
+
+        </div>
+
+        <div id="Checklist" style="page-break-before: always; page-break-after: always;">
+		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce j'ai besoin de EPI spécifique?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno0">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno0" name = "check0" required>
+			<label style = "float: right;" for = "checkyes0">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes0" name = "check0">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que je dois cadenasser?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno1">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno1" name = "check1" required>
+			<label style = "float: right;" for = "checkyes1">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes1" name = "check1">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce qu'il y a d'autres sources d'énergie?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno2">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno2" name = "check2" required>
+			<label style = "float: right;" for = "checkyes2">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes2" name = "check2">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que je dois me procurer un permis de travail?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno3">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno3" name = "check3" required>
+			<label style = "float: right;" for = "checkyes3">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes3" name = "check3">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que j'ai besoin d'aide?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno4">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno4" name = "check4" required>
+			<label style = "float: right;" for = "checkyes4">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes4" name = "check4">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que mes outils sont appropriés et conformes?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno5">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno5" name = "check5" required>
+			<label style = "float: right;" for = "checkyes5">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes5" name = "check5">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que je peux être frappés ou coincés par un objet?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno6">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno6" name = "check6" required>
+			<label style = "float: right;" for = "checkyes6">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes6" name = "check6">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que je suis exposé a une chute?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno7">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno7" name = "check7" required>
+			<label style = "float: right;" for = "checkyes7">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes7" name = "check7">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno8">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno8" name = "check8" required>
+			<label style = "float: right;" for = "checkyes8">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes8" name = "check8">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que l'état de la propreté des lieux est satisfaisante?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno9">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno9" name = "check9" required>
+			<label style = "float: right;" for = "checkyes9">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes9" name = "check9">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que je dois délimiter la zone de travail?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno10">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno10" name = "check10" required>
+			<label style = "float: right;" for = "checkyes10">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes10" name = "check10">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que la tache comporte des efforts excessifs?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno11">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno11" name = "check11" required>
+			<label style = "float: right;" for = "checkyes11">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes11" name = "check11">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce je peux réaliser cette tache en toute sécurité?</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno12">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno12" name = "check12" required>
+			<label style = "float: right;" for = "checkyes12">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes12" name = "check12">
+			</div>
+		</div>
+		<div style = "clear:both; padding: 10px;">
+			<div style = "width: 400px; word-wrap: break-word; float: left;">
+			<label>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</label>
+			</div>
+			<div style = "float: left; width: 100px;">
+			<label style = "float: right;" for = "checkno13">Non</label>
+			<input style = "float: right;" type = "radio" id = "checkno13" name = "check13" required>
+			<label style = "float: right;" for = "checkyes13">Oui</label>
+			<input style = "float: right;" type = "radio" id = "checkyes13" name = "check13">
+			</div>
+		</div>
+   </div>
+    <div id="risquesetmethodes" style="page-break-after: always; clear:both;">
+		<div style="clear:both; padding: 10px;">
+			<div style="width: 200px; float: left; padding-left: 40px;">Risques</div>
+			<div style="width: 200px; float: left; padding-left: 50px;">Méthodes de contrôle</div>
+		</div>
+		<ul id="ul">
+		</ul>
+		<div style="clear: both; padding: 10px;">
+			<button id="riskBtn" class="no-print">
+				Add a field 
+			</button>
+		</div>
+	</div>
+	
+	
+    
+
+    <script>
+    function addRisk(){
+        var ul = document.getElementById('ul');
+        	
+         
+         var divOuter = document.createElement('div');
+        	divOuter.style="clear: both";
+         
+       
+       var divInner1 = document.createElement('div');
+        	divInner1.style="float:left;  padding-left: 10px; width: 250px;";
+          
+        var divInner2 = document.createElement('div');
+        	divInner2.style="float:left;  padding-bottom: 10px; width: 250px;";
+        
+        var textField = document.createElement('textarea');
+            textField.rows="5";
+			textField.cols="30";
+            textField.style="float: left;"
+         
+         divInner1.appendChild(textField);
+         
+         var textField1 = document.createElement('textarea');
+            textField1.rows="5";
+			textField1.cols="30";
+            textField1.style="float: left;"
+        
+        
+        divInner2.appendChild(textField1);
+        
+        var text = document.getElementById('texto');
+        
+        divOuter.appendChild(divInner1); 
+        divOuter.appendChild(divInner2);
+        
+        ul.appendChild(divOuter);
+    }
+    var button = document.getElementById('riskBtn');
+    button.onclick = addRisk 
+
+
+</script>
+    
+    
+
+  <div style="float: left; padding: 50px;" id="cadenassage">
+      <a href="https://www.google.com"><img id="imgCadenassage" src="https://i.imgur.com/QqwPOTx.png"/></a>
+   </div>
+   
+
+    <div style="float: left; padding: 50px;">
+         <div style="clear:both; float: left; padding: 10px;">
+            <label>Badge: </label>
+            <input type="text" id="badgefield" required>
+            <label># Ordre Travail: </label>
+            <input type="text" id="ordernum" required>
+         </div>
+         <div style="clear:both; float: left; padding: 10px;">
+            <label>Temps: </label>
+            <input type="Time">
+            <label>Initiales: </label>
+            <input>
+         </div>
+         <div style="clear:both; float: left; padding: 10px;">
+            <label>Date complétée: </label>
+            <input type="Date">
+         </div>
+      </div>
+      
+      <div style="clear:both; float: left">
+         <input id="file-input" type="file" multiple>
+         <div style="padding:20px" id="preview"></div>
+      </div>
+      
+      <script> 
+         function previewImages() {
+         
+           var preview = document.querySelector('#preview');
+           
+           if (this.files) {
+             [].forEach.call(this.files, readAndPreview);
+           }
+         
+           function readAndPreview(file) {
+           
+           
+          
+           
+         
+             // Make sure `file.name` matches our extensions criteria
+             if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+               return alert(file.name + " is not an image");
+             } // else...
+             
+             var reader = new FileReader();
+             
+             reader.addEventListener("load", function() {
+               var image = new Image();
+               image.height = 400;
+         	  image.style = "padding: 10px;";
+               image.title  = file.name;
+               image.src    = this.result;
+         	  preview.appendChild(image);
+             });
+             
+             reader.readAsDataURL(file);
+             
+           }
+         
+         }
+         
+         document.querySelector('#file-input').addEventListener("change", previewImages);
+         
+      </script>
+      
+   </form>
+    <div style="text-align: center;">
+	<button id="submitBtn" href="C:\Users\pw192717\source\repos\WebCompanion\Debug\WebCompanion.exe" class="no-print">Save</button>
+    </div>
+
+<a href="runApp.hta">Click to email PDF!</a>
+
+    
+<script>
+
+
+
+function RunFile() {
+    WshShell = new ActiveXObject("WScript.Shell");
+    WshShell.Run("C:\Users\pw192717\source\repos\WebCompanion\Debug\WebCompanion.exe", 1, false);
+    }
+
+
+
+    function generatePDF(){
+	//Initialize to true
+	var printPage = true;
+	var printTitle
+	
+	//Checkboxes
+	var checkboxes = document.getElementsByClassName('mustcheck');
+	for (var i =0; i < checkboxes.length; i++) {
+		if (checkboxes[i].checked === false) {
+			
+			printPage = false;
+		}
+	}
+	
+	//Radiobuttons
+	for (var i = 0; i < 1000; i++) { 
+	var radiobuttonyes = document.getElementById('checkyes'.concat(i));
+	var radiobuttonno = document.getElementById('checkno'.concat(i));
+		if (radiobuttonyes && radiobuttonno) {
+			if (radiobuttonyes.checked === false && radiobuttonno.checked ===false){
+				printPage = false;
+
+			}
+		} 
+		else {
+			break;
+		}
+	}
+	
+	
+	//Badge Field
+	var badge = document.getElementById('badgefield').value;
+		if (badge === '') {
+			printPage = false;
+		} 
+		else {
+			printTitle = badge;
+		}
+	var order = document.getElementById('ordernum').value;
+		if (order === '') {
+			printPage = false;
+		} 
+		else {
+		printTitle += '-'
+			printTitle += order;
+		}	
+	
+	if (printPage){
+	
+		document.title = printTitle;
+		window.print();  
+	}
+	
+	
+}
+    var button = document.getElementById('submitBtn');
+    button.onclick = RunFile 
+	
+	
+	
+    
+</script>
+
+</body>
+</html>
+    
+    
