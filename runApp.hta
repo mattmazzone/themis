@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Application Executer</title>
+    <HTA:APPLICATION ID="oMyApp"
+		navigable="yes"	
+	    APPLICATIONNAME="Application Executer" 
+	    BORDER="yes"
+	    CAPTION="yes"
+	    SHOWINTASKBAR="yes"
+	    SINGLEINSTANCE="yes"
+	    SYSMENU="yes"
+	    SCROLL="no"
+	    WINDOWSTATE="normal">
+    <script type="text/javascript" language="javascript">
+        function RunFile() {
+		WshShell = new ActiveXObject("WScript.Shell");
+		WshShell.Run("C:/Users/pw192717/Desktop/pm_testing_saving_emailing/testingWebcompanion.exe", 1, false);
+        }
+    </script>
+</head>
+<body>
+	<input type="button" value="Email PM" onclick="RunFile();"/>
+</body>
+</html>

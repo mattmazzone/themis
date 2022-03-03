@@ -55,10 +55,33 @@ h3{
   grid-template-columns: 1em auto;
   gap: 0.5em;
 }
+p{
+    display:inline-block;
+}
+textarea{
+border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+
+}
 #top-logo {
 height: 200px;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 form {
    padding-left: 20px;
   display: grid;
@@ -136,6 +159,48 @@ input[type="checkbox"]:disabled {
   cursor: not-allowed;
 }
 
+
+input[type=radio] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  -moz-appearance: none;
+       appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type=radio]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type=radio]:checked::before {
+  transform: scale(1);
+}
+
+input[type=radio]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
       </style>
    </head>
    <body>
@@ -188,35 +253,43 @@ input[type="checkbox"]:disabled {
     
       <div id="Taches">
          <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>
-            <div style="clear: both; padding-bottom: 50px;">
+		 
+		 
+		 
+            <div style="clear: both; padding-bottom: 40px;">
                <div>
+				<label class="form-control" for="taskCheckbox0">
         	      <input type="checkbox" id="taskCheckbox0" name="taskCheckbox0" class="mustcheck" required>
-        	      <label for="taskCheckbox0"> 1 - OUVRIR LA TRAPPE DU PUIT</label><br>
+        	       1 - OUVRIR LA TRAPPE DU PUIT</label><br>
     	       </div>
-    	       <div>
+    	       
     	          <div style="float:left; padding-left: 20px;">
+				  <label class="form-control" for="taskConforme0">
     			     <input type="checkbox" id="taskConforme0" name="taskConforme0">
-    			     <label for="taskConforme0">Conforme</label><br>
+    			     Conforme</label><br>
     		      </div> 	
     		
     	          <div style="float:left; padding-left: 20px;">
+				  <label class="form-control" for="taskRepare0">
     		         <input type="checkbox" id="taskRepare0" name="taskRepare0">
-    		         <label for="taskRepare0">Réparé</label><br>
+    		         Réparé</label><br>
     		      </div>
     		
     		      <div style="float:left; padding-left: 20px;">
+				  <label class="form-control" for="taskRemplace0">
     		         <input type="checkbox" id="taskRemplace0" name="taskRemplace0">
-    		         <label for="taskRemplace0">Remplacé</label><br>
+    		         Remplacé</label><br>
     		      </div>
+				  
     		      <div style="float:left; padding-left: 20px;">
+				  <label class="form-control" for="taskAvis0">
     		         <input type="checkbox" id="taskAvis0" name="taskAvis0">
-    		         <label for="taskAvis0">Avis Créer:</label><br>
+    		         Avis Créé:</label><br>
     		      </div>
-    		
-    		      <div style="float:left; padding-left: 5px;">
-    		         <input  type="text" id="taskAvisText0" name="taskAvisText0" value="">
-    			  </div>
-    	       </div>
+				   <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
             </div>
             
 
@@ -480,161 +553,92 @@ input[type="checkbox"]:disabled {
 
         <div id="Checklist" style="page-break-before: always; page-break-after: always;">
 		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce j'ai besoin de EPI spécifique?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno0">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno0" name = "check0" required>
-			<label style = "float: right;" for = "checkyes0">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes0" name = "check0">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que je dois cadenasser?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno1">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno1" name = "check1" required>
-			<label style = "float: right;" for = "checkyes1">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes1" name = "check1">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce qu'il y a d'autres sources d'énergie?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno2">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno2" name = "check2" required>
-			<label style = "float: right;" for = "checkyes2">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes2" name = "check2">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que je dois me procurer un permis de travail?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno3">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno3" name = "check3" required>
-			<label style = "float: right;" for = "checkyes3">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes3" name = "check3">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que j'ai besoin d'aide?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno4">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno4" name = "check4" required>
-			<label style = "float: right;" for = "checkyes4">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes4" name = "check4">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que mes outils sont appropriés et conformes?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno5">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno5" name = "check5" required>
-			<label style = "float: right;" for = "checkyes5">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes5" name = "check5">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que je peux être frappés ou coincés par un objet?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno6">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno6" name = "check6" required>
-			<label style = "float: right;" for = "checkyes6">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes6" name = "check6">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que je suis exposé a une chute?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno7">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno7" name = "check7" required>
-			<label style = "float: right;" for = "checkyes7">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes7" name = "check7">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno8">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno8" name = "check8" required>
-			<label style = "float: right;" for = "checkyes8">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes8" name = "check8">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que l'état de la propreté des lieux est satisfaisante?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno9">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno9" name = "check9" required>
-			<label style = "float: right;" for = "checkyes9">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes9" name = "check9">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que je dois délimiter la zone de travail?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno10">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno10" name = "check10" required>
-			<label style = "float: right;" for = "checkyes10">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes10" name = "check10">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que la tache comporte des efforts excessifs?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno11">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno11" name = "check11" required>
-			<label style = "float: right;" for = "checkyes11">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes11" name = "check11">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce je peux réaliser cette tache en toute sécurité?</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno12">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno12" name = "check12" required>
-			<label style = "float: right;" for = "checkyes12">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes12" name = "check12">
-			</div>
-		</div>
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno13">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno13" name = "check13" required>
-			<label style = "float: right;" for = "checkyes13">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes13" name = "check13">
-			</div>
-		</div>
-   </div>
+		
+			<table>
+			  <tr>
+				<th style="width:70%">Questions</th>
+				<th>Answers</th>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce j'ai besoin de EPI spécifique?</td>
+				<td>
+				<label style = "float: left;" for = "checkno1">Non</label>
+				<input style = "float: left;" type = "radio" id = "checkno1" name = "check1" required>
+				<label style = "float: left;" for = "checkyes1">Oui</label>
+				<input style = "float: left;" type = "radio" id = "checkyes1" name = "check1">	
+				</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce que je dois cadenasser?</td>
+				<td>Francisco Chang</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce qu'il y a d'autres sources d'énergie?</td>
+				<td>Roland Mendel</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce que je dois me procurer un permis de travail?</td>
+				<td>Helen Bennett</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce que j'ai besoin d'aide?</td>
+				<td>Yoshi Tannamuri</td>
+			   
+			  </tr>
+			  <tr>
+				<td>Est-ce que mes outils sont appropriés et conformes?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je peux être frappés ou coincés par un objet?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je suis exposé a une chute?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que l'état de la propreté des lieux est satisfaisante?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que la tache comporte des efforts excessifs?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce je peux réaliser cette tache en toute sécurité?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je dois délimiter la zone de travail?</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</td>
+				<td>Giovanni Rovelli</td>
+			  
+			  </tr>
+			 
+			</table>
+			
+			
     <div id="risquesetmethodes" style="page-break-after: always; clear:both;">
 		<div style="clear:both; padding: 10px;">
 			<div style="width: 200px; float: left; padding-left: 40px;">Risques</div>
@@ -769,20 +773,23 @@ input[type="checkbox"]:disabled {
       
    </form>
     <div style="text-align: center;">
-	<button id="submitBtn" class="no-print">Submit</button>
+	<button id="submitBtn" href="C:\Users\pw192717\source\repos\WebCompanion\Debug\WebCompanion.exe" class="no-print">Save</button>
     </div>
 
-    
-    
+<a href="runApp.hta">Click to email PDF!</a>
+
+    <button onclick="RunFile()">DEMO </button>
 <script>
 
-function someFunction() 
-{
-// use mailDoc in this routine
-this.mailDoc(true, "yourname@address.com",
-"cc goes here", "bcc goes here","Subject goes
-here");
-}
+
+
+function RunFile() {
+
+	
+    }
+
+
+
     function generatePDF(){
 	//Initialize to true
 	var printPage = true;
@@ -839,7 +846,7 @@ here");
 	
 }
     var button = document.getElementById('submitBtn');
-    button.onclick = generatePDF 
+    button.onclick = RunFile 
 	
 	
 	
