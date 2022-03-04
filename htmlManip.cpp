@@ -29,23 +29,247 @@ void HtmlGenerator::addHeadHtml(bool release) {
       <meta charset="ansi"/>
       <meta name=" viewport " content=" width = device - width, initial - scale = 1 " />
       <meta name=" description " content=" " />
-      <style>
+            <style>
          #imgCadenassage {
          height: 100px;
          border-style: dashed;
          }
-         @media print
-         {    
+
+         @media print{    
+			div {
+				break-inside: avoid;
+				}
             .no-print, .no-print *
             {
             display: none !important;
             }
          }
+		 
+		 .radio label:before {
+			border-radius: 8px;
+		  }
+		 .checkbox label:before {
+			border-radius: 3px;
+		}	
+		
+		
+		:root {
+		  --form-control-color: rebeccapurple;
+		  --form-control-disabled: #959495;
+		  
+		  --input-border: #8b8a8b;
+		  --input-focus-h: 270;
+		  --input-focus-s: 50%;
+		  --input-focus-l: 25.9%;
+		}
+
+		*,
+		*:before,
+		*:after {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  margin: 0;
+		}
+		h1, h2{
+		 font-family: system-ui, sans-serif;
+		  font-size: 1.5rem;
+		 
+		  line-height: 1.1;
+
+		  gap: 0.5em;
+		  }
+		h3{
+		  font-family: system-ui, sans-serif;
+		  font-size: 1.5rem;
+		 
+		  line-height: 1.1;
+		 
+		  gap: 0.5em;
+		}
+		div{
+			break-inside: avoid;
+		}
+		p{
+		  font-family: system-ui, sans-serif;
+		  font-size: 1.5rem;
+		 
+		  line-height: 1.1;
+		  
+		  
+		  gap: 0.5em;
+		  
+		}
+		textarea{
+		border: 0.15em solid currentColor;
+		  border-radius: 0.15em;
+
+		}
+		#top-logo {
+		height: 200px;
+		}
+
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+		form {
+		   padding-left: 20px;
+		  display: grid;
+		  place-content: center;
+		  min-height: 100vh;
+		}
+
+		.form-control {
+		  font-family: system-ui, sans-serif;
+		  font-size: 1.5rem;
+		 
+		  line-height: 1.1;
+		  display: grid;
+		  grid-template-columns: 1em auto;
+		  gap: 0.5em;
+		}
+
+		.form-control + .form-control {
+		  margin-top: 1em;
+		}
+
+		.form-control--disabled {
+		  color: var(--form-control-disabled);
+		  cursor: not-allowed;
+		}
+
+		input[type="checkbox"] {
+		  /* Add if not using autoprefixer */
+		  -webkit-appearance: none;
+		  /* Remove most all native input styles */
+		  appearance: none;
+		  /* For iOS < 15 */
+		  background-color: var(--form-background);
+		  /* Not removed via appearance */
+		  margin: 0;
+
+		  font: inherit;
+		  color: currentColor;
+		  width: 1.15em;
+		  height: 1.15em;
+		  border: 0.15em solid currentColor;
+		  border-radius: 0.15em;
+		  transform: translateY(-0.075em);
+
+		  display: grid;
+		  place-content: center;
+		}
+		.input {
+		  font-size: 16px;
+		  font-size: max(16px, 1em);
+		  font-family: inherit;
+		  padding: 0.25em 0.5em;
+		  background-color: #fff;
+		  border: 2px solid var(--input-border);
+		  border-radius: 4px;
+		  transition: 180ms box-shadow ease-in-out;
+		}
+
+		.input:focus {
+		  border-color: hsl(var(--input-focus-h), var(--input-focus-s), var(--input-focus-l));
+		  box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) + 40%), 0.8);
+		  outline: 3px solid transparent;
+		}
+
+		.input:not(textarea) {
+		  line-height: 1;
+		  height: 2.25rem;
+		}
+		
+		input[type="checkbox"]::before {
+		  content: "";
+		  width: 0.65em;
+		  height: 0.65em;
+		  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+		  transform: scale(0);
+		  transform-origin: bottom left;
+		  transition: 120ms transform ease-in-out;
+		  box-shadow: inset 1em 1em var(--form-control-color);
+		  /* Windows High Contrast Mode */
+		  background-color: CanvasText;
+		}
+
+		input[type="checkbox"]:checked::before {
+		  transform: scale(1);
+		}
+
+		input[type="checkbox"]:focus {
+		  outline: max(2px, 0.15em) solid currentColor;
+		  outline-offset: max(2px, 0.15em);
+		}
+
+		input[type="checkbox"]:disabled {
+		  --form-control-color: var(--form-control-disabled);
+
+		  color: var(--form-control-disabled);
+		  cursor: not-allowed;
+		}
+
+
+		input[type=radio] {
+		  /* Add if not using autoprefixer */
+		  -webkit-appearance: none;
+		  /* Remove most all native input styles */
+		  -moz-appearance: none;
+			   appearance: none;
+		  /* For iOS < 15 */
+		  background-color: var(--form-background);
+		  /* Not removed via appearance */
+		  margin: 0;
+		  font: inherit;
+		  color: currentColor;
+		  width: 1.15em;
+		  height: 1.15em;
+		  border: 0.15em solid currentColor;
+		  border-radius: 50%;
+		  transform: translateY(-0.075em);
+		  display: grid;
+		  place-content: center;
+		}
+
+		input[type=radio]::before {
+		  content: "";
+		  width: 0.65em;
+		  height: 0.65em;
+		  border-radius: 50%;
+		  transform: scale(0);
+		  transition: 120ms transform ease-in-out;
+		  box-shadow: inset 1em 1em var(--form-control-color);
+		  /* Windows High Contrast Mode */
+		  background-color: CanvasText;
+		}
+
+		input[type=radio]:checked::before {
+		  transform: scale(1);
+		}
+
+		input[type=radio]:focus {
+		  outline: max(2px, 0.15em) solid currentColor;
+		  outline-offset: max(2px, 0.15em);
+		}
       </style>
    </head>
    <body>
    <form onsubmit="return false">
-
+	<img id="top-logo" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\Pratt_&_Whitney_logo.png">
 )";
 }
 
@@ -90,8 +314,12 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 	//Write array to buffer
 	for (size_t i = 0; i != prepStrings.size(); i++) {
 		buffer << R"(
-         <input type="checkbox" id="prep)" << i << R"(" name="prep)" << i << R"(" required>
-         <label for="prep)" << i << R"(">)" << prepStrings[i] << R"(</label><br>)" << std::endl;
+
+		 <label class="form-control">
+         <input type="checkbox" id="prep)" << i << R"(" name="checkbox)" << R"(" required>)"
+         << prepStrings[i] << R"(
+		 </label>
+		 <br>)" << std::endl;
 
 	}
 	buffer << R"(
@@ -320,7 +548,7 @@ void HtmlGenerator::addDocrefHtml(bool release, int start, int end) {
 	//Write array to buffer
 	if (docrefStrings.size() != 0) {
 		for (size_t i = 0; i < docrefStrings.size(); i++) {
-			buffer << "            <p>" << docrefStrings[i] << "</p>" << std::endl;
+			buffer << "            <p >" << docrefStrings[i] << "</p>" << std::endl;
 		}
 	}
 	else {
@@ -379,8 +607,11 @@ void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
 	//Write array to buffer
 	for (size_t i = 0; i < securiteStrings.size(); i++) {
 		buffer << R"(
-            <input type="checkbox" id="sec)" << i << R"(" name="sec)" << i << R"(">
-            <label for="sec)" << i << R"(">)" << securiteStrings[i] << R"(</label><br>)" << std::endl;
+			<label class="form-control">
+            <input type="checkbox" id="sec)" << i << R"(" name="sec)" << i << R"(">)"
+            << securiteStrings[i] 
+			<< R"(</label>
+			<br>)" << std::endl;
 
 	}
 
@@ -422,7 +653,7 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 
 
 	std::wstring input;
-	std::wifstream inFile("FormulaireA3.txt");
+	std::wifstream inFile("FormulairfeA3.txt");
 	if (inFile.is_open()) {
 
 		while (getline(inFile, input)) {
@@ -444,198 +675,213 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 
 
 		buffer << R"(
-        <div id="Checklist" style="page-break-before: always; page-break-after: always;">
+         <div id="Checklist" style="page-break-before: always; page-break-after: always;">
 		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
-			
-			<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-					<label> Est-ce j'ai besoin de EPI spécifique?</label>
-				</div>
-				<div style="float: left; width: 100px;">
-					<label style="float: right;" for="check1">Non</label>
-					<input style="float: right;" type="radio" id="check1" name="check1">
-					<label style="float: right;" for="check1">Oui</label>
-					<input style="float: right;" type="radio" id="check1" name="check1">
-				</div>
-
-			</div>
-			
-			<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-				    <label> Est-ce que je dois cadenasser?</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-				    <label  style="float: right;" for="check2">Non</label>
-				    <input style="float: right;" type="radio" id="check2" name="check2">
-				    <label style="float: right;" for="check2">Oui</label>
-			    	<input style="float: right;" type="radio" id="check2" name="check2">
-			    </div>
-
-		    </div>
-
-	    	<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label>  Est-ce qu'il y a d'autres sources d'énergie?</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check3">Non</label>
-			    	<input style="float: right;" type="radio" id="check3" name="check3">
-			    	<label style="float: right;" for="check3">Oui</label>
-			    	<input style="float: right;" type="radio" id="check3" name="check3">
-		    	</div>
-
-	    	</div>
-
-		    <div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label> Est-ce que je dois me procurer un permis de travail?</label>
-		    	</div>
-				<div style="float: left; width: 100px;">
-					<label  style="float: right;" for="check4">Non</label>
-					<input style="float: right;" type="radio" id="check4" name="check4">
-					<label style="float: right;" for="check4">Oui</label>
-					<input style="float: right;" type="radio" id="check4" name="check4">
-		    	</div>
-
-	    	</div>
-
-
-		    <div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			        <label>Est-ce que j'ai besoin d'aide?</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check5">Non</label>
-			    	<input style="float: right;" type="radio" id="check5" name="check5">
-			    	<label style="float: right;" for="check5">Oui</label>
-			    	<input style="float: right;" type="radio" id="check5" name="check5">
-		    	</div>
-
-		    </div>
-
-
-	    	<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label>Est-ce que mes outils sont appropriés et conformes?</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check6">Non</label>
-			    	<input style="float: right;" type="radio" id="check6" name="check6">
-			    	<label style="float: right;" for="check6">Oui</label>
-			    	<input style="float: right;" type="radio" id="check6" name="check6">
-		    	</div>
-
-	    	</div>
-
-	    	<div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label>  Est-ce que je peux être frappés ou coincés par un objet?</label>
-			</div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check7">Non</label>
-			    	<input style="float: right;" type="radio" id="check7" name="check7">
-			    	<label style="float: right;" for="check7">Oui</label>
-			    	<input style="float: right;" type="radio" id="check7" name="check7">
-		    	</div>
-
-		    </div>
-
-		    <div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label> Est-ce que je suis exposé a une chute?</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check8">Non</label>
-			    	<input style="float: right;" type="radio" id="check8" name="check8">
-			    	<label style="float: right;" for="check8">Oui</label>
-			    	<input style="float: right;" type="radio" id="check8" name="check8">
-		    	</div>
-
-		    </div>
 		
-	
-		
-		    <div style="clear:both; padding: 10px;">
-		    	<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label> Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence
-						de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes 
-						travaux?
-			    	</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check9">Non</label>
-			    	<input style="float: right;" type="radio" id="check9" name="check9">
-			    	<label style="float: right;" for="check9">Oui</label>
-			    	<input style="float: right;" type="radio" id="check9" name="check9">
-		    	</div>
-		    </div>
-
-	    	<div style="clear:both; padding: 10px;">
-		    	<div style="width: 400px; word-wrap: break-word; float: left;">
-		    		<label> Est-ce que l'état de la propreté des lieux est satisfaisante?</label>
-		    	</div>
-		   		<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check10">Non</label>
-			    	<input style="float: right;" type="radio" id="check10" name="check10">
-			    	<label style="float: right;" for="check10">Oui</label>
-			    	<input style="float: right;" type="radio" id="check10" name="check10">
-		    	</div>
-
-		    </div>
-
-		    <div style="clear:both; padding: 10px;">
-				<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label> Est-ce que je dois délimiter la zone de travail?</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check1">Non</label>
-			    	<input style="float: right;" type="radio" id="check11" name="check11">
-			    	<label style="float: right;" for="check11">Oui</label>
-			    	<input style="float: right;" type="radio" id="check11" name="check11">
-			    </div>
-
-		    </div>
-			
-			
-			
-	    	<div style="clear:both; padding: 10px;">
-		    	<div style="width: 400px; word-wrap: break-word; float: left;">
-		    		<label>Est-ce que la tache comporte des efforts excessifs?</label>
-		    	</div>
-		   		<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check12">Non</label>
-			    	<input style="float: right;" type="radio" id="check12" name="check12">
-			    	<label style="float: right;" for="check12">Oui</label>
-			    	<input style="float: right;" type="radio" id="check12" name="check12">
-			    </div>
-	    	</div>
-	    	
-
-	    	<div style="clear:both; padding: 10px;">
-			    <div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label> Est-ce je peux réaliser cette tache en toute sécurité?</label>
-			</div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check13">Non</label>
-			    	<input style="float: right;" type="radio" id="check13" name="check13">
-			    	<label style="float: right;" for="check13">Oui</label>
-			    	<input style="float: right;" type="radio" id="check13" name="check13">
-		    	</div>
-		    </div>
-
-		    <div style="clear:both; padding: 10px;">
-		    	<div style="width: 400px; word-wrap: break-word; float: left;">
-			    	<label> Est-ce que le travail implique une règle cardinale non mentionnée précédemment ? (VIM, 
-						Gréage et levage, DFT, sécurité machine)
-			    	</label>
-			    </div>
-				<div style="float: left; width: 100px;">
-			    	<label  style="float: right;" for="check14">Non</label>
-			    	<input style="float: right;" type="radio" id="check14" name="check14">
-			    	<label style="float: right;" for="check14">Oui</label>
-			    	<input style="float: right;" type="radio" id="check14" name="check14">
-		    	</div>
-	    	</div>
+			<table>
+			  <tr>
+				<th style="width:70%">Questions</th>
+				<th style="width:15%; text-align: center;">Oui</th>
+				<th style="width:15%; text-align: center;">Non</th>
+			  </tr>
+			  <tr>
+				<td>Est-ce j'ai besoin de EPI spécifique?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes1" name = "check1">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno1" name = "check1" required>
+				   </label>	
+				</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce que je dois cadenasser?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes2" name = "check2">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno2" name = "check2" required>
+				   </label>	
+				</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce qu'il y a d'autres sources d'énergie?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes3" name = "check3">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno3" name = "check3" required>
+				   </label>	
+				</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce que je dois me procurer un permis de travail?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes4" name = "check4">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno4" name = "check4" required>
+				   </label>	
+				</td>
+				
+			  </tr>
+			  <tr>
+				<td>Est-ce que j'ai besoin d'aide?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes5" name = "check5">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno5" name = "check5" required>
+				   </label>	
+				</td>
+			   
+			  </tr>
+			  <tr>
+				<td>Est-ce que mes outils sont appropriés et conformes?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes6" name = "check6">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkno6" name = "check6" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je peux être frappés ou coincés par un objet?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes7" name = "check7">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno7" name = "check7" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je suis exposé a une chute?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes8" name = "check8">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno8" name = "check8" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes9" name = "check9">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno9" name = "check9" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que l'état de la propreté des lieux est satisfaisante?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes10" name = "check10">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno10" name = "check10" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que la tache comporte des efforts excessifs?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes11" name = "check11">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno11" name = "check11" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce je peux réaliser cette tache en toute sécurité?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes12" name = "check12">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno12" name = "check12" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que je dois délimiter la zone de travail?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes13" name = "check13">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno13" name = "check13" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			  <tr>
+				<td>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes14" name = "check14">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input style = "float: left;" type = "radio" id = "checkno14" name = "check14" required>
+				   </label>	
+				</td>
+			  
+			  </tr>
+			 
+			</table>
 	    </div>
 
 )" << std::endl;
@@ -698,6 +944,7 @@ void HtmlGenerator::addRisquesHtml(bool release) {
 	//HTML CODE
 	buffer << R"(
     <div id="risquesetmethodes" style="page-break-after: always; clear:both;">
+		<h3 style="text-align: left; text-decoration: underline;">Risques et Méthodes de Contrôle</h3>
 		<div style="clear:both; padding: 10px;">
 			<div style="width: 200px; float: left; padding-left: 40px;">Risques</div>
 			<div style="width: 200px; float: left; padding-left: 50px;">Méthodes de contrôle</div>
@@ -705,7 +952,7 @@ void HtmlGenerator::addRisquesHtml(bool release) {
 		<ul id="ul">
 		</ul>
 		<div style="clear: both; padding: 10px;">
-			<button id="riskBtn" class="no-print">
+			<button id="riskBtn" type="button" class="no-print">
 				Add a field 
 			</button>
 		</div>
@@ -835,7 +1082,7 @@ void HtmlGenerator::addBadgefieldHtml(bool release) {
          </div>
          <div style="clear:both; float: left; padding: 10px;">
             <label>Temps: </label>
-            <input type="Time">
+            <input>
             <label>Initiales: </label>
             <input>
          </div>
@@ -936,12 +1183,12 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 
 	//HTML CODE
 	buffer << R"(
-   </form>
+  
     <div style="text-align: center;">
 	<button id="submitBtn" class="no-print">Submit</button>
     </div>
 
-    
+     </form>
     
 <script>
     function generatePDF(){
@@ -1093,6 +1340,25 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
 	std::wstring input;
 
+	std::wstring ectsURL;
+
+
+
+	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/LienECTS/lien_ects.txt");
+	//Get section names and line numbers
+	if (inFile.is_open()) {
+
+		while (getline(inFile, input)) {
+			ectsURL = input;
+		}
+		inFile.close();
+	}
+	else {
+		std::cout << "Unable to open file";
+		ectsURL = L"http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx";
+	}
+
+
 
 
 	bool inSection = false;
@@ -1165,44 +1431,65 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			if (std::find(subStepIndeces.begin(), subStepIndeces.end(), i) != subStepIndeces.end()) {
 				buffer << R"(
     
-         <div style="clear: both; padding-bottom: 50px; padding-left: 50px;">)";
+         <div style="clear: both; padding-bottom: 40px; padding-left: 50px;">)";
 			}
 			else {
 				buffer << R"(
-            <div style="clear: both; padding-bottom: 50px;">)";
+            <div style="clear: both; padding-bottom: 40px;">)";
 			}
 
 
 			//Write array to buffer
 			buffer << R"(
                <div>
-        	      <input type="checkbox" id="taskCheckbox)" << i << R"(" name="taskCheckbox)" << i << R"(" class="mustcheck" required>
-        	      <label for="taskCheckbox)" << i << R"(">)" << tachesStrings[i] << R"(</label><br>
+				  <label class="form-control" for="taskCheckbox")" << i << R"(">)" << R"( 
+        	      <input type="checkbox" id="taskCheckbox)" << i << R"(" name="taskCheckbox)" << i << R"(" class="mustcheck" required>)"
+        	      << tachesStrings[i] << R"(
+				  </label>
+			      <br>
     	       </div>
-    	       <div>
+    	       
     	          <div style="float:left; padding-left: 20px;">
-    			     <input type="checkbox" id="taskConforme)" << i << R"(" name="taskConforme)" << i << R"(">
-    			     <label for="taskConforme)" << i << R"(">Conforme</label><br>
+					 <label class="form-control" for="taskConforme")" << i << R"(">)" << R"( 
+
+					 <input type="checkbox" id="taskConforme)" << i << R"(" name="taskConforme)" << i << R"(">
+    			     Conforme
+					 </label>
+					 <br>
     		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare")" << i << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRepare)" << i << R"(" name="taskRepare)" << i << R"(">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
     		
-    	          <div style="float:left; padding-left: 20px;">
-    		         <input type="checkbox" id="taskRepare)" << i << R"(" name="taskRepare)" << i << R"(">
-    		         <label for="taskRepare)" << i << R"(">Réparé</label><br>
-    		      </div>
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace")" << i << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRemplace)" << i << R"(" name="taskRemplace)" << i << R"(">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskAvis")" << i << R"(">)" << R"( 
+					 <input type="checkbox" id="taskAvis)" << i << R"(" name="taskAvis)" << i << R"(">
+    			     <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
+					 </label>
+					 <br>
+    		      </div> 
+    	          
     		
-    		      <div style="float:left; padding-left: 20px;">
-    		         <input type="checkbox" id="taskRemplace)" << i << R"(" name="taskRemplace)" << i << R"(">
-    		         <label for="taskRemplace)" << i << R"(">Remplacé</label><br>
-    		      </div>
-    		      <div style="float:left; padding-left: 20px;">
-    		         <input type="checkbox" id="taskAvis)" << i << R"(" name="taskAvis)" << i << R"(">
-    		         <label for="taskAvis)" << i << R"(">Avis Créer:</label><br>
-    		      </div>
+    		      
+    		     
     		
-    		      <div style="float:left; padding-left: 5px;">
-    		         <input  type="text" id="taskAvisText)" << i << R"(" name="taskAvisText)" << i << R"(" value="">
-    			  </div>
-    	       </div>
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
             </div>
             )" << std::endl;
 
@@ -1254,7 +1541,23 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 	std::wstring input;
 
+	std::wstring ectsURL;
 
+
+
+	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/LienECTS/lien_ects.txt");
+	//Get section names and line numbers
+	if (inFile.is_open()) {
+
+		while (getline(inFile, input)) {
+			ectsURL = input;
+		}
+		inFile.close();
+	}
+	else {
+		std::cout << "Unable to open file";
+		ectsURL = L"http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx";
+	}
 
 	for (int i = start + 1; i < end; i++) {
 
@@ -1335,56 +1638,71 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 
 				if (std::find(subStepIndeces.begin(), subStepIndeces.end(), i) != subStepIndeces.end()) {
+
 					buffer << R"(
 
-            <div style="clear: both; padding-bottom: 50px; padding-left: 50px;">)" << std::endl;
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;">)" << std::endl;
 				}
 				else {
 					buffer << R"(
 
-            <div style="clear: both; padding-bottom: 50px;">)" << std::endl;
+            <div style="clear: both; padding-bottom: 40px;">)" << std::endl;
 				}
 
 
 				//Write array to buffer
 				buffer << R"(
+               <div>
+				  <label class="form-control" for="taskCheckbox")" << i << unknownTimesUsed << R"(">)" << R"( 
+        	      <input type="checkbox" id="taskCheckbox)" << i << unknownTimesUsed << R"(" name="taskCheckbox)" << i << unknownTimesUsed << R"(" class="mustcheck" required>)"
+					<< unknownStrings[i] << R"(
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme")" << i << unknownTimesUsed << R"(">)" << R"( 
 
-        	    <div>
-    	        	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
-    	        	<label for="tache)" << i << unknownTimesUsed << R"(">)" << unknownStrings[i] << R"(</label><br>
-	    	    </div>
-	
-	            <div>
+					 <input type="checkbox" id="taskConforme)" << i << unknownTimesUsed << R"(" name="taskConforme)" << i << unknownTimesUsed << R"(">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
 
-		            <div style="float:left; padding-left: 20px;">
-			            <input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
-			            <label for="tache)" << i << unknownTimesUsed << R"(">Conforme</label><br>
-		            </div> 	
-		
-	            	<div style="float:left; padding-left: 20px;">
-		            	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
-		            	<label for="tache)" << i << unknownTimesUsed << R"(">Repare</label><br>
-		            </div>
-		
-		            <div style="float:left; padding-left: 20px;">
-		            	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
-		            	<label for="tache)" << i << unknownTimesUsed << R"(">Remplace</label><br>
-		            </div>
-		
-		            <div style="float:left; padding-left: 20px;">
-		            	<input type="checkbox" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
-		            	<label for="tache)" << i << unknownTimesUsed << R"(">Avis Creer:</label><br>
-		            </div>
-		
-		            <div style="float:left; padding-left: 5px;">
-		            	<input type="text" id="tache)" << i << unknownTimesUsed << R"(" name="tache)" << i << unknownTimesUsed << R"(">
-			
-		            </div>
-	
-                </div>
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare")" << i << unknownTimesUsed << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRepare)" << i << unknownTimesUsed << R"(" name="taskRepare)" << i << unknownTimesUsed << R"(">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace")" << i << unknownTimesUsed << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRemplace)" << i << unknownTimesUsed << R"(" name="taskRemplace)" << i << unknownTimesUsed << R"(">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
 
-            
-        )" << std::endl;
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskAvis")" << i << unknownTimesUsed << R"(">)" << R"( 
+					 <input type="checkbox" id="taskAvis)" << i << unknownTimesUsed << R"(" name="taskAvis)" << i << unknownTimesUsed << R"(">
+    			    <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
+					 </label>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            )" << std::endl;;
 
 			}
 			//Unkown doesnt need a checkbox
