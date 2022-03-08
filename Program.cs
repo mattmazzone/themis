@@ -15,7 +15,7 @@ class MainClass
         Console.WriteLine(userName);
 
         //Read a text file with recipients
-        string[] lines = System.IO.File.ReadAllLines(@"C:\Users\pw192717\Desktop\pm_testing_saving_emailing\outlook_details.txt");
+        string[] lines = System.IO.File.ReadAllLines(@"O:\TFM_GESTION\PM\1_TEMPLATES\WebCompanion\outlook_details.txt");
 
         List<string> recipients = new List<string>();
         List<string> cc_people = new List<string>();
@@ -201,6 +201,7 @@ class MainClass
         DirectoryInfo info = new DirectoryInfo("c:/users/" + userName + "/Downloads");
         FileInfo[] pdfList = info.GetFiles("*.pdf").OrderBy(p => p.CreationTime).ToArray();
 
+        //Debugging
         foreach (FileInfo pdf in pdfList)
         {
             //Console.WriteLine(pdf.Name);
@@ -211,8 +212,7 @@ class MainClass
         
 
         //Add Attachment
-        //**Need to make this dynamic**
-        oMailItem.Attachments.Add("C:/Users/pw192717/Desktop/pm_testing_saving_emailing/PM.html", Outlook.OlAttachmentType.olByValue,1,"PM");
+        oMailItem.Attachments.Add(pdfList.Last().FullName, Outlook.OlAttachmentType.olByValue,1,pdfList.Last().Name);
 
         
 
@@ -221,7 +221,7 @@ class MainClass
 
 
         //Save a copy of most recent pdf to O:/
-        String targetPath = @"O:\TFM_GESTION\PM\1- TEMPLATES\";
+        String targetPath = @"O:\TFM_GESTION\PM\BACKUP\";
         String destFile = targetPath + pdfList.Last().Name;
        
         System.IO.File.Copy(sourceFile, destFile, true);
