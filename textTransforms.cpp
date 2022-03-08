@@ -90,6 +90,13 @@ std::wstring Reformater::detectTextFields(std::wstring inp) {
 
 }
 
+std::wstring Reformater::getCadenassage()
+{
+	return cadenassageURL;;
+}
+
+
+
 std::vector<std::wstring> Reformater::reformatGood() {
 
 
@@ -119,8 +126,18 @@ std::vector<std::wstring> Reformater::reformatGood() {
 	else {
 		std::cout << "Unable to open file";
 	}
+	
+	
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"-CADENASSAGE_LINK:");
 
-
+		if (finder != std::string::npos) {
+			cadenassageURL = str.substr(18, str.length());
+			formattedTextFile.erase(formattedTextFile.begin() + i, formattedTextFile.end());
+		}
+	}
 
 
 	for (size_t i = 0; i < formattedTextFile.size(); i++) {

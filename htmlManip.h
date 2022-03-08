@@ -17,6 +17,7 @@ class HtmlGenerator {
 private:
 	std::wstring outputPath;
 	std::wstringstream buffer;
+	std::wstring cadenasURL;
 	std::vector<std::wstring> formattedFile;
 
 	std::vector<int> fileTitlesLN;
@@ -32,7 +33,7 @@ private:
 
 
 public:
-	HtmlGenerator(std::wstring path, std::vector<std::wstring> formattedFile);
+	HtmlGenerator(std::wstring path, std::vector<std::wstring> formattedFile, std::wstring cadenassageURL);
 
 
 	void addHeadHtml(bool release);
@@ -44,7 +45,7 @@ public:
 	void addDocrefHtml(bool release, int start, int end);
 	void addSecuriteHtml(bool release, int start, int end);
 
-	void addCadenassageHtml(bool release);
+	void addCadenassageHtml( bool release);
 
 	void addUnknownsHtml(bool release, int start, int end);
 

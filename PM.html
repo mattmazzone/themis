@@ -85,6 +85,51 @@
 		#top-logo {
 		height: 200px;
 		}
+		
+		button {
+			font-size: 1.5rem;
+		}
+		button.button {
+		  border: none;
+		  background-color: transparent;
+		  font-family: inherit;
+		  padding: 0;
+		  cursor: pointer;
+		}
+		@media screen and (-ms-high-contrast: active) {
+		  button.button {
+			border: 2px solid currentcolor;
+		  }
+		}
+
+		a.button,
+		button.button {
+		  display: inline-flex;
+		  align-items: center;
+		  justify-content: center;
+		  align-self: start;
+		  background-color: rebeccapurple;
+		  color: #fff;
+		  border-radius: 8px;
+		  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+		  padding: 0.25em 0.75em;
+		  min-width: 10ch;
+		  min-height: 44px;
+		  text-align: center;
+		  line-height: 1.1;
+		  transition: 220ms all ease-in-out;
+		}
+		a.button:hover, a.button:active,
+		button.button:hover,
+		button.button:active {
+		  background-color: #52297a;
+		}
+		a.button:focus,
+		button.button:focus {
+		  outline-style: solid;
+		  outline-color: transparent;
+		  box-shadow: 0 0 0 4px #3d1f5c;
+		}
 
 		table {
 		  font-family: arial, sans-serif;
@@ -103,9 +148,19 @@
 		}
 		form {
 		   padding-left: 20px;
-		  display: grid;
+		 
 		  place-content: center;
 		  min-height: 100vh;
+		}
+
+		.form-link {
+		  font-family: system-ui, sans-serif;
+		  font-size: 1.5rem;
+		 
+		  line-height: 1.1;
+		  
+		  grid-template-columns: 1em auto;
+		  gap: 0.5em;
 		}
 
 		.form-control {
@@ -252,7 +307,7 @@
       <h2 style="text-align: center;">MXXXXX-XX</h2>
       <h2 style="text-align: center;">TXXXXX-XXXX</h2>
     
-      <div id="Preparation">
+      <div id="Preparation" class="dontbreak">
          <h3 style="text-align: left; text-decoration: underline;">Préparation</h3>
 
 		 <label class="form-control">
@@ -272,23 +327,24 @@
 		 </label>
 		 <br>
 
+	<a style="padding-left:40px" class="form-link" href="O:\TFM_GESTION\PM\1_TEMPLATES\fiche_communication_ects.xlsx"> Fiche de communication</a>
       </div>
     
-      <div id="DocRef" style="page-break-after: always">
+      <div id="DocRef" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Documents Références</h3>
             <p >- DESSINS RÉFÉRENCES DISPONIBLE: VIA JVIEW</p>
             <p >- EFD 54500, LOCKING CONTROL BOX</p>
 
       </div>
     
-      <div id="Consommables">
+      <div id="Consommables" class="dontbreak">
          <h3 style="text-align: left; text-decoration: underline;">Consommables</h3>
          <p>- HUILE POUR LE SYSTÈME HYDRAULIQUE: FLUIDE POUR TRANSMISSION AUTOMATIQUE, PMC9863</p>
          <p>- HUILE POUR LE LUBRIFICATEUR: HUILE LUBRIFIANTE A BROCHES (60 SUS), PMC9801 ou CPMC79668</p>
 
       </div>
     
-        <div id="Pieces">
+        <div id="Pieces" class="dontbreak">
 	        <h3 style="text-align: left; text-decoration: underline;">Pièces</h3>
 	        
     
@@ -296,7 +352,7 @@
 
         </div>    
     
-        <div id="Outils" style="page-break-after: always">
+        <div id="Outils" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Outils</h3>
 <p>- DRILL</p>
 <p>- MARTEAU</p>
@@ -304,10 +360,10 @@
 
         </div>
     
-        <div id=" VÉRIFICATIONS AVEC L'UNITÉE EN FONCTION ">
+        <div id=" VÉRIFICATIONS AVEC L'UNITÉE EN FONCTION " class="breakbefore">
 	<h3 style="text-align: left; text-decoration: underline;"> VÉRIFICATIONS AVEC L'UNITÉE EN FONCTION </h3>
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"00"> 
@@ -363,7 +419,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"10"> 
@@ -419,7 +475,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"20"> 
@@ -475,11 +531,11 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"30"> 
-        	      <input type="checkbox" id="taskCheckbox30" name="taskCheckbox30" class="mustcheck" required> 3.a - PISTON SORTIE
+        	      <input type="checkbox" id="taskCheckbox30" name="taskCheckbox30" class="mustcheck" required> 3a - PISTON SORTIE
 				  </label>
 			      <br>
     	       </div>
@@ -531,11 +587,11 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"40"> 
-        	      <input type="checkbox" id="taskCheckbox40" name="taskCheckbox40" class="mustcheck" required> 3.b - LOCK ARRIÈRE SORTIE
+        	      <input type="checkbox" id="taskCheckbox40" name="taskCheckbox40" class="mustcheck" required> 3b - LOCK ARRIÈRE SORTIE
 				  </label>
 			      <br>
     	       </div>
@@ -587,7 +643,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"50"> 
@@ -643,7 +699,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"60"> 
@@ -698,12 +754,64 @@
 
         </div>
 
-                <p>- POSITION "UNLOCKING"</p>
+
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox"70"> 
+        	      <input type="checkbox" id="taskCheckbox70" name="taskCheckbox70" class="mustcheck" required>4 - POSITION "UNLOCKING"
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme"70"> 
+
+					 <input type="checkbox" id="taskConforme70" name="taskConforme70">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare"70"> 
+					 <input type="checkbox" id="taskRepare70" name="taskRepare70">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace"70"> 
+					 <input type="checkbox" id="taskRemplace70" name="taskRemplace70">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskAvis"70"> 
+					 <input type="checkbox" id="taskAvis70" name="taskAvis70">
+    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
+					 </label>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
 
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"80"> 
@@ -759,7 +867,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"90"> 
@@ -815,7 +923,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"100"> 
@@ -871,7 +979,7 @@
         </div>
 
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
 
                <div>
 				  <label class="form-control" for="taskCheckbox"110"> 
@@ -926,7 +1034,7 @@
 
         </div>
 
-        <div id="Securite" style="page-break-after: always">
+        <div id="Securite" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>
 
 			<label class="form-control">
@@ -939,9 +1047,9 @@
 
         </div>
     
-      <div id="Taches">
+      <div id="Taches" class="breakbefore">
          <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"0"> 
         	      <input type="checkbox" id="taskCheckbox0" name="taskCheckbox0" class="mustcheck" required> 1 - NETTOYER L'ÉQUIPEMENT
@@ -993,7 +1101,7 @@
             </div>
             
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"1"> 
         	      <input type="checkbox" id="taskCheckbox1" name="taskCheckbox1" class="mustcheck" required> 2 - VÉRIFIER NIVEAU D'HUILE
@@ -1045,7 +1153,7 @@
             </div>
             
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"2"> 
         	      <input type="checkbox" id="taskCheckbox2" name="taskCheckbox2" class="mustcheck" required> 3 - VÉRIFIER LE LUBRIFICATEUR:
@@ -1101,7 +1209,7 @@
 
                 <p>- AJUSTER À 5 GOUTTES MINIMUM PAR SÉQUENCE EN POSITION LOCK</p>
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"5"> 
         	      <input type="checkbox" id="taskCheckbox5" name="taskCheckbox5" class="mustcheck" required> 4 - VÉRIFIER LE DRAIN AUTOMATIQUE:
@@ -1157,7 +1265,7 @@
 
                 <p>- NETTOYER LE BOL AVEC DU SAVON ET DE L'EAU, SI NECESSAIRE.</p>
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"8"> 
         	      <input type="checkbox" id="taskCheckbox8" name="taskCheckbox8" class="mustcheck" required> 5 - S'ASSURER QU'IL N'Y EST PAS DE SKID SUR LA PLATEFORME (BED)
@@ -1209,7 +1317,7 @@
             </div>
             
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"9"> 
         	      <input type="checkbox" id="taskCheckbox9" name="taskCheckbox9" class="mustcheck" required> 6 - PROCÉDER À UNE SÉQUENCE UNLOCKING MANUELLEMENT
@@ -1261,7 +1369,7 @@
             </div>
             
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"10"> 
         	      <input type="checkbox" id="taskCheckbox10" name="taskCheckbox10" class="mustcheck" required> 8 - INSTALLER "ENGINE & LOCK SKID"
@@ -1313,10 +1421,10 @@
             </div>
             
 
-            <div style="clear: both; padding-bottom: 40px;">
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
                <div>
 				  <label class="form-control" for="taskCheckbox"11"> 
-        	      <input type="checkbox" id="taskCheckbox11" name="taskCheckbox11" class="mustcheck" required> IDENTIFICATION CORRECT DE L'ÉQUIPEMENT (MINIMUM 2 FACES) Lien_Cadenassage:
+        	      <input type="checkbox" id="taskCheckbox11" name="taskCheckbox11" class="mustcheck" required> IDENTIFICATION CORRECT DE L'ÉQUIPEMENT (MINIMUM 2 FACES)
 				  </label>
 			      <br>
     	       </div>
@@ -1367,7 +1475,7 @@
 
         </div>
 
-         <div id="Checklist" style="page-break-before: always; page-break-after: always;">
+         <div id="Checklist" class="breakbefore">
 		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
 		
 			<table>
@@ -1380,18 +1488,30 @@
 				<td>Est-ce j'ai besoin de EPI spécifique?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes0" name = "check0">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkno0" name = "check0">		
+				   </label>
+				</td>
+				
+			  </tr>
+				<td>Est-ce que je dois cadenasser?</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes1" name = "check1">		
 				   </label>
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno1" name = "check1" required>
-				   </label>	
+				      <input type = "radio" id = "checkno1" name = "check1">		
+				   </label>
 				</td>
 				
 			  </tr>
-			  <tr>
-				<td>Est-ce que je dois cadenasser?</td>
+				<td>Est-ce qu'il y a d'autres sources d'énergie?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes2" name = "check2">		
@@ -1399,13 +1519,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno2" name = "check2" required>
-				   </label>	
+				      <input type = "radio" id = "checkno2" name = "check2">		
+				   </label>
 				</td>
 				
 			  </tr>
-			  <tr>
-				<td>Est-ce qu'il y a d'autres sources d'énergie?</td>
+				<td>Est-ce que je dois me procurer un permis de travail?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes3" name = "check3">		
@@ -1413,13 +1532,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno3" name = "check3" required>
-				   </label>	
+				      <input type = "radio" id = "checkno3" name = "check3">		
+				   </label>
 				</td>
 				
 			  </tr>
-			  <tr>
-				<td>Est-ce que je dois me procurer un permis de travail?</td>
+				<td>Est-ce que j'ai besoin d'aide?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes4" name = "check4">		
@@ -1427,13 +1545,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno4" name = "check4" required>
-				   </label>	
+				      <input type = "radio" id = "checkno4" name = "check4">		
+				   </label>
 				</td>
 				
 			  </tr>
-			  <tr>
-				<td>Est-ce que j'ai besoin d'aide?</td>
+				<td>Est-ce que mes outils sont appropriés et conformes?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes5" name = "check5">		
@@ -1441,13 +1558,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno5" name = "check5" required>
-				   </label>	
+				      <input type = "radio" id = "checkno5" name = "check5">		
+				   </label>
 				</td>
-			   
+				
 			  </tr>
-			  <tr>
-				<td>Est-ce que mes outils sont appropriés et conformes?</td>
+				<td>Est-ce que je peux être frappés ou coincés par un objet?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes6" name = "check6">		
@@ -1455,13 +1571,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkno6" name = "check6" required>
-				   </label>	
+				      <input type = "radio" id = "checkno6" name = "check6">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
-				<td>Est-ce que je peux être frappés ou coincés par un objet?</td>
+				<td>Est-ce que je suis exposé a une chute?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes7" name = "check7">		
@@ -1469,13 +1584,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno7" name = "check7" required>
-				   </label>	
+				      <input type = "radio" id = "checkno7" name = "check7">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
-				<td>Est-ce que je suis exposé a une chute?</td>
+				<td>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes8" name = "check8">		
@@ -1483,13 +1597,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno8" name = "check8" required>
-				   </label>	
+				      <input type = "radio" id = "checkno8" name = "check8">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
-				<td>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</td>
+				<td>Est-ce que l'état de la propreté des lieux est satisfaisante?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes9" name = "check9">		
@@ -1497,13 +1610,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno9" name = "check9" required>
-				   </label>	
+				      <input type = "radio" id = "checkno9" name = "check9">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
-				<td>Est-ce que l'état de la propreté des lieux est satisfaisante?</td>
+				<td>Est-ce que je dois délimiter la zone de travail?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes10" name = "check10">		
@@ -1511,12 +1623,11 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno10" name = "check10" required>
-				   </label>	
+				      <input type = "radio" id = "checkno10" name = "check10">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
 				<td>Est-ce que la tache comporte des efforts excessifs?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
@@ -1525,12 +1636,11 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno11" name = "check11" required>
-				   </label>	
+				      <input type = "radio" id = "checkno11" name = "check11">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
 				<td>Est-ce je peux réaliser cette tache en toute sécurité?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
@@ -1539,13 +1649,12 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno12" name = "check12" required>
-				   </label>	
+				      <input type = "radio" id = "checkno12" name = "check12">		
+				   </label>
 				</td>
-			  
+				
 			  </tr>
-			  <tr>
-				<td>Est-ce que je dois délimiter la zone de travail?</td>
+				<td>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkyes13" name = "check13">		
@@ -1553,41 +1662,21 @@
 				</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno13" name = "check13" required>
-				   </label>	
-				</td>
-			  
-			  </tr>
-			  <tr>
-				<td>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</td>
-				<td>
-				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes14" name = "check14">		
+				      <input type = "radio" id = "checkno13" name = "check13">		
 				   </label>
 				</td>
-				<td>
-				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input style = "float: left;" type = "radio" id = "checkno14" name = "check14" required>
-				   </label>	
-				</td>
-			  
+				
 			  </tr>
-			 
 			</table>
 	    </div>
-
-
-
-    <div id="risquesetmethodes" style="page-break-after: always; clear:both;">
+		
+    <div id="risquesetmethodes" style="clear:both; class="breakbefore"">
 		<h3 style="text-align: left; text-decoration: underline;">Risques et Méthodes de Contrôle</h3>
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 200px; float: left; padding-left: 40px;">Risques</div>
-			<div style="width: 200px; float: left; padding-left: 50px;">Méthodes de contrôle</div>
-		</div>
+		
 		<ul id="ul">
 		</ul>
-		<div style="clear: both; padding: 10px;">
-			<button id="riskBtn" type="button" class="no-print">
+		<div style="clear: both; padding: 10px;" class="no-print">
+			<button class="button" id="riskBtn" type="button" class="no-print">
 				Add a field 
 			</button>
 		</div>
@@ -1606,22 +1695,26 @@
          
        
        var divInner1 = document.createElement('div');
-        	divInner1.style="float:left;  padding-left: 10px; width: 250px;";
+        	divInner1.style="float:left; clear:both; padding-bottom: 5px; width: 250px;";
           
         var divInner2 = document.createElement('div');
-        	divInner2.style="float:left;  padding-bottom: 10px; width: 250px;";
+        	divInner2.style="float:left; clear:both; padding-bottom: 15px; width: 250px;";
         
         var textField = document.createElement('textarea');
-            textField.rows="5";
-			textField.cols="30";
+            textField.rows="4";
+			textField.cols="85";
             textField.style="float: left;"
+			textField.classList.add('input')
+			textField.placeholder="Risque"
          
          divInner1.appendChild(textField);
          
          var textField1 = document.createElement('textarea');
-            textField1.rows="5";
-			textField1.cols="30";
+            textField1.rows="4";
+			textField1.cols="85";
             textField1.style="float: left;"
+			textField1.classList.add('input')
+			textField1.placeholder="Méthode de contôle"
         
         
         divInner2.appendChild(textField1);
@@ -1641,31 +1734,32 @@
     
     
 
-  <div style="float: left; padding: 50px;" id="cadenassage">
-      <a href="https://www.google.com"><img id="imgCadenassage" src="https://i.imgur.com/QqwPOTx.png"/></a>
+  <div style="float: left; padding: 50px;" id="cadenassage" class="dontbreak">
+      <a href="https://www.google.ca" target="_blank"><img id="imgCadenassage" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\logo_cadenas.png"/></a>
+	<p>https://www.google.ca</p>
    </div>
    
 
-    <div style="float: left; padding: 50px;">
+    <div style="float: left; padding: 50px; clear: both;" class="dontbreak">
          <div style="clear:both; float: left; padding: 10px;">
             <label>Badge: </label>
-            <input type="text" id="badgefield" required>
+            <input class="input" type="text" id="badgefield" required>
             <label># Ordre Travail: </label>
-            <input type="text" id="ordernum" required>
+            <input  class="input" type="text" id="ordernum" required>
          </div>
-         <div style="clear:both; float: left; padding: 10px;">
+         <div style="clear:both; float: left; padding: 10px;" >
             <label>Temps: </label>
-            <input>
+            <input class="input">
             <label>Initiales: </label>
-            <input>
+            <input class="input">
          </div>
          <div style="clear:both; float: left; padding: 10px;">
             <label>Date complétée: </label>
-            <input type="Date">
+            <input class="input" type="Date">
          </div>
       </div>
       
-      <div style="clear:both; float: left">
+      <div class="no-print" style="clear:both; float: left">
          <input id="file-input" type="file" multiple>
          <div style="padding:20px" id="preview"></div>
       </div>
@@ -1712,11 +1806,16 @@
       </script>
       
   
-    <div style="text-align: center;">
-	<button id="submitBtn" class="no-print">Submit</button>
+    <div style="text-align: center; clear:both;" class="no-print">
+	<button class="button" id="submitBtn" class="no-print">Soumettre</button>
+	<button class="button" id="replanBtn" type="button" class="no-print">À Replanifier</button>
     </div>
 
      </form>
+	
+	<footer>
+		<div style="height: 50px"></div>
+	</footer>
     
 <script>
     function generatePDF(){
@@ -1777,6 +1876,46 @@
     var button = document.getElementById('submitBtn');
     button.onclick = generatePDF 
     
+</script>
+
+<script>
+    function replanPDF(){
+	//Initialize to true
+	var printPage = true;
+	var printTitle
+
+	//Badge Field
+	var badge = document.getElementById('badgefield').value;
+		if (badge === '') {
+			printPage = false;
+			alert('Specify Badge');
+		} 
+		else {
+			printTitle = badge;
+		}
+	var order = document.getElementById('ordernum').value;
+		if (order === '') {
+			printPage = false;
+			alert('Specify Order Num');
+		} 
+		else {
+		printTitle += '-'
+			printTitle += order;
+		}	
+	
+	if (printPage){
+	
+		document.title = printTitle;
+		window.print();  
+		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/AppExec.hta");
+	}
+	
+	
+}
+    var button = document.getElementById('replanBtn');
+    button.onclick = replanPDF 
+    
+
 </script>
 
 </body>

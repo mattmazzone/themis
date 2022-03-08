@@ -13,6 +13,7 @@ class Reformater
 {
 private:
 	std::wstring filePath;
+	std::wstring cadenassageURL;
 
 public:
 	Reformater(std::wstring path);
@@ -22,6 +23,8 @@ public:
 	std::wstring sameLine(std::wstring inp);
 	std::wstring detectTextFields(std::wstring inp);
 	std::vector<std::wstring> reformatGood();
+
+	std::wstring getCadenassage();
 
 };
 

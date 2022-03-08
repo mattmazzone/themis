@@ -3,7 +3,7 @@
 
 
 
-HtmlGenerator::HtmlGenerator(std::wstring path, std::vector<std::wstring> formattedFile) {
+HtmlGenerator::HtmlGenerator(std::wstring path, std::vector<std::wstring> formattedFile, std::wstring cadenassageURL) {
 	outputPath = path;
 	this->formattedFile = formattedFile;
 
@@ -12,6 +12,8 @@ HtmlGenerator::HtmlGenerator(std::wstring path, std::vector<std::wstring> format
 
 	//Setup console colors
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	cadenasURL = cadenassageURL;
 
 }
 
@@ -109,6 +111,51 @@ void HtmlGenerator::addHeadHtml(bool release) {
 		#top-logo {
 		height: 200px;
 		}
+		
+		button {
+			font-size: 1.5rem;
+		}
+		button.button {
+		  border: none;
+		  background-color: transparent;
+		  font-family: inherit;
+		  padding: 0;
+		  cursor: pointer;
+		}
+		@media screen and (-ms-high-contrast: active) {
+		  button.button {
+			border: 2px solid currentcolor;
+		  }
+		}
+
+		a.button,
+		button.button {
+		  display: inline-flex;
+		  align-items: center;
+		  justify-content: center;
+		  align-self: start;
+		  background-color: rebeccapurple;
+		  color: #fff;
+		  border-radius: 8px;
+		  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+		  padding: 0.25em 0.75em;
+		  min-width: 10ch;
+		  min-height: 44px;
+		  text-align: center;
+		  line-height: 1.1;
+		  transition: 220ms all ease-in-out;
+		}
+		a.button:hover, a.button:active,
+		button.button:hover,
+		button.button:active {
+		  background-color: #52297a;
+		}
+		a.button:focus,
+		button.button:focus {
+		  outline-style: solid;
+		  outline-color: transparent;
+		  box-shadow: 0 0 0 4px #3d1f5c;
+		}
 
 		table {
 		  font-family: arial, sans-serif;
@@ -127,9 +174,19 @@ void HtmlGenerator::addHeadHtml(bool release) {
 		}
 		form {
 		   padding-left: 20px;
-		  display: grid;
+		 
 		  place-content: center;
 		  min-height: 100vh;
+		}
+
+		.form-link {
+		  font-family: system-ui, sans-serif;
+		  font-size: 1.5rem;
+		 
+		  line-height: 1.1;
+		  
+		  grid-template-columns: 1em auto;
+		  gap: 0.5em;
 		}
 
 		.form-control {
@@ -308,7 +365,7 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 	}
 	//Section title to buffer
 	buffer << R"(
-      <div id="Preparation">
+      <div id="Preparation" class="dontbreak">
          <h3 style="text-align: left; text-decoration: underline;">Préparation</h3>)";
 
 	//Write array to buffer
@@ -323,6 +380,7 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 
 	}
 	buffer << R"(
+	<a style="padding-left:40px" class="form-link" href="O:\TFM_GESTION\PM\1_TEMPLATES\fiche_communication_ects.xlsx"> Fiche de communication</a>
       </div>
     )";
 
@@ -369,7 +427,7 @@ void HtmlGenerator::addPiecesHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-        <div id="Pieces">
+        <div id="Pieces" class="dontbreak">
 	        <h3 style="text-align: left; text-decoration: underline;">Pièces</h3>
 	        
     )" << std::endl;
@@ -430,7 +488,7 @@ void HtmlGenerator::addConsommablesHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-      <div id="Consommables">
+      <div id="Consommables" class="dontbreak">
          <h3 style="text-align: left; text-decoration: underline;">Consommables</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -486,7 +544,7 @@ void HtmlGenerator::addOutilsHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-        <div id="Outils" style="page-break-after: always">
+        <div id="Outils" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Outils</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -542,7 +600,7 @@ void HtmlGenerator::addDocrefHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-      <div id="DocRef" style="page-break-after: always">
+      <div id="DocRef" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Documents Références</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -601,7 +659,7 @@ void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
 	}
 	//Section title to buffer
 	buffer << R"(
-        <div id="Securite" style="page-break-after: always">
+        <div id="Securite" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -653,7 +711,7 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 
 
 	std::wstring input;
-	std::wifstream inFile("FormulairfeA3.txt");
+	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/FormulaireA3/FormulaireA3.txt");
 	if (inFile.is_open()) {
 
 		while (getline(inFile, input)) {
@@ -667,15 +725,56 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 			}
 		}
 		inFile.close();
+
+
+
+
+		buffer << R"(
+         <div id="Checklist" class="breakbefore">
+		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
+		
+			<table>
+			  <tr>
+				<th style="width:70%">Questions</th>
+				<th style="width:15%; text-align: center;">Oui</th>
+				<th style="width:15%; text-align: center;">Non</th>
+			  </tr>
+			  <tr>)";
+
+			for (size_t i = 0; i < checklistStrings.size(); i++){
+				
+				buffer << R"(
+				<td>)" << checklistStrings[i] << R"(</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(">		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkno)" << i << R"(" name = "check)" << i << R"(">		
+				   </label>
+				</td>
+				
+			  </tr>)";
+			}
+			  
+		buffer << R"(
+			</table>
+	    </div>
+		)";
+
+
+
 	}
 	else {
 		SetConsoleTextAttribute(hConsole, red);
-		std::wcout << L"Unable to open A3 file, default values printed";
+		std::wcout << L"Unable to open A3 file, default values printed" << std::endl;
 		SetConsoleTextAttribute(hConsole, white);
 
 
 		buffer << R"(
-         <div id="Checklist" style="page-break-before: always; page-break-after: always;">
+         <div id="Checklist" class="breakbefore">
 		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
 		
 			<table>
@@ -888,34 +987,7 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 	}
 
 
-	if (checklistStrings.size() != 0) {
-
-		buffer << R"(
-        <div id="Checklist" style="page-break-before: always; page-break-after: always;">
-		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>)";
-
-
-
-
-		for (size_t i = 0; i != checklistStrings.size(); i++) {
-			buffer << R"(
-		<div style = "clear:both; padding: 10px;">
-			<div style = "width: 400px; word-wrap: break-word; float: left;">
-			<label>)" << checklistStrings[i] << R"(</label>
-			</div>
-			<div style = "float: left; width: 100px;">
-			<label style = "float: right;" for = "checkno)" << i << R"(">Non</label>
-			<input style = "float: right;" type = "radio" id = "checkno)" << i << R"(" name = "check)" << i << R"(" required>
-			<label style = "float: right;" for = "checkyes)" << i << R"(">Oui</label>
-			<input style = "float: right;" type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(">
-			</div>
-		</div>)";
-
-		}
-		buffer << R"(
-   </div>)";
-	}
-	   
+  
 
 
 
@@ -943,16 +1015,13 @@ void HtmlGenerator::addRisquesHtml(bool release) {
 
 	//HTML CODE
 	buffer << R"(
-    <div id="risquesetmethodes" style="page-break-after: always; clear:both;">
+    <div id="risquesetmethodes" style="clear:both; class="breakbefore"">
 		<h3 style="text-align: left; text-decoration: underline;">Risques et Méthodes de Contrôle</h3>
-		<div style="clear:both; padding: 10px;">
-			<div style="width: 200px; float: left; padding-left: 40px;">Risques</div>
-			<div style="width: 200px; float: left; padding-left: 50px;">Méthodes de contrôle</div>
-		</div>
+		
 		<ul id="ul">
 		</ul>
-		<div style="clear: both; padding: 10px;">
-			<button id="riskBtn" type="button" class="no-print">
+		<div style="clear: both; padding: 10px;" class="no-print">
+			<button class="button" id="riskBtn" type="button" class="no-print">
 				Add a field 
 			</button>
 		</div>
@@ -974,22 +1043,26 @@ void HtmlGenerator::addRisquesHtml(bool release) {
          
        
        var divInner1 = document.createElement('div');
-        	divInner1.style="float:left;  padding-left: 10px; width: 250px;";
+        	divInner1.style="float:left; clear:both; padding-bottom: 5px; width: 250px;";
           
         var divInner2 = document.createElement('div');
-        	divInner2.style="float:left;  padding-bottom: 10px; width: 250px;";
+        	divInner2.style="float:left; clear:both; padding-bottom: 15px; width: 250px;";
         
         var textField = document.createElement('textarea');
-            textField.rows="5";
-			textField.cols="30";
+            textField.rows="4";
+			textField.cols="85";
             textField.style="float: left;"
+			textField.classList.add('input')
+			textField.placeholder="Risque"
          
          divInner1.appendChild(textField);
          
          var textField1 = document.createElement('textarea');
-            textField1.rows="5";
-			textField1.cols="30";
+            textField1.rows="4";
+			textField1.cols="85";
             textField1.style="float: left;"
+			textField1.classList.add('input')
+			textField1.placeholder="Méthode de contôle"
         
         
         divInner2.appendChild(textField1);
@@ -1073,26 +1146,26 @@ void HtmlGenerator::addBadgefieldHtml(bool release) {
 	size_t before = buffer.str().size();
 
 	buffer << R"(
-    <div style="float: left; padding: 50px;">
+    <div style="float: left; padding: 50px; clear: both;" class="dontbreak">
          <div style="clear:both; float: left; padding: 10px;">
             <label>Badge: </label>
-            <input type="text" id="badgefield" required>
+            <input class="input" type="text" id="badgefield" required>
             <label># Ordre Travail: </label>
-            <input type="text" id="ordernum" required>
+            <input  class="input" type="text" id="ordernum" required>
          </div>
-         <div style="clear:both; float: left; padding: 10px;">
+         <div style="clear:both; float: left; padding: 10px;" >
             <label>Temps: </label>
-            <input>
+            <input class="input">
             <label>Initiales: </label>
-            <input>
+            <input class="input">
          </div>
          <div style="clear:both; float: left; padding: 10px;">
             <label>Date complétée: </label>
-            <input type="Date">
+            <input class="input" type="Date">
          </div>
       </div>
       
-      <div style="clear:both; float: left">
+      <div class="no-print" style="clear:both; float: left">
          <input id="file-input" type="file" multiple>
          <div style="padding:20px" id="preview"></div>
       </div>
@@ -1157,12 +1230,31 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 
 	size_t before = buffer.str().size();
 
-	//HTML CODE
-	buffer << R"(
-  <div style="float: left; padding: 50px;" id="cadenassage">
-      <a href="https://www.google.com"><img id="imgCadenassage" src="https://i.imgur.com/QqwPOTx.png"/></a>
+	if (cadenasURL != L"") {
+		buffer << R"(
+  <div style="float: left; padding: 50px;" id="cadenassage" class="dontbreak">
+      <a href=")" << cadenasURL << R"(" target="_blank"><img id="imgCadenassage" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\logo_cadenas.png"/></a>
+	<p>)" << cadenasURL << R"(</p>
    </div>
    )" << std::endl;
+	}
+	else {
+		buffer << R"(
+  <div style="float: left; padding: 50px;" id="cadenassage">
+      <p>Lien Cadenessage Introuvable!</p>
+   </div>
+   )" << std::endl;
+	}
+	
+	   	 
+
+		SetConsoleTextAttribute(hConsole, green);
+		std::wcout << L"Inserting Cadenassage URL..." << std::endl;
+		SetConsoleTextAttribute(hConsole, white);
+
+	
+	//HTML CODE
+	
 
 	if (release) {
 		if (before < buffer.str().size()) {
@@ -1184,11 +1276,16 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	//HTML CODE
 	buffer << R"(
   
-    <div style="text-align: center;">
-	<button id="submitBtn" class="no-print">Submit</button>
+    <div style="text-align: center; clear:both;" class="no-print">
+	<button class="button" id="submitBtn" class="no-print">Soumettre</button>
+	<button class="button" id="replanBtn" type="button" class="no-print">À Replanifier</button>
     </div>
 
      </form>
+	
+	<footer>
+		<div style="height: 50px"></div>
+	</footer>
     
 <script>
     function generatePDF(){
@@ -1249,6 +1346,46 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
     var button = document.getElementById('submitBtn');
     button.onclick = generatePDF 
     
+</script>
+
+<script>
+    function replanPDF(){
+	//Initialize to true
+	var printPage = true;
+	var printTitle
+
+	//Badge Field
+	var badge = document.getElementById('badgefield').value;
+		if (badge === '') {
+			printPage = false;
+			alert('Specify Badge');
+		} 
+		else {
+			printTitle = badge;
+		}
+	var order = document.getElementById('ordernum').value;
+		if (order === '') {
+			printPage = false;
+			alert('Specify Order Num');
+		} 
+		else {
+		printTitle += '-'
+			printTitle += order;
+		}	
+	
+	if (printPage){
+	
+		document.title = printTitle;
+		window.print();  
+		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/AppExec.hta");
+	}
+	
+	
+}
+    var button = document.getElementById('replanBtn');
+    button.onclick = replanPDF 
+    
+
 </script>
 
 </body>
@@ -1340,11 +1477,11 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
 	std::wstring input;
 
-	std::wstring ectsURL;
+	std::wstring ectsURL = L"http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx";
 
 
 
-	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/LienECTS/lien_ects.txt");
+	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/Liens/lien_ects.txt");
 	//Get section names and line numbers
 	if (inFile.is_open()) {
 
@@ -1355,7 +1492,7 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 	}
 	else {
 		std::cout << "Unable to open file";
-		ectsURL = L"http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx";
+	
 	}
 
 
@@ -1407,7 +1544,7 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-      <div id="Taches">
+      <div id="Taches" class="breakbefore">
          <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>)";
 
 	for (size_t i = 0; i < tachesStrings.size(); i++) {
@@ -1431,11 +1568,11 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			if (std::find(subStepIndeces.begin(), subStepIndeces.end(), i) != subStepIndeces.end()) {
 				buffer << R"(
     
-         <div style="clear: both; padding-bottom: 40px; padding-left: 50px;">)";
+         <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">)";
 			}
 			else {
 				buffer << R"(
-            <div style="clear: both; padding-bottom: 40px;">)";
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">)";
 			}
 
 
@@ -1545,7 +1682,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 
 
-	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/LienECTS/lien_ects.txt");
+	std::wifstream inFile("O:/TFM_GESTION/PM/1_TEMPLATES/Liens/lien_ects.txt");
 	//Get section names and line numbers
 	if (inFile.is_open()) {
 
@@ -1610,7 +1747,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 	input = input.substr(2, input.size() - 4);
 
 	buffer << R"(
-        <div id=")" << input << R"(">
+        <div id=")" << input << R"(" class="breakbefore">
 	<h3 style="text-align: left; text-decoration: underline;">)" << input << R"(</h3>)";
 
 
@@ -1641,12 +1778,12 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 					buffer << R"(
 
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;">)" << std::endl;
+            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">)" << std::endl;
 				}
 				else {
 					buffer << R"(
 
-            <div style="clear: both; padding-bottom: 40px;">)" << std::endl;
+            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">)" << std::endl;
 				}
 
 

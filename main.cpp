@@ -46,7 +46,9 @@ int main()
 		vector <wstring> formattedFile;
 		formattedFile = reformatTxt.reformatGood();
 
-		HtmlGenerator htmlGen(path, formattedFile);
+
+
+		HtmlGenerator htmlGen(path, formattedFile, reformatTxt.getCadenassage() );
 
 		htmlGen.callInOrder(status);
 
