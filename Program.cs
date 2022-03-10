@@ -12,7 +12,60 @@ class MainClass
 
         //Get current user for filepaths
         string userName = Environment.UserName;
-        Console.WriteLine(userName);
+
+        //Assign download directory
+        DirectoryInfo downloadDir = new DirectoryInfo("c:/users/" + userName + "/Downloads");
+
+        //Get name of most recent PDF in downloads 
+        FileInfo[] pdfList = downloadDir.GetFiles("*.pdf").OrderBy(p => p.CreationTime).ToArray();
+        string pdfFile = pdfList.Last().FullName;
+
+        //Get name of most recent HTML in downloads
+        FileInfo[] htmlList = downloadDir.GetFiles("*.html").OrderBy(p => p.CreationTime).ToArray();
+        string htmlFile = htmlList.Last().FullName;
+
+
+
+        //Find the path info stored in HTML file
+        string functionnal_location = "";
+        string equipment_number = "";
+        string task_number = "";
+        foreach (string line in System.IO.File.ReadLines(htmlFile))
+        {
+            if (line.Contains("func_location:"))
+            {
+                functionnal_location = line.Substring(15);
+
+            }
+            else if (line.Contains("equip_num:"))
+            {
+                equipment_number = line.Substring(11);
+
+            }
+            else if (line.Contains("task_num:"))
+            {
+                task_number = line.Substring(10);
+                break;
+            }
+
+        }
+        //Save a copy of most recent pdf to O:/
+        string targetPath = "O:/TFM_GESTION/PM/" + functionnal_location + "/" + equipment_number + "/" + task_number + "/";
+        if (Directory.Exists(targetPath))
+        {
+            string destFile = targetPath + pdfList.Last().Name;
+            System.IO.File.Copy(pdfFile, destFile, true);
+            Console.WriteLine("Copied File to specified directory");
+        }
+        else
+        {
+            targetPath = @"O:/TFM_GESTION/PM/BACKUP/";
+            string destFile = targetPath + pdfList.Last().Name;
+            System.IO.File.Copy(pdfFile, destFile, true);
+            Console.WriteLine("Copied File to BACKUP directory");
+        }
+
+               
 
         //Read a text file with recipients
         string[] lines = System.IO.File.ReadAllLines(@"O:\TFM_GESTION\PM\1_TEMPLATES\WebCompanion\outlook_details.txt");
@@ -31,7 +84,7 @@ class MainClass
 
 
 
-
+        //Parse outlook_details.txt and assign respective List Variables
         foreach (string line in lines)
         {
             if (line == "***Recipients***")
@@ -43,7 +96,7 @@ class MainClass
             {
                 in_cc_people = true;
                 in_recipients = false;
-                
+
             }
             else if (line == "***Subject***")
             {
@@ -54,7 +107,7 @@ class MainClass
             {
                 in_body_lines = true;
                 in_subject = false;
-                
+
             }
             else if (line == "***Attachment Path***")
             {
@@ -62,14 +115,14 @@ class MainClass
                 in_body_lines = false;
             }
 
-
+            //Don't add empty lines to Lists
             if (in_recipients)
             {
                 if (line != "")
                 {
                     recipients.Add(line);
                 }
-                
+
             }
             else if (in_cc_people)
             {
@@ -103,8 +156,7 @@ class MainClass
         }
 
 
-        //Remove titles
-
+        //Remove titles from Lists
         recipients.RemoveAt(0);
         cc_people.RemoveAt(0);
         subjects.RemoveAt(0);
@@ -112,65 +164,25 @@ class MainClass
         attachments.RemoveAt(0);
 
 
-
-        // Display the file contents by using a foreach loop.
-
-        Console.WriteLine("Recipient list content:");
-        foreach (string recipient in recipients)
-        {
-            // Use a tab to indent each line of the file.
-            Console.WriteLine("\t" + recipient);
-        }
-
-        Console.WriteLine("CC list content:");
-        foreach (string cc in cc_people)
-        {
-            // Use a tab to indent each line of the file.
-            Console.WriteLine("\t" + cc);
-        }
-        Console.WriteLine("Subject list content:");
-        foreach (string subject in subjects)
-        {
-            // Use a tab to indent each line of the file.
-            Console.WriteLine("\t" + subject);
-        }
-        Console.WriteLine("Body list content:");
-        foreach (string line in body_lines)
-        {
-            // Use a tab to indent each line of the file.
-            Console.WriteLine("\t" + line);
-        }
-        Console.WriteLine("Attachment list content:");
-        foreach (string path in attachments)
-        {
-            // Use a tab to indent each line of the file.
-            Console.WriteLine("\t" + path);
-        }
-
-
-
-
-
-
+        //Create outlookApp object and bring new email window to foreground
         Outlook.Application outlookApp = new Outlook.Application();
         Outlook._MailItem oMailItem = (Outlook._MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
         Outlook.Inspector oInspector = oMailItem.GetInspector;
+        oInspector.Activate();
 
 
 
-        // Recipient
+        //Add Recipients to the new email
         Outlook.Recipients oRecips = (Outlook.Recipients)oMailItem.Recipients;
-        foreach (String recipient in recipients)
+        foreach (string recipient in recipients)
         {
             Outlook.Recipient oRecip = (Outlook.Recipient)oRecips.Add(recipient);
             oRecip.Resolve();
         }
 
 
-        //Add CC
-      
-
-        foreach (String cc in cc_people)
+        //Add CC to the new email
+        foreach (string cc in cc_people)
         {
             Outlook.Recipient oCCRecip = oRecips.Add(cc);
             oCCRecip.Type = (int)Outlook.OlMailRecipientType.olCC;
@@ -178,68 +190,47 @@ class MainClass
         }
 
 
-
-
-        
-        
-
-
-
-
-        //Add Subject
+        //Add Subject to the new email
         oMailItem.Subject = subjects[0];
 
-        String combined_body = "";
 
-        foreach (String line in body_lines)
+        //Add body to the new email
+        string combined_body = "";
+        foreach (string line in body_lines)
         {
-            combined_body += line +"\n";
+            combined_body += line + "\n";
         }
         oMailItem.Body = combined_body;
 
-        //Get name of most recent pdf (Desired File)
-        DirectoryInfo info = new DirectoryInfo("c:/users/" + userName + "/Downloads");
-        FileInfo[] pdfList = info.GetFiles("*.pdf").OrderBy(p => p.CreationTime).ToArray();
-
-        //Debugging
-        foreach (FileInfo pdf in pdfList)
-        {
-            //Console.WriteLine(pdf.Name);
-        }
-
-        String sourceFile = pdfList.Last().FullName;
-        Console.WriteLine(sourceFile);
-        
 
         //Add Attachment
-        oMailItem.Attachments.Add(pdfList.Last().FullName, Outlook.OlAttachmentType.olByValue,1,pdfList.Last().Name);
-
-        
-
+        oMailItem.Attachments.Add(pdfList.Last().FullName, Outlook.OlAttachmentType.olByValue, 1, pdfList.Last().Name);
+               
         // body, bcc etc...
-        oMailItem.Display(true);
+        try //New mail tab already open EXCEPTION
+        {
+            oMailItem.Display(true);
+        }
+        catch (System.Runtime.InteropServices.COMException)
+        {
+            System.Windows.Forms.MessageBox.Show("Close open Outlook tabs and try again!");
 
-
-        //Save a copy of most recent pdf to O:/
-        String targetPath = @"O:\TFM_GESTION\PM\BACKUP\";
-        String destFile = targetPath + pdfList.Last().Name;
-       
-        System.IO.File.Copy(sourceFile, destFile, true);
-
+        }
+        
         //Delete .hta file
-        String htaPath = "C:/Users/" + userName + "/Downloads/AppExec.hta";
+        string htaPath = "C:/Users/" + userName + "/Downloads/AppExec.hta";
 
-            //Check if file exists
-            if (File.Exists(htaPath))
-            {
+        //Check if file exists
+        if (File.Exists(htaPath))
+        {
             File.Delete(htaPath);
             Console.WriteLine("Cleanup success!");
-
-            }
+        }
         else
         {
             Console.WriteLine("Cleanup Error!")
-;        }
+;
+        }
 
 
 
