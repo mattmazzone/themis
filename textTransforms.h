@@ -14,6 +14,9 @@ class Reformater
 private:
 	std::wstring filePath;
 	std::wstring cadenassageURL;
+	std::wstring functionnalLocation;
+	std::wstring equipmentNumber;
+	std::wstring taskNumber;
 
 public:
 	Reformater(std::wstring path);
@@ -26,6 +29,9 @@ public:
 
 	std::wstring getCadenassage();
 
+	std::wstring getFunctionnalLocation();
+	std::wstring getEquipmentNumber();
+	std::wstring getTaskNumber();
 };
 
 

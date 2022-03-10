@@ -50,6 +50,11 @@ int main()
 
 		HtmlGenerator htmlGen(path, formattedFile, reformatTxt.getCadenassage() );
 
+		htmlGen.setFunctionnalLocation(reformatTxt.getFunctionnalLocation());
+		htmlGen.setEquipmentNumber(reformatTxt.getEquipmentNumber());
+		htmlGen.setTaskNumber(reformatTxt.getTaskNumber());
+
+
 		htmlGen.callInOrder(status);
 
 		htmlGen.writeBuffertohtml(status);

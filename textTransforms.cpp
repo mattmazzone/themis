@@ -92,10 +92,22 @@ std::wstring Reformater::detectTextFields(std::wstring inp) {
 
 std::wstring Reformater::getCadenassage()
 {
-	return cadenassageURL;;
+	return cadenassageURL;
 }
 
 
+std::wstring Reformater::getFunctionnalLocation()
+{
+	return functionnalLocation;
+}
+std::wstring Reformater::getEquipmentNumber()
+{
+	return equipmentNumber;
+}
+std::wstring Reformater::getTaskNumber()
+{
+	return taskNumber;
+}
 
 std::vector<std::wstring> Reformater::reformatGood() {
 
@@ -128,6 +140,47 @@ std::vector<std::wstring> Reformater::reformatGood() {
 	}
 	
 	
+
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"-FUNC_LOCATION:");
+
+		
+
+		if (finder != std::string::npos) {
+			
+			functionnalLocation = str.substr(15, str.length());
+			formattedTextFile.erase(formattedTextFile.begin() + i);
+		}
+	}
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"-EQIP_NUMBER:");
+		
+
+		if (finder != std::string::npos) {
+			
+			equipmentNumber = str.substr(13, str.length());
+			formattedTextFile.erase(formattedTextFile.begin() + i);
+		}
+	}
+	for (size_t i = 0; i < formattedTextFile.size(); i++) {
+		std::wstring str = formattedTextFile[i];
+		str = removeWhitespace(str);
+		size_t finder = str.find(L"-TASK_NUMBER:");
+		
+
+		if (finder != std::string::npos) {
+			
+			taskNumber = str.substr(13, str.length());
+			formattedTextFile.erase(formattedTextFile.begin() + i);
+		}
+	}
+
+
+
 	for (size_t i = 0; i < formattedTextFile.size(); i++) {
 		std::wstring str = formattedTextFile[i];
 		str = removeWhitespace(str);
@@ -135,7 +188,7 @@ std::vector<std::wstring> Reformater::reformatGood() {
 
 		if (finder != std::string::npos) {
 			cadenassageURL = str.substr(18, str.length());
-			formattedTextFile.erase(formattedTextFile.begin() + i, formattedTextFile.end());
+			formattedTextFile.erase(formattedTextFile.begin() + i);
 		}
 	}
 
@@ -226,12 +279,12 @@ std::vector<std::wstring> Reformater::reformatGood() {
 	}
 
 	
-/*
+
 
 	 for (auto i : formattedTextFile){
 		std::wcout<<i <<std::endl;
 	}
-	*/
+	
 
 	return formattedTextFile;
 

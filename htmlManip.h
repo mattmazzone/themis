@@ -18,6 +18,11 @@ private:
 	std::wstring outputPath;
 	std::wstringstream buffer;
 	std::wstring cadenasURL;
+
+	std::wstring functionnalLocation;
+	std::wstring equipmentNumber;
+	std::wstring taskNumber;
+
 	std::vector<std::wstring> formattedFile;
 
 	std::vector<int> fileTitlesLN;
@@ -46,6 +51,13 @@ public:
 	void addSecuriteHtml(bool release, int start, int end);
 
 	void addCadenassageHtml( bool release);
+
+	void setFunctionnalLocation(std::wstring location);
+	void setEquipmentNumber(std::wstring equipNum);
+	void setTaskNumber(std::wstring taskNum);
+
+	void addFilePathHtml(bool release);
+
 
 	void addUnknownsHtml(bool release, int start, int end);
 

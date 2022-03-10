@@ -747,7 +747,7 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 				<td>)" << checklistStrings[i] << R"(</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(">		
+				      <input type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(" required>		
 				   </label>
 				</td>
 				<td>
@@ -1270,6 +1270,67 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 	}
 }
 
+void HtmlGenerator::setFunctionnalLocation(std::wstring location)
+{
+	functionnalLocation = location;
+}
+
+void HtmlGenerator::setEquipmentNumber(std::wstring equipNum)
+{
+	equipmentNumber = equipNum;
+}
+
+void HtmlGenerator::setTaskNumber(std::wstring taskNum)
+{
+	taskNumber = taskNum;
+}
+
+void HtmlGenerator::addFilePathHtml(bool release)
+{
+	size_t before = buffer.str().size();
+
+
+	if (functionnalLocation == L"" || equipmentNumber == L"" || taskNumber == L"" ) {
+		buffer << R"(
+	<div>
+      Missing functionnal location or equipment number or task number
+	</div>
+   )" << std::endl;
+	}
+	else {
+		buffer << R"(
+  <div style="display: none">)" << R"(
+	func_location:)" << functionnalLocation << R"(
+	equip_num:)" << equipmentNumber << R"(
+	task_num:)" << taskNumber << R"(
+   </div>
+   )" << std::endl;
+	}
+
+
+
+	SetConsoleTextAttribute(hConsole, green);
+	std::wcout << L"Inserting File path Div..." << std::endl;
+	SetConsoleTextAttribute(hConsole, white);
+
+
+	//HTML CODE
+
+
+	if (release) {
+		if (before < buffer.str().size()) {
+			SetConsoleTextAttribute(hConsole, green);
+			std::wcout << L"Writing Cadenassage to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
+		}
+		else {
+			SetConsoleTextAttribute(hConsole, red);
+			std::wcout << L"Failed to write Cadenassage to buffer..." << std::endl;
+			SetConsoleTextAttribute(hConsole, white);
+		}
+	}
+}
+
 void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	size_t before = buffer.str().size();
 
@@ -1339,6 +1400,7 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	
 		document.title = printTitle;
 		window.print();  
+		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/FileClient.hta");
 	}
 	
 	
@@ -1377,7 +1439,7 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	
 		document.title = printTitle;
 		window.print();  
-		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/AppExec.hta");
+		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/EmailClient.hta");
 	}
 	
 	
@@ -1568,11 +1630,11 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			if (std::find(subStepIndeces.begin(), subStepIndeces.end(), i) != subStepIndeces.end()) {
 				buffer << R"(
     
-         <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">)";
+         <div style="clear: both; padding-top: 10px; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">)";
 			}
 			else {
 				buffer << R"(
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">)";
+            <div style="clear: both; padding-top: 10px ;padding-bottom: 40px;" class="dontbreak">)";
 			}
 
 
@@ -1778,12 +1840,12 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 					buffer << R"(
 
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">)" << std::endl;
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">)" << std::endl;
 				}
 				else {
 					buffer << R"(
 
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">)" << std::endl;
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px;" class="dontbreak">)" << std::endl;
 				}
 
 
@@ -1892,16 +1954,19 @@ void HtmlGenerator::callInOrder(bool release) {
 
 	//Start
 	addHeadHtml(release);
+	addFilePathHtml(release);
 
 	std::wstring input;
 	size_t foundTitle;
 	int functionToCall = 0;
 	bool callFunction = false;
 	bool inSection = false;
+	bool calledChecklist = false;
 	int start = 0;
 	int end = 0;
 
 	int last = 0;
+
 
 	//Look at formatted File for titles and add them all to array. If not recognized, call unknown. Unkown should add the name to the array so as not to read it twice
 	for (size_t i = 0; i < formattedFile.size(); i++) {
@@ -2034,11 +2099,22 @@ void HtmlGenerator::callInOrder(bool release) {
 				inSection = true;
 			}
 			else if (input == L"TÂCHES" || input == L"TACHES" || input == L"TACHE " || input == L"TÂCHE") {
+				
+				if (calledChecklist == false) {
+					addChecklistHtml(release);
+					calledChecklist = true;
+				}
+
 				functionToCall = 7;
 				inSection = true;
 			}
 			else {
 				//CALL UNKNOWN FUNCTION
+				
+				if (calledChecklist == false) {
+					addChecklistHtml(release);
+					calledChecklist = true;
+				}
 
 				functionToCall = 10;
 				inSection = true;
@@ -2051,7 +2127,7 @@ void HtmlGenerator::callInOrder(bool release) {
 	}
 
 	//Static Parts
-	addChecklistHtml(release);
+	
 	addRisquesHtml(release);
 
 
