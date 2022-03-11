@@ -226,7 +226,7 @@ void HtmlGenerator::addHeadHtml(bool release) {
 		  border-radius: 0.15em;
 		  transform: translateY(-0.075em);
 
-		  display: grid;
+		  display: inline-flex;
 		  place-content: center;
 		}
 		.input {
@@ -1377,7 +1377,36 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 			break;
 		}
 	}
+		//Avis Num
+	for (var i = 0; i < 1000; i++) { 
+	var avisCheckmark = document.getElementById('taskAvis'.concat(i));
+	var avisTextfield = document.getElementById('avisNum'.concat(i));
+		if (avisCheckmark && avisTextfield) {
+			if (avisCheckmark.checked === true && avisTextfield.value === '') {
+					avisTextfield.required = true;
+					printPage = false;
+			} 
+		} 
+		else {
+		break;
+		}
+	}
 	
+	//Repare ou Remplace = Textarea required
+	for (var i = 0; i < 1000; i++) { 
+	var taskRepare = document.getElementById('taskRepare'.concat(i));
+	var taskRemplace = document.getElementById('taskRemplace'.concat(i));
+	var taskNotes = document.getElementById('taskNotes'.concat(i));
+		if (taskRepare && taskRemplace && taskNotes) {
+			if ((taskRepare.checked === true || taskRemplace.checked === true )&& taskNotes.value === '') {
+					taskNotes.required = true;
+					printPage = false;
+			} 
+		} 
+		else {
+		break;
+		}
+	}
 	
 	//Badge Field
 	var badge = document.getElementById('badgefield').value;
@@ -1641,42 +1670,45 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			//Write array to buffer
 			buffer << R"(
                <div>
-				  <label class="form-control" for="taskCheckbox")" << i << R"(">)" << R"( 
-        	      <input type="checkbox" id="taskCheckbox)" << i << R"(" name="taskCheckbox)" << i << R"(" class="mustcheck" required>)"
+				  <label class="form-control" for="taskCheckbox)" << taskCounter << R"(">)" << R"( 
+        	      <input type="checkbox" id="taskCheckbox)" << taskCounter << R"(" name="taskCheckbox)" << taskCounter << R"(" class="mustcheck" required>)"
         	      << tachesStrings[i] << R"(
 				  </label>
 			      <br>
     	       </div>
     	       
     	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme")" << i << R"(">)" << R"( 
+					 <label class="form-control" for="taskConforme)" << taskCounter << R"(">)" << R"( 
 
-					 <input type="checkbox" id="taskConforme)" << i << R"(" name="taskConforme)" << i << R"(">
+					 <input type="checkbox" id="taskConforme)" << taskCounter << R"(" name="taskConforme)" << taskCounter << R"(">
     			     Conforme
 					 </label>
 					 <br>
     		      </div> 	
 
 				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare")" << i << R"(">)" << R"( 
-					 <input type="checkbox" id="taskRepare)" << i << R"(" name="taskRepare)" << i << R"(">
+					 <label class="form-control" for="taskRepare)" << taskCounter << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRepare)" << taskCounter << R"(" name="taskRepare)" << taskCounter << R"(">
     			     Réparé
 					 </label>
 					 <br>
     		      </div> 
     		
 				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace")" << i << R"(">)" << R"( 
-					 <input type="checkbox" id="taskRemplace)" << i << R"(" name="taskRemplace)" << i << R"(">
+					 <label class="form-control" for="taskRemplace)" << taskCounter << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRemplace)" << taskCounter << R"(" name="taskRemplace)" << taskCounter << R"(">
     			     Remplacé
 					 </label>
 					 <br>
     		      </div> 
 
 				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis")" << i << R"(">)" << R"( 
-					 <input type="checkbox" id="taskAvis)" << i << R"(" name="taskAvis)" << i << R"(">
+					 <label class="form-link" for="taskAvis)" << taskCounter << R"(">)" << R"( 
+					 <input type="checkbox" id="taskAvis)" << taskCounter << R"(" name="taskAvis)" << taskCounter << R"(">
     			     <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
+					 <div initial style="display:inline; padding-left:20px;">
+					<input id="avisNum)" << taskCounter << R"(" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
 					 </label>
 					 <br>
     		      </div> 
@@ -1686,7 +1718,7 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
     		     
     		
     		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		<textarea id="taskNotes)" << taskCounter << R"(" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
     		      
     	       
             </div>
@@ -1700,6 +1732,8 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			buffer << R"(
                 <p>)" << tachesStrings[i] << R"(</p>)" << std::endl;
 		}
+
+		taskCounter++;
 	}
 	//closing tag for main section div
 	buffer << R"(
@@ -1852,43 +1886,45 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 				//Write array to buffer
 				buffer << R"(
                <div>
-				  <label class="form-control" for="taskCheckbox")" << i << unknownTimesUsed << R"(">)" << R"( 
-        	      <input type="checkbox" id="taskCheckbox)" << i << unknownTimesUsed << R"(" name="taskCheckbox)" << i << unknownTimesUsed << R"(" class="mustcheck" required>)"
+				  <label class="form-control" for="taskCheckbox)" << taskCounter << R"(">)" << R"( 
+        	      <input type="checkbox" id="taskCheckbox)" << taskCounter << R"(" name="taskCheckbox)" << taskCounter << R"(" class="mustcheck" required>)"
 					<< unknownStrings[i] << R"(
 				  </label>
 			      <br>
     	       </div>
     	       
     	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme")" << i << unknownTimesUsed << R"(">)" << R"( 
+					 <label class="form-control" for="taskConforme)" << taskCounter << R"(">)" << R"( 
 
-					 <input type="checkbox" id="taskConforme)" << i << unknownTimesUsed << R"(" name="taskConforme)" << i << unknownTimesUsed << R"(">
+					 <input type="checkbox" id="taskConforme)" << taskCounter << R"(" name="taskConforme)" << taskCounter << R"(">
     			     Conforme
 					 </label>
 					 <br>
     		      </div> 	
 
 				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare")" << i << unknownTimesUsed << R"(">)" << R"( 
-					 <input type="checkbox" id="taskRepare)" << i << unknownTimesUsed << R"(" name="taskRepare)" << i << unknownTimesUsed << R"(">
+					 <label class="form-control" for="taskRepare)" << taskCounter << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRepare)" << taskCounter << R"(" name="taskRepare)" << taskCounter << R"(">
     			     Réparé
 					 </label>
 					 <br>
     		      </div> 
     		
 				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace")" << i << unknownTimesUsed << R"(">)" << R"( 
-					 <input type="checkbox" id="taskRemplace)" << i << unknownTimesUsed << R"(" name="taskRemplace)" << i << unknownTimesUsed << R"(">
+					 <label class="form-control" for="taskRemplace)" << taskCounter << R"(">)" << R"( 
+					 <input type="checkbox" id="taskRemplace)" << taskCounter << R"(" name="taskRemplace)" << taskCounter << R"(">
     			     Remplacé
 					 </label>
 					 <br>
     		      </div> 
 
 				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis")" << i << unknownTimesUsed << R"(">)" << R"( 
-					 <input type="checkbox" id="taskAvis)" << i << unknownTimesUsed << R"(" name="taskAvis)" << i << unknownTimesUsed << R"(">
-    			    <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
-					 </label>
+					 <label class="form-link" for="taskAvis)" << taskCounter << R"(">)" << R"( 
+					 <input type="checkbox" id="taskAvis)" << taskCounter << R"(" name="taskAvis)" << i << R"(">
+    			     <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
+					 <div initial style="display:inline; padding-left:20px;">
+					<input id="avisNum)" << i << R"(" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
 					 <br>
     		      </div> 
     	          
@@ -1897,7 +1933,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
     		     
     		
     		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		<textarea id="taskNotes)" << taskCounter << R"(" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
     		      
     	       
             </div>
@@ -1917,6 +1953,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 		buffer << R"(
         </div>)" << std::endl;
 
+		taskCounter++;
 
 	}
 
@@ -1945,7 +1982,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 
 
-	unknownTimesUsed++;
+	
 
 
 }

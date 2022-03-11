@@ -19,6 +19,8 @@ private:
 	std::wstringstream buffer;
 	std::wstring cadenasURL;
 
+	int taskCounter = 0;
+
 	std::wstring functionnalLocation;
 	std::wstring equipmentNumber;
 	std::wstring taskNumber;
@@ -26,7 +28,7 @@ private:
 	std::vector<std::wstring> formattedFile;
 
 	std::vector<int> fileTitlesLN;
-	int unknownTimesUsed = 0;
+	
 
 	HANDLE hConsole;
 	const int green = 10;
