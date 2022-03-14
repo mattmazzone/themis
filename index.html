@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Documentation Outil de Conversion PM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded py-3
+            py-lg-5 border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand ps-5 fw-bolder" href="#banner">
+                Documentation Outil de conversion PM
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder pe-4" href="#a_propos">À
+                            Propos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bolder pe-4" href="#" id="dropdown10"
+                            data-bs-toggle="dropdown" aria-expanded="false">Sections
+                            d'un PM</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                            <li><a class="dropdown-item" href="#preparation">Préparation</a></li>
+                            <li><a class="dropdown-item" href="#documents_references">Documents
+                                    Références</a></li>
+                            <li><a class="dropdown-item" href="#consommables">Consommables</a></li>
+                            <li><a class="dropdown-item" href="#pieces">Pièces</a></li>
+                            <li><a class="dropdown-item" href="#outils">Outils</a></li>
+                            <li><a class="dropdown-item" href="#securite">Sécurité</a></li>
+                            <li><a class="dropdown-item" href="#formulaireA3">Formulaire A3</a></li>
+                            <li><a class="dropdown-item" href="#risques_et_methodes">Risques et
+                                    Méthodes de Contrôle</a></li>
+                            <li><a class="dropdown-item" href="#taches">Tâches</a></li>
+                            <li><a class="dropdown-item" href="#infos_soumission">Infos
+                                    Soumission</a></li>
+                            <li><a class="dropdown-item" href="#ajouter_images">Ajouter des
+                                    Images</a></li>
+                            <li><a class="dropdown-item" href="#soumettre_replanifier">Soumettre/Replanifier</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder pe-4" href="#">Comment
+                            Utiliser</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="banner" class="container text-center px-2 my-5 py-5">
+        <!-- filetype-txt SVG-->
+        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor" class="bi bi-filetype-txt"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M14 4.5V14a2 2 0 0 1-2 2h-2v-1h2a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.928 15.849v-3.337h1.136v-.662H0v.662h1.134v3.337h.794Zm4.689-3.999h-.894L4.9 13.289h-.035l-.832-1.439h-.932l1.228 1.983-1.24 2.016h.862l.853-1.415h.035l.85 1.415h.907l-1.253-1.992 1.274-2.007Zm1.93.662v3.337h-.794v-3.337H6.619v-.662h3.064v.662H8.546Z" />
+        </svg>
+        <!-- arrow-right SVG-->
+        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor" class="bi bi-arrow-right"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+        </svg>
+        <!-- filetype-html SVG-->
+        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor" class="bi bi-filetype-html"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5Zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662H6.515Zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999h.706Zm4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z" />
+        </svg>
+        <!-- arrow-right SVG-->
+        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor" class="bi bi-arrow-right"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+        </svg>
+        <!-- filetype-html SVG-->
+        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor" class="bi bi-filetype-pdf"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z" />
+        </svg>
+    </div>
+
+
+    <div id="a_propos" class="container px-2 my-5 py-5">
+        <h1>À Propos</h1>
+        <p>
+            Le projet de numérisation des PM a comme but de tranformer les PM fomat .txt en format .pdf. Les PM en
+            format .pdf vont être lu et complété sur les tablettes par les techniciens.
+        </p>
+        <p> 
+            Convertir chaque PM à la main prendrait beaucoup trop de temps parce que il y en plus de 2000. Alors,
+            pour y arriver, un outil de conversion a été développé.
+
+
+        </p>
+
+
+
+    </div>
+    <div id="preparation" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Préparation</h1>
+    </div>
+    <div id="documents_references" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Documents Références</h1>
+    </div>
+    <div id="consommables" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Consommables</h1>
+    </div>
+    <div id="pieces" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Pièces</h1>
+    </div>
+    <div id="outils" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Outils</h1>
+    </div>
+    <div id="securite" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Sécurité</h1>
+    </div>
+    <div id="formulaireA3" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Fromulaire A3</h1>
+    </div>
+    <div id="risques_et_methodes" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Rsiques et Méthodes</h1>
+    </div>
+    <div id="taches" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Tâches</h1>
+    </div>
+
+    <div id="infos_soumission" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Infos Soumission</h1>
+    </div>
+
+
+    <div id="ajouter_images" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Ajouter des Images</h1>
+    </div>
+
+
+
+    <div id="soumettre_replanifier" class="container  px-2 my-5 py-5">
+        <h1>Section PM: Soumettre/Replanifier</h1>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
