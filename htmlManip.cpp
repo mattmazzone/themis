@@ -28,7 +28,7 @@ void HtmlGenerator::addHeadHtml(bool release) {
 <html lang="en">
    <head>
       <title>)" << pageTitle << R"(</title>
-      <meta charset="ansi"/>
+      <meta charset="windows-1252"/>
       <meta name=" viewport " content=" width = device - width, initial - scale = 1 " />
       <meta name=" description " content=" " />
             <style>
@@ -326,7 +326,7 @@ void HtmlGenerator::addHeadHtml(bool release) {
    </head>
    <body>
    <form onsubmit="return false">
-	<img id="top-logo" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\Pratt_&_Whitney_logo.png">
+	<img id="top-logo" src="O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/Pratt_&_Whitney_logo.png" alt="pratt_logo">
 )";
 }
 
@@ -337,9 +337,9 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 	//Write the top part of the page
 	buffer << R"(    
       <h1 style="text-align: center;">Maintenance Préventive TFM</h1>
-      <h2 style="text-align: center;">TCX-XX</h2>
-      <h2 style="text-align: center;">MXXXXX-XX</h2>
-      <h2 style="text-align: center;">TXXXXX-XXXX</h2>
+      <h2 style="text-align: center;">)" << functionnalLocation <<  R"(</h2>
+      <h2 style="text-align: center;">)" << equipmentNumber << R"(</h2>
+      <h2 style="text-align: center;">)" << taskNumber << R"(</h2>
     )";
 
 	std::vector<std::wstring> prepStrings;
@@ -380,7 +380,7 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 
 	}
 	buffer << R"(
-	<a style="padding-left:40px" class="form-link" href="O:\TFM_GESTION\PM\1_TEMPLATES\fiche_communication_ects.xlsx"> Fiche de communication</a>
+	<a style="padding-left:40px" class="form-link" href="O:/TFM_GESTION/PM/1_TEMPLATES/fiche_communication_ects.xlsx"> Fiche de communication</a>
       </div>
     )";
 
@@ -672,10 +672,13 @@ void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
 			<br>)" << std::endl;
 
 	}
+	addCadenassageHtml(release);
 
 	buffer << R"(
+
         </div>
     )";
+	
 
 
 
@@ -730,8 +733,8 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 
 
 		buffer << R"(
-         <div id="Checklist" class="breakbefore">
-		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
+         <div id="Checklist" style="clear:both" class="breakbefore">
+		   <h3 style="text-align: left; text-decoration: underline;">Formulaire A3</h3>
 		
 			<table>
 			  <tr>
@@ -739,11 +742,51 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 				<th style="width:15%; text-align: center;">Oui</th>
 				<th style="width:15%; text-align: center;">Non</th>
 			  </tr>
-			  <tr>)";
+			  )";
 
 			for (size_t i = 0; i < checklistStrings.size(); i++){
+
+				if (checklistStrings[i].at(0) == L'Y') {
+					buffer << R"(
+				<tr>
+				<td>)" << checklistStrings[i].substr(1,checklistStrings[i].length()) << R"(</td>
+				<td style="background-color: lightpink">
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(" required>		
+				   </label>
+				</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkno)" << i << R"(" name = "check)" << i << R"(">		
+				   </label>
+				</td>
 				
-				buffer << R"(
+			  </tr>)";
+
+
+
+				}
+				else if (checklistStrings[i].at(0) == L'N') {
+					buffer << R"(
+				<tr>
+				<td>)" << checklistStrings[i].substr(1, checklistStrings[i].length()) << R"(</td>
+				<td>
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkyes)" << i << R"(" name = "check)" << i << R"(" required>		
+				   </label>
+				</td>
+				<td style="background-color: lightpink">
+				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+				      <input type = "radio" id = "checkno)" << i << R"(" name = "check)" << i << R"(">		
+				   </label>
+				</td>
+				
+			  </tr>)";
+				}
+				
+				else {
+					buffer << R"(
+				<tr>
 				<td>)" << checklistStrings[i] << R"(</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
@@ -757,6 +800,9 @@ void HtmlGenerator::addChecklistHtml(bool release)   {
 				</td>
 				
 			  </tr>)";
+				}
+				
+				
 			}
 			  
 		buffer << R"(
@@ -1015,14 +1061,14 @@ void HtmlGenerator::addRisquesHtml(bool release) {
 
 	//HTML CODE
 	buffer << R"(
-    <div id="risquesetmethodes" style="clear:both; class="breakbefore"">
+    <div id="risquesetmethodes" style="clear:both;" class="breakbefore">
 		<h3 style="text-align: left; text-decoration: underline;">Risques et Méthodes de Contrôle</h3>
 		
 		<ul id="ul">
 		</ul>
 		<div style="clear: both; padding: 10px;" class="no-print">
-			<button class="button" id="riskBtn" type="button" class="no-print">
-				Add a field 
+			<button class="button" id="riskBtn" type="button" >
+				Ajouter
 			</button>
 		</div>
 	</div>
@@ -1166,6 +1212,7 @@ void HtmlGenerator::addBadgefieldHtml(bool release) {
       </div>
       
       <div class="no-print" style="clear:both; float: left">
+		 <p>Ajouter des images à la soumission du PM</p>	
          <input id="file-input" type="file" multiple>
          <div style="padding:20px" id="preview"></div>
       </div>
@@ -1233,8 +1280,7 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 	if (cadenasURL != L"") {
 		buffer << R"(
   <div style="float: left; padding: 50px;" id="cadenassage" class="dontbreak">
-      <a href=")" << cadenasURL << R"(" target="_blank"><img id="imgCadenassage" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\logo_cadenas.png"/></a>
-	<p>)" << cadenasURL << R"(</p>
+      <a href=")" << cadenasURL << R"(" target="_blank"><img id="imgCadenassage" src="O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png" alt="cadenas_logo"></a>
    </div>
    )" << std::endl;
 	}
@@ -1253,6 +1299,7 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 		SetConsoleTextAttribute(hConsole, white);
 
 	
+		// <p>)" << cadenasURL << R"(</p>
 	//HTML CODE
 	
 
@@ -1338,8 +1385,8 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	buffer << R"(
   
     <div style="text-align: center; clear:both;" class="no-print">
-	<button class="button" id="submitBtn" class="no-print">Soumettre</button>
-	<button class="button" id="replanBtn" type="button" class="no-print">À Replanifier</button>
+	<button class="button" id="submitBtn">Soumettre</button>
+	<button class="button" id="replanBtn" type="button" >À Replanifier</button>
     </div>
 
      </form>
@@ -1347,6 +1394,76 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	<footer>
 		<div style="height: 50px"></div>
 	</footer>
+
+
+	<script>
+		for (var i = 0; i < 1000; i++) { 
+			var taskRepare = document.getElementById('taskRepare'.concat(i));
+			var taskRemplace = document.getElementById('taskRemplace'.concat(i));
+			if (taskRepare){
+				taskRepare.setAttribute('onclick','addSearchableNote()')
+			}
+			if (taskRemplace){
+				taskRemplace.setAttribute('onclick','addSearchableNote()')
+			}
+		}
+
+
+
+	function addSearchableNote() {
+		
+		for (var i = 0; i < 1000; i++) { 
+			var taskRepare = document.getElementById('taskRepare'.concat(i));
+			var taskRemplace = document.getElementById('taskRemplace'.concat(i));
+			if (taskRemplace && taskRepare){
+				if (taskRemplace.checked === true && taskRepare.checked === true) {
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+						if (pTag) {
+							pTag.remove();
+						}
+					var pTag = document.createElement('p');
+					pTag.id = 'remplaceNote'.concat(i);
+					pTag.innerText = "Note de réparation et remplacement"
+					pTag.style="margin-block-start:0em"
+					var element = taskRemplace.parentElement.parentElement.parentElement;
+					element.appendChild(pTag);
+						
+				} 
+				else if (taskRemplace.checked === true && taskRepare.checked === false){
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+						if (pTag) {
+							pTag.remove();
+						}
+					var pTag = document.createElement('p');
+					pTag.id = 'remplaceNote'.concat(i);
+					pTag.innerText = "Note de remplacement"
+					pTag.style="margin-block-start:0em"
+					var element = taskRemplace.parentElement.parentElement.parentElement;
+					element.appendChild(pTag);
+				}
+				else if (taskRemplace.checked === false && taskRepare.checked === true){
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+						if (pTag) {
+							pTag.remove();
+						}
+					var pTag = document.createElement('p');
+					pTag.id = 'remplaceNote'.concat(i);
+					pTag.innerText = "Note de réparation"
+					pTag.style="margin-block-start:0em"
+					var element = taskRemplace.parentElement.parentElement.parentElement;
+					element.appendChild(pTag);
+				} 
+				else {
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+					if (pTag) {
+						pTag.remove();
+					}
+				}
+			}
+		}
+	}
+	
+	</script>
     
 <script>
     function generatePDF(){
@@ -1373,22 +1490,21 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 
 			}
 		} 
-		else {
-			break;
-		}
+		
 	}
-		//Avis Num
+				//Avis Num
 	for (var i = 0; i < 1000; i++) { 
 	var avisCheckmark = document.getElementById('taskAvis'.concat(i));
 	var avisTextfield = document.getElementById('avisNum'.concat(i));
 		if (avisCheckmark && avisTextfield) {
 			if (avisCheckmark.checked === true && avisTextfield.value === '') {
-					avisTextfield.required = true;
+					avisTextfield.setAttribute('required', '');
 					printPage = false;
 			} 
-		} 
-		else {
-		break;
+			else {
+				avisTextfield.removeAttribute('required');
+			} 
+		
 		}
 	}
 	
@@ -1399,13 +1515,14 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	var taskNotes = document.getElementById('taskNotes'.concat(i));
 		if (taskRepare && taskRemplace && taskNotes) {
 			if ((taskRepare.checked === true || taskRemplace.checked === true )&& taskNotes.value === '') {
-					taskNotes.required = true;
+					taskNotes.setAttribute('required', '');
 					printPage = false;
 			} 
+			else {
+			taskNotes.removeAttribute('required');
+			}
 		} 
-		else {
-		break;
-		}
+		
 	}
 	
 	//Badge Field
@@ -1563,6 +1680,8 @@ bool HtmlGenerator::addPictureHtml(std::wstring inp) {
 
 void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
+	
+
 	std::vector<std::wstring> tachesStrings;
 	std::vector<int> subStepIndeces;
 
@@ -1705,11 +1824,12 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 				  <div style="float:left; padding-left: 20px;">
 					 <label class="form-link" for="taskAvis)" << taskCounter << R"(">)" << R"( 
 					 <input type="checkbox" id="taskAvis)" << taskCounter << R"(" name="taskAvis)" << taskCounter << R"(">
-    			     <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
-					 <div initial style="display:inline; padding-left:20px;">
+					 </label>
+    			     <a href=")" << ectsURL << R"(" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
 					<input id="avisNum)" << taskCounter << R"(" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
 					</div>
-					 </label>
+					 
 					 <br>
     		      </div> 
     	          
@@ -1843,7 +1963,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 	input = input.substr(2, input.size() - 4);
 
 	buffer << R"(
-        <div id=")" << input << R"(" class="breakbefore">
+        <div id="unknownSection)" << unknownSectionCounter << R"(" class="breakbefore">
 	<h3 style="text-align: left; text-decoration: underline;">)" << input << R"(</h3>)";
 
 
@@ -1904,7 +2024,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 				  <div style="float:left; padding-left: 20px;">
 					 <label class="form-control" for="taskRepare)" << taskCounter << R"(">)" << R"( 
-					 <input type="checkbox" id="taskRepare)" << taskCounter << R"(" name="taskRepare)" << taskCounter << R"(">
+					 <input type="checkbox" id="taskRepare)" << taskCounter << R"(" name="taskRepare)" << taskCounter <<R"(">
     			     Réparé
 					 </label>
 					 <br>
@@ -1921,8 +2041,9 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 				  <div style="float:left; padding-left: 20px;">
 					 <label class="form-link" for="taskAvis)" << taskCounter << R"(">)" << R"( 
 					 <input type="checkbox" id="taskAvis)" << taskCounter << R"(" name="taskAvis)" << i << R"(">
-    			     <a href=")" << ectsURL << R"(" target="_blank">Avis Créé </a>
-					 <div initial style="display:inline; padding-left:20px;">
+					</label>
+    			     <a href=")" << ectsURL << R"(" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
 					<input id="avisNum)" << i << R"(" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
 					</div>
 					 <br>
@@ -1948,14 +2069,14 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 			}
 		}
 
+		
 
-		//closing tag for main section div
-		buffer << R"(
-        </div>)" << std::endl;
 
 		taskCounter++;
 
 	}
+	buffer << R"(</div>)";
+	unknownSectionCounter++;
 
 
 	if (release) {
@@ -2046,6 +2167,7 @@ void HtmlGenerator::callInOrder(bool release) {
 				case 2:
 				{
 					addSecuriteHtml(release, start, end);
+					
 					callFunction = false;
 					inSection = false;
 					functionToCall = 0;
@@ -2150,6 +2272,7 @@ void HtmlGenerator::callInOrder(bool release) {
 				
 				if (calledChecklist == false) {
 					addChecklistHtml(release);
+					addRisquesHtml(release);
 					calledChecklist = true;
 				}
 
@@ -2165,7 +2288,7 @@ void HtmlGenerator::callInOrder(bool release) {
 
 	//Static Parts
 	
-	addRisquesHtml(release);
+	
 
 
 
@@ -2175,7 +2298,7 @@ void HtmlGenerator::callInOrder(bool release) {
 	//Static Parts
 	addFinmaintHtml(release);
 	addNotesHtml(release);
-	addCadenassageHtml(release);
+	
 	addBadgefieldHtml(release);
 	addSubmitbuttonHtml(release);
 

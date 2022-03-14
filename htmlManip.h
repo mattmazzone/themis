@@ -15,6 +15,7 @@
 
 class HtmlGenerator {
 private:
+	int unknownSectionCounter = 0;
 	std::wstring outputPath;
 	std::wstringstream buffer;
 	std::wstring cadenasURL;

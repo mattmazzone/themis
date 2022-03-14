@@ -2,7 +2,7 @@
 <html lang="en">
    <head>
       <title>PM.html</title>
-      <meta charset="ansi"/>
+      <meta charset="windows-1252"/>
       <meta name=" viewport " content=" width = device - width, initial - scale = 1 " />
       <meta name=" description " content=" " />
             <style>
@@ -200,7 +200,7 @@
 		  border-radius: 0.15em;
 		  transform: translateY(-0.075em);
 
-		  display: grid;
+		  display: inline-flex;
 		  place-content: center;
 		}
 		.input {
@@ -300,12 +300,19 @@
    </head>
    <body>
    <form onsubmit="return false">
-	<img id="top-logo" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\Pratt_&_Whitney_logo.png">
+	<img id="top-logo" src="O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/Pratt_&_Whitney_logo.png" alt="pratt_logo">
+
+  <div style="display: none">
+	func_location:PWC-TFE-0001-TC10
+	equip_num:M98110-10
+	task_num:T98110-10MI2
+   </div>
+   
     
       <h1 style="text-align: center;">Maintenance Préventive TFM</h1>
-      <h2 style="text-align: center;">TCX-XX</h2>
-      <h2 style="text-align: center;">MXXXXX-XX</h2>
-      <h2 style="text-align: center;">TXXXXX-XXXX</h2>
+      <h2 style="text-align: center;">PWC-TFE-0001-TC10</h2>
+      <h2 style="text-align: center;">M98110-10</h2>
+      <h2 style="text-align: center;">T98110-10MI2</h2>
     
       <div id="Preparation" class="dontbreak">
          <h3 style="text-align: left; text-decoration: underline;">Préparation</h3>
@@ -321,13 +328,7 @@
 		 </label>
 		 <br>
 
-
-		 <label class="form-control">
-         <input type="checkbox" id="prep2" name="checkbox" required> INSTALLER "AVIS DE MAINTENANCE" DANS LA SALLE DE CONTRÔLE ET REMPLIR LA FICHE DE COMMUNICATION.
-		 </label>
-		 <br>
-
-	<a style="padding-left:40px" class="form-link" href="O:\TFM_GESTION\PM\1_TEMPLATES\fiche_communication_ects.xlsx"> Fiche de communication</a>
+	<a style="padding-left:40px" class="form-link" href="O:/TFM_GESTION/PM/1_TEMPLATES/fiche_communication_ects.xlsx"> Fiche de communication</a>
       </div>
     
       <div id="DocRef" class="dontbreak">
@@ -360,680 +361,6 @@
 
         </div>
     
-        <div id=" VÉRIFICATIONS AVEC L'UNITÉE EN FONCTION " class="breakbefore">
-	<h3 style="text-align: left; text-decoration: underline;"> VÉRIFICATIONS AVEC L'UNITÉE EN FONCTION </h3>
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"00"> 
-        	      <input type="checkbox" id="taskCheckbox00" name="taskCheckbox00" class="mustcheck" required> 1 - VÉRIFIER LES COULISSES SUR LE LOCKING AVANT
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"00"> 
-
-					 <input type="checkbox" id="taskConforme00" name="taskConforme00">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"00"> 
-					 <input type="checkbox" id="taskRepare00" name="taskRepare00">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"00"> 
-					 <input type="checkbox" id="taskRemplace00" name="taskRemplace00">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"00"> 
-					 <input type="checkbox" id="taskAvis00" name="taskAvis00">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"10"> 
-        	      <input type="checkbox" id="taskCheckbox10" name="taskCheckbox10" class="mustcheck" required> 2 - VÉRIFIER FUITE D'AIR & D'HUILE ET LES DOMMAGES SUR LE "LOCKING WEDGES"
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"10"> 
-
-					 <input type="checkbox" id="taskConforme10" name="taskConforme10">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"10"> 
-					 <input type="checkbox" id="taskRepare10" name="taskRepare10">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"10"> 
-					 <input type="checkbox" id="taskRemplace10" name="taskRemplace10">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"10"> 
-					 <input type="checkbox" id="taskAvis10" name="taskAvis10">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"20"> 
-        	      <input type="checkbox" id="taskCheckbox20" name="taskCheckbox20" class="mustcheck" required> 3 - TESTER LE SYSTÈME
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"20"> 
-
-					 <input type="checkbox" id="taskConforme20" name="taskConforme20">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"20"> 
-					 <input type="checkbox" id="taskRepare20" name="taskRepare20">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"20"> 
-					 <input type="checkbox" id="taskRemplace20" name="taskRemplace20">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"20"> 
-					 <input type="checkbox" id="taskAvis20" name="taskAvis20">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"30"> 
-        	      <input type="checkbox" id="taskCheckbox30" name="taskCheckbox30" class="mustcheck" required> 3a - PISTON SORTIE
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"30"> 
-
-					 <input type="checkbox" id="taskConforme30" name="taskConforme30">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"30"> 
-					 <input type="checkbox" id="taskRepare30" name="taskRepare30">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"30"> 
-					 <input type="checkbox" id="taskRemplace30" name="taskRemplace30">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"30"> 
-					 <input type="checkbox" id="taskAvis30" name="taskAvis30">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"40"> 
-        	      <input type="checkbox" id="taskCheckbox40" name="taskCheckbox40" class="mustcheck" required> 3b - LOCK ARRIÈRE SORTIE
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"40"> 
-
-					 <input type="checkbox" id="taskConforme40" name="taskConforme40">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"40"> 
-					 <input type="checkbox" id="taskRepare40" name="taskRepare40">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"40"> 
-					 <input type="checkbox" id="taskRemplace40" name="taskRemplace40">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"40"> 
-					 <input type="checkbox" id="taskAvis40" name="taskAvis40">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"50"> 
-        	      <input type="checkbox" id="taskCheckbox50" name="taskCheckbox50" class="mustcheck" required> - LOCK AVANT SORTIE
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"50"> 
-
-					 <input type="checkbox" id="taskConforme50" name="taskConforme50">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"50"> 
-					 <input type="checkbox" id="taskRepare50" name="taskRepare50">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"50"> 
-					 <input type="checkbox" id="taskRemplace50" name="taskRemplace50">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"50"> 
-					 <input type="checkbox" id="taskAvis50" name="taskAvis50">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"60"> 
-        	      <input type="checkbox" id="taskCheckbox60" name="taskCheckbox60" class="mustcheck" required> - STABILITÉ DE PRESSION (1150+/-50 PSI)
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"60"> 
-
-					 <input type="checkbox" id="taskConforme60" name="taskConforme60">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"60"> 
-					 <input type="checkbox" id="taskRepare60" name="taskRepare60">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"60"> 
-					 <input type="checkbox" id="taskRemplace60" name="taskRemplace60">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"60"> 
-					 <input type="checkbox" id="taskAvis60" name="taskAvis60">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"70"> 
-        	      <input type="checkbox" id="taskCheckbox70" name="taskCheckbox70" class="mustcheck" required>4 - POSITION "UNLOCKING"
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"70"> 
-
-					 <input type="checkbox" id="taskConforme70" name="taskConforme70">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"70"> 
-					 <input type="checkbox" id="taskRepare70" name="taskRepare70">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"70"> 
-					 <input type="checkbox" id="taskRemplace70" name="taskRemplace70">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"70"> 
-					 <input type="checkbox" id="taskAvis70" name="taskAvis70">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"80"> 
-        	      <input type="checkbox" id="taskCheckbox80" name="taskCheckbox80" class="mustcheck" required> - PRESSION UNLOCKING (4600+/-50 PSI)
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"80"> 
-
-					 <input type="checkbox" id="taskConforme80" name="taskConforme80">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"80"> 
-					 <input type="checkbox" id="taskRepare80" name="taskRepare80">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"80"> 
-					 <input type="checkbox" id="taskRemplace80" name="taskRemplace80">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"80"> 
-					 <input type="checkbox" id="taskAvis80" name="taskAvis80">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"90"> 
-        	      <input type="checkbox" id="taskCheckbox90" name="taskCheckbox90" class="mustcheck" required> - PISTON RÉTRACTÉ
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"90"> 
-
-					 <input type="checkbox" id="taskConforme90" name="taskConforme90">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"90"> 
-					 <input type="checkbox" id="taskRepare90" name="taskRepare90">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"90"> 
-					 <input type="checkbox" id="taskRemplace90" name="taskRemplace90">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"90"> 
-					 <input type="checkbox" id="taskAvis90" name="taskAvis90">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"100"> 
-        	      <input type="checkbox" id="taskCheckbox100" name="taskCheckbox100" class="mustcheck" required> - LOCK AVANT RÉTRACTÉ
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"100"> 
-
-					 <input type="checkbox" id="taskConforme100" name="taskConforme100">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"100"> 
-					 <input type="checkbox" id="taskRepare100" name="taskRepare100">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"100"> 
-					 <input type="checkbox" id="taskRemplace100" name="taskRemplace100">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"100"> 
-					 <input type="checkbox" id="taskAvis100" name="taskAvis100">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-
-            <div style="clear: both; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
-
-               <div>
-				  <label class="form-control" for="taskCheckbox"110"> 
-        	      <input type="checkbox" id="taskCheckbox110" name="taskCheckbox110" class="mustcheck" required> - LOCK ARRIÈRE RÉTRACTÉ
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"110"> 
-
-					 <input type="checkbox" id="taskConforme110" name="taskConforme110">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"110"> 
-					 <input type="checkbox" id="taskRepare110" name="taskRepare110">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"110"> 
-					 <input type="checkbox" id="taskRemplace110" name="taskRemplace110">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"110"> 
-					 <input type="checkbox" id="taskAvis110" name="taskAvis110">
-    			    <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
         <div id="Securite" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>
 
@@ -1045,438 +372,16 @@
             <input type="checkbox" id="sec1" name="sec1"> VALIDER LA FICHE DE CADENASSAGE PROPRE, LISIBLE ET À JOUR.</label>
 			<br>
 
+  <div style="float: left; padding: 50px;" id="cadenassage" class="dontbreak">
+      <a href="https://www.google.ca" target="_blank"><img id="imgCadenassage" src="O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png" alt="cadenas_logo"></a>
+   </div>
+   
+
+
         </div>
     
-      <div id="Taches" class="breakbefore">
-         <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"0"> 
-        	      <input type="checkbox" id="taskCheckbox0" name="taskCheckbox0" class="mustcheck" required> 1 - NETTOYER L'ÉQUIPEMENT
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"0"> 
-
-					 <input type="checkbox" id="taskConforme0" name="taskConforme0">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"0"> 
-					 <input type="checkbox" id="taskRepare0" name="taskRepare0">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"0"> 
-					 <input type="checkbox" id="taskRemplace0" name="taskRemplace0">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"0"> 
-					 <input type="checkbox" id="taskAvis0" name="taskAvis0">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"1"> 
-        	      <input type="checkbox" id="taskCheckbox1" name="taskCheckbox1" class="mustcheck" required> 2 - VÉRIFIER NIVEAU D'HUILE
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"1"> 
-
-					 <input type="checkbox" id="taskConforme1" name="taskConforme1">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"1"> 
-					 <input type="checkbox" id="taskRepare1" name="taskRepare1">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"1"> 
-					 <input type="checkbox" id="taskRemplace1" name="taskRemplace1">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"1"> 
-					 <input type="checkbox" id="taskAvis1" name="taskAvis1">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"2"> 
-        	      <input type="checkbox" id="taskCheckbox2" name="taskCheckbox2" class="mustcheck" required> 3 - VÉRIFIER LE LUBRIFICATEUR:
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"2"> 
-
-					 <input type="checkbox" id="taskConforme2" name="taskConforme2">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"2"> 
-					 <input type="checkbox" id="taskRepare2" name="taskRepare2">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"2"> 
-					 <input type="checkbox" id="taskRemplace2" name="taskRemplace2">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"2"> 
-					 <input type="checkbox" id="taskAvis2" name="taskAvis2">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-                <p>- VÉRIFIER QUE LE NIVEAU N'EXCÈDE PAS LA MARQUE SUR LE BOL, AJOUTER AU BESOIN</p>
-
-                <p>- AJUSTER À 5 GOUTTES MINIMUM PAR SÉQUENCE EN POSITION LOCK</p>
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"5"> 
-        	      <input type="checkbox" id="taskCheckbox5" name="taskCheckbox5" class="mustcheck" required> 4 - VÉRIFIER LE DRAIN AUTOMATIQUE:
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"5"> 
-
-					 <input type="checkbox" id="taskConforme5" name="taskConforme5">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"5"> 
-					 <input type="checkbox" id="taskRepare5" name="taskRepare5">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"5"> 
-					 <input type="checkbox" id="taskRemplace5" name="taskRemplace5">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"5"> 
-					 <input type="checkbox" id="taskAvis5" name="taskAvis5">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-                <p>- FILTRE ET SÉPARATEUR</p>
-
-                <p>- NETTOYER LE BOL AVEC DU SAVON ET DE L'EAU, SI NECESSAIRE.</p>
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"8"> 
-        	      <input type="checkbox" id="taskCheckbox8" name="taskCheckbox8" class="mustcheck" required> 5 - S'ASSURER QU'IL N'Y EST PAS DE SKID SUR LA PLATEFORME (BED)
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"8"> 
-
-					 <input type="checkbox" id="taskConforme8" name="taskConforme8">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"8"> 
-					 <input type="checkbox" id="taskRepare8" name="taskRepare8">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"8"> 
-					 <input type="checkbox" id="taskRemplace8" name="taskRemplace8">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"8"> 
-					 <input type="checkbox" id="taskAvis8" name="taskAvis8">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"9"> 
-        	      <input type="checkbox" id="taskCheckbox9" name="taskCheckbox9" class="mustcheck" required> 6 - PROCÉDER À UNE SÉQUENCE UNLOCKING MANUELLEMENT
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"9"> 
-
-					 <input type="checkbox" id="taskConforme9" name="taskConforme9">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"9"> 
-					 <input type="checkbox" id="taskRepare9" name="taskRepare9">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"9"> 
-					 <input type="checkbox" id="taskRemplace9" name="taskRemplace9">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"9"> 
-					 <input type="checkbox" id="taskAvis9" name="taskAvis9">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"10"> 
-        	      <input type="checkbox" id="taskCheckbox10" name="taskCheckbox10" class="mustcheck" required> 8 - INSTALLER "ENGINE & LOCK SKID"
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"10"> 
-
-					 <input type="checkbox" id="taskConforme10" name="taskConforme10">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"10"> 
-					 <input type="checkbox" id="taskRepare10" name="taskRepare10">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"10"> 
-					 <input type="checkbox" id="taskRemplace10" name="taskRemplace10">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"10"> 
-					 <input type="checkbox" id="taskAvis10" name="taskAvis10">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-            <div style="clear: both; padding-bottom: 40px;" class="dontbreak">
-               <div>
-				  <label class="form-control" for="taskCheckbox"11"> 
-        	      <input type="checkbox" id="taskCheckbox11" name="taskCheckbox11" class="mustcheck" required> IDENTIFICATION CORRECT DE L'ÉQUIPEMENT (MINIMUM 2 FACES)
-				  </label>
-			      <br>
-    	       </div>
-    	       
-    	          <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskConforme"11"> 
-
-					 <input type="checkbox" id="taskConforme11" name="taskConforme11">
-    			     Conforme
-					 </label>
-					 <br>
-    		      </div> 	
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRepare"11"> 
-					 <input type="checkbox" id="taskRepare11" name="taskRepare11">
-    			     Réparé
-					 </label>
-					 <br>
-    		      </div> 
-    		
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskRemplace"11"> 
-					 <input type="checkbox" id="taskRemplace11" name="taskRemplace11">
-    			     Remplacé
-					 </label>
-					 <br>
-    		      </div> 
-
-				  <div style="float:left; padding-left: 20px;">
-					 <label class="form-control" for="taskAvis"11"> 
-					 <input type="checkbox" id="taskAvis11" name="taskAvis11">
-    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank">Avis Créé </a>
-					 </label>
-					 <br>
-    		      </div> 
-    	          
-    		
-    		      
-    		     
-    		
-    		      <div style="clear: both; padding-bottom: 10px;"></div>
-    		<textarea class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
-    		      
-    	       
-            </div>
-            
-
-        </div>
-
-         <div id="Checklist" class="breakbefore">
-		   <h3 style="text-align: left; text-decoration: underline;">Checklist</h3>
+         <div id="Checklist" style="clear:both" class="breakbefore">
+		   <h3 style="text-align: left; text-decoration: underline;">Formulaire A3</h3>
 		
 			<table>
 			  <tr>
@@ -1484,11 +389,12 @@
 				<th style="width:15%; text-align: center;">Oui</th>
 				<th style="width:15%; text-align: center;">Non</th>
 			  </tr>
-			  <tr>
+			  
+				<tr>
 				<td>Est-ce j'ai besoin de EPI spécifique?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes0" name = "check0">		
+				      <input type = "radio" id = "checkyes0" name = "check0" required>		
 				   </label>
 				</td>
 				<td>
@@ -1498,10 +404,11 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que je dois cadenasser?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes1" name = "check1">		
+				      <input type = "radio" id = "checkyes1" name = "check1" required>		
 				   </label>
 				</td>
 				<td>
@@ -1511,10 +418,11 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce qu'il y a d'autres sources d'énergie?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes2" name = "check2">		
+				      <input type = "radio" id = "checkyes2" name = "check2" required>		
 				   </label>
 				</td>
 				<td>
@@ -1524,10 +432,11 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que je dois me procurer un permis de travail?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes3" name = "check3">		
+				      <input type = "radio" id = "checkyes3" name = "check3" required>		
 				   </label>
 				</td>
 				<td>
@@ -1537,10 +446,11 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que j'ai besoin d'aide?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes4" name = "check4">		
+				      <input type = "radio" id = "checkyes4" name = "check4" required>		
 				   </label>
 				</td>
 				<td>
@@ -1550,23 +460,25 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que mes outils sont appropriés et conformes?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes5" name = "check5">		
+				      <input type = "radio" id = "checkyes5" name = "check5" required>		
 				   </label>
 				</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkno5" name = "check5">		
 				   </label>
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que je peux être frappés ou coincés par un objet?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes6" name = "check6">		
+				      <input type = "radio" id = "checkyes6" name = "check6" required>		
 				   </label>
 				</td>
 				<td>
@@ -1576,10 +488,11 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que je suis exposé a une chute?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes7" name = "check7">		
+				      <input type = "radio" id = "checkyes7" name = "check7" required>		
 				   </label>
 				</td>
 				<td>
@@ -1589,36 +502,39 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que je connais les risques/moyens de contrôle en lien avec les produits chimiques ou la présence de contaminant sous forme de poussières/fumées comme l’amiante, la silice et le plomb qui pourrait être généré par mes travaux ?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes8" name = "check8">		
+				      <input type = "radio" id = "checkyes8" name = "check8" required>		
 				   </label>
 				</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkno8" name = "check8">		
 				   </label>
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que l'état de la propreté des lieux est satisfaisante?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes9" name = "check9">		
+				      <input type = "radio" id = "checkyes9" name = "check9" required>		
 				   </label>
 				</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkno9" name = "check9">		
 				   </label>
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que je dois délimiter la zone de travail?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes10" name = "check10">		
+				      <input type = "radio" id = "checkyes10" name = "check10" required>		
 				   </label>
 				</td>
 				<td>
@@ -1628,10 +544,11 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que la tache comporte des efforts excessifs?</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes11" name = "check11">		
+				      <input type = "radio" id = "checkyes11" name = "check11" required>		
 				   </label>
 				</td>
 				<td>
@@ -1641,23 +558,25 @@
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce je peux réaliser cette tache en toute sécurité?</td>
 				<td>
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes12" name = "check12">		
+				      <input type = "radio" id = "checkyes12" name = "check12" required>		
 				   </label>
 				</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
 				      <input type = "radio" id = "checkno12" name = "check12">		
 				   </label>
 				</td>
 				
 			  </tr>
+				<tr>
 				<td>Est-ce que le travail implique une règle cardinale non mentionnée précédemment ?(VIM, Gréage et levage, DFT, sécurité machine)</td>
-				<td>
+				<td style="background-color: lightpink">
 				   <label class="form-control" style=" grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
-				      <input type = "radio" id = "checkyes13" name = "check13">		
+				      <input type = "radio" id = "checkyes13" name = "check13" required>		
 				   </label>
 				</td>
 				<td>
@@ -1670,14 +589,14 @@
 			</table>
 	    </div>
 		
-    <div id="risquesetmethodes" style="clear:both; class="breakbefore"">
+    <div id="risquesetmethodes" style="clear:both;" class="breakbefore">
 		<h3 style="text-align: left; text-decoration: underline;">Risques et Méthodes de Contrôle</h3>
 		
 		<ul id="ul">
 		</ul>
 		<div style="clear: both; padding: 10px;" class="no-print">
-			<button class="button" id="riskBtn" type="button" class="no-print">
-				Add a field 
+			<button class="button" id="riskBtn" type="button" >
+				Ajouter
 			</button>
 		</div>
 	</div>
@@ -1734,11 +653,471 @@
     
     
 
-  <div style="float: left; padding: 50px;" id="cadenassage" class="dontbreak">
-      <a href="https://www.google.ca" target="_blank"><img id="imgCadenassage" src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\logo_cadenas.png"/></a>
-	<p>https://www.google.ca</p>
-   </div>
-   
+        <div id="unknownSection0" class="breakbefore">
+	<h3 style="text-align: left; text-decoration: underline;"> VÉRIFICATIONS AVEC L'UNITÉE EN FONCTION </h3>
+
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox0"> 
+        	      <input type="checkbox" id="taskCheckbox0" name="taskCheckbox0" class="mustcheck" required> 3 - TESTER LE SYSTÈME
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme0"> 
+
+					 <input type="checkbox" id="taskConforme0" name="taskConforme0">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare0"> 
+					 <input type="checkbox" id="taskRepare0" name="taskRepare0">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace0"> 
+					 <input type="checkbox" id="taskRemplace0" name="taskRemplace0">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis0"> 
+					 <input type="checkbox" id="taskAvis0" name="taskAvis0">
+					</label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum0" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes0" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox1"> 
+        	      <input type="checkbox" id="taskCheckbox1" name="taskCheckbox1" class="mustcheck" required> 3a - PISTON SORTIE
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme1"> 
+
+					 <input type="checkbox" id="taskConforme1" name="taskConforme1">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare1"> 
+					 <input type="checkbox" id="taskRepare1" name="taskRepare1">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace1"> 
+					 <input type="checkbox" id="taskRemplace1" name="taskRemplace1">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis1"> 
+					 <input type="checkbox" id="taskAvis1" name="taskAvis1">
+					</label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum1" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes1" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox2"> 
+        	      <input type="checkbox" id="taskCheckbox2" name="taskCheckbox2" class="mustcheck" required> 3b - LOCK ARRIÈRE SORTIE
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme2"> 
+
+					 <input type="checkbox" id="taskConforme2" name="taskConforme2">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare2"> 
+					 <input type="checkbox" id="taskRepare2" name="taskRepare2">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace2"> 
+					 <input type="checkbox" id="taskRemplace2" name="taskRemplace2">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis2"> 
+					 <input type="checkbox" id="taskAvis2" name="taskAvis2">
+					</label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum2" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes2" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox3"> 
+        	      <input type="checkbox" id="taskCheckbox3" name="taskCheckbox3" class="mustcheck" required> - LOCK AVANT SORTIE
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme3"> 
+
+					 <input type="checkbox" id="taskConforme3" name="taskConforme3">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare3"> 
+					 <input type="checkbox" id="taskRepare3" name="taskRepare3">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace3"> 
+					 <input type="checkbox" id="taskRemplace3" name="taskRemplace3">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis3"> 
+					 <input type="checkbox" id="taskAvis3" name="taskAvis3">
+					</label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum3" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes3" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox4"> 
+        	      <input type="checkbox" id="taskCheckbox4" name="taskCheckbox4" class="mustcheck" required>4 - POSITION "UNLOCKING"
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme4"> 
+
+					 <input type="checkbox" id="taskConforme4" name="taskConforme4">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare4"> 
+					 <input type="checkbox" id="taskRepare4" name="taskRepare4">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace4"> 
+					 <input type="checkbox" id="taskRemplace4" name="taskRemplace4">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis4"> 
+					 <input type="checkbox" id="taskAvis4" name="taskAvis4">
+					</label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum4" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes4" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+
+            <div style="clear: both;padding-top: 10px; padding-bottom: 40px; padding-left: 50px;" class="dontbreak">
+
+               <div>
+				  <label class="form-control" for="taskCheckbox5"> 
+        	      <input type="checkbox" id="taskCheckbox5" name="taskCheckbox5" class="mustcheck" required> - PRESSION UNLOCKING (4600+/-50 PSI)
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme5"> 
+
+					 <input type="checkbox" id="taskConforme5" name="taskConforme5">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare5"> 
+					 <input type="checkbox" id="taskRepare5" name="taskRepare5">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace5"> 
+					 <input type="checkbox" id="taskRemplace5" name="taskRemplace5">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis5"> 
+					 <input type="checkbox" id="taskAvis5" name="taskAvis5">
+					</label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum5" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes5" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+</div>
+      <div id="Taches" class="breakbefore">
+         <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>
+            <div style="clear: both; padding-top: 10px ;padding-bottom: 40px;" class="dontbreak">
+               <div>
+				  <label class="form-control" for="taskCheckbox6"> 
+        	      <input type="checkbox" id="taskCheckbox6" name="taskCheckbox6" class="mustcheck" required> 3 - VÉRIFIER LE LUBRIFICATEUR:
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme6"> 
+
+					 <input type="checkbox" id="taskConforme6" name="taskConforme6">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare6"> 
+					 <input type="checkbox" id="taskRepare6" name="taskRepare6">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace6"> 
+					 <input type="checkbox" id="taskRemplace6" name="taskRemplace6">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis6"> 
+					 <input type="checkbox" id="taskAvis6" name="taskAvis6">
+					 </label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum6" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes6" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+                <p>- VÉRIFIER QUE LE NIVEAU N'EXCÈDE PAS LA MARQUE SUR LE BOL, AJOUTER AU BESOIN</p>
+
+                <p>- AJUSTER À 5 GOUTTES MINIMUM PAR SÉQUENCE EN POSITION LOCK</p>
+
+            <div style="clear: both; padding-top: 10px ;padding-bottom: 40px;" class="dontbreak">
+               <div>
+				  <label class="form-control" for="taskCheckbox9"> 
+        	      <input type="checkbox" id="taskCheckbox9" name="taskCheckbox9" class="mustcheck" required> 4 - VÉRIFIER LE DRAIN AUTOMATIQUE:
+				  </label>
+			      <br>
+    	       </div>
+    	       
+    	          <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskConforme9"> 
+
+					 <input type="checkbox" id="taskConforme9" name="taskConforme9">
+    			     Conforme
+					 </label>
+					 <br>
+    		      </div> 	
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRepare9"> 
+					 <input type="checkbox" id="taskRepare9" name="taskRepare9">
+    			     Réparé
+					 </label>
+					 <br>
+    		      </div> 
+    		
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-control" for="taskRemplace9"> 
+					 <input type="checkbox" id="taskRemplace9" name="taskRemplace9">
+    			     Remplacé
+					 </label>
+					 <br>
+    		      </div> 
+
+				  <div style="float:left; padding-left: 20px;">
+					 <label class="form-link" for="taskAvis9"> 
+					 <input type="checkbox" id="taskAvis9" name="taskAvis9">
+					 </label>
+    			     <a href="http://collaboration.pwc.ca/sites/ECTS_SR/SitePages/ECTS_HOME.aspx" target="_blank" class="form-link">Avis Créé </a>
+					 <div style="display:inline; padding-left:20px;">
+					<input id="avisNum9" placeholder="# Avis" class="input" style="font-size:16px; width:200px;" type="text">
+					</div>
+					 
+					 <br>
+    		      </div> 
+    	          
+    		
+    		      
+    		     
+    		
+    		      <div style="clear: both; padding-bottom: 10px;"></div>
+    		<textarea id="taskNotes9" class="input" placeholder="Note de réparation / remplacement" rows="4" cols="85" ></textarea>
+    		      
+    	       
+            </div>
+            
+
+                <p>- FILTRE ET SÉPARATEUR</p>
+
+        </div>
 
     <div style="float: left; padding: 50px; clear: both;" class="dontbreak">
          <div style="clear:both; float: left; padding: 10px;">
@@ -1807,8 +1186,8 @@
       
   
     <div style="text-align: center; clear:both;" class="no-print">
-	<button class="button" id="submitBtn" class="no-print">Soumettre</button>
-	<button class="button" id="replanBtn" type="button" class="no-print">À Replanifier</button>
+	<button class="button" id="submitBtn">Soumettre</button>
+	<button class="button" id="replanBtn" type="button" >À Replanifier</button>
     </div>
 
      </form>
@@ -1816,6 +1195,76 @@
 	<footer>
 		<div style="height: 50px"></div>
 	</footer>
+
+
+	<script>
+		for (var i = 0; i < 1000; i++) { 
+			var taskRepare = document.getElementById('taskRepare'.concat(i));
+			var taskRemplace = document.getElementById('taskRemplace'.concat(i));
+			if (taskRepare){
+				taskRepare.setAttribute('onclick','addSearchableNote()')
+			}
+			if (taskRemplace){
+				taskRemplace.setAttribute('onclick','addSearchableNote()')
+			}
+		}
+
+
+
+	function addSearchableNote() {
+		
+		for (var i = 0; i < 1000; i++) { 
+			var taskRepare = document.getElementById('taskRepare'.concat(i));
+			var taskRemplace = document.getElementById('taskRemplace'.concat(i));
+			if (taskRemplace && taskRepare){
+				if (taskRemplace.checked === true && taskRepare.checked === true) {
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+						if (pTag) {
+							pTag.remove();
+						}
+					var pTag = document.createElement('p');
+					pTag.id = 'remplaceNote'.concat(i);
+					pTag.innerText = "Note de réparation et remplacement"
+					pTag.style="margin-block-start:0em"
+					var element = taskRemplace.parentElement.parentElement.parentElement;
+					element.appendChild(pTag);
+						
+				} 
+				else if (taskRemplace.checked === true && taskRepare.checked === false){
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+						if (pTag) {
+							pTag.remove();
+						}
+					var pTag = document.createElement('p');
+					pTag.id = 'remplaceNote'.concat(i);
+					pTag.innerText = "Note de remplacement"
+					pTag.style="margin-block-start:0em"
+					var element = taskRemplace.parentElement.parentElement.parentElement;
+					element.appendChild(pTag);
+				}
+				else if (taskRemplace.checked === false && taskRepare.checked === true){
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+						if (pTag) {
+							pTag.remove();
+						}
+					var pTag = document.createElement('p');
+					pTag.id = 'remplaceNote'.concat(i);
+					pTag.innerText = "Note de réparation"
+					pTag.style="margin-block-start:0em"
+					var element = taskRemplace.parentElement.parentElement.parentElement;
+					element.appendChild(pTag);
+				} 
+				else {
+					var pTag = document.getElementById('remplaceNote'.concat(i));
+					if (pTag) {
+						pTag.remove();
+					}
+				}
+			}
+		}
+	}
+	
+	</script>
     
 <script>
     function generatePDF(){
@@ -1842,11 +1291,40 @@
 
 			}
 		} 
-		else {
-			break;
+		
+	}
+				//Avis Num
+	for (var i = 0; i < 1000; i++) { 
+	var avisCheckmark = document.getElementById('taskAvis'.concat(i));
+	var avisTextfield = document.getElementById('avisNum'.concat(i));
+		if (avisCheckmark && avisTextfield) {
+			if (avisCheckmark.checked === true && avisTextfield.value === '') {
+					avisTextfield.setAttribute('required', '');
+					printPage = false;
+			} 
+			else {
+				avisTextfield.removeAttribute('required');
+			} 
+		
 		}
 	}
 	
+	//Repare ou Remplace = Textarea required
+	for (var i = 0; i < 1000; i++) { 
+	var taskRepare = document.getElementById('taskRepare'.concat(i));
+	var taskRemplace = document.getElementById('taskRemplace'.concat(i));
+	var taskNotes = document.getElementById('taskNotes'.concat(i));
+		if (taskRepare && taskRemplace && taskNotes) {
+			if ((taskRepare.checked === true || taskRemplace.checked === true )&& taskNotes.value === '') {
+					taskNotes.setAttribute('required', '');
+					printPage = false;
+			} 
+			else {
+			taskNotes.removeAttribute('required');
+			}
+		} 
+		
+	}
 	
 	//Badge Field
 	var badge = document.getElementById('badgefield').value;
@@ -1869,6 +1347,7 @@
 	
 		document.title = printTitle;
 		window.print();  
+		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/FileClient.hta");
 	}
 	
 	
@@ -1907,7 +1386,7 @@
 	
 		document.title = printTitle;
 		window.print();  
-		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/AppExec.hta");
+		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/EmailClient.hta");
 	}
 	
 	
