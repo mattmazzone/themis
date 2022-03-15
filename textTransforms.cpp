@@ -278,13 +278,13 @@ std::vector<std::wstring> Reformater::reformatGood() {
 
 	}
 
-	
+	/*
 
 
 	 for (auto i : formattedTextFile){
 		std::wcout<<i <<std::endl;
 	}
-	
+	*/
 
 	return formattedTextFile;
 

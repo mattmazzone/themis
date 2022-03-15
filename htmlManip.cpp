@@ -666,7 +666,7 @@ void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
 	for (size_t i = 0; i < securiteStrings.size(); i++) {
 		buffer << R"(
 			<label class="form-control">
-            <input type="checkbox" id="sec)" << i << R"(" name="sec)" << i << R"(">)"
+            <input type="checkbox" id="sec)" << i << R"(" name="sec)" << i << R"(" required>)"
             << securiteStrings[i] 
 			<< R"(</label>
 			<br>)" << std::endl;
