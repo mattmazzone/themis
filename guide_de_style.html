@@ -26,13 +26,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bolder pe-4" href="index.html#a_propos">À
-                            Propos</a>
+                    <li class="nav-item ">
+                        <a class="nav-link fw-bolder pe-0" href="guide_de_style.html">Guide de Style</a>
+
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle fw-bolder pe-4" href="#guide_de_style" id="dropdown10"
-                            data-bs-toggle="dropdown" aria-expanded="false">Guide de Style</a>
+                        <a class=" dropdown-toggle nav-link fw-bolder ps-0 pe-4" href="#" id="dropdown10"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        </a>
+
+
+
+
                         <ul class="dropdown-menu" aria-labelledby="dropdown10">
                             <li><a class="dropdown-item" href="#preparation">Préparation</a></li>
                             <li><a class="dropdown-item" href="#documents_references">Documents Références</a></li>
@@ -48,6 +53,10 @@
                             <li><a class="dropdown-item" href="#ajouter_images">Ajouter des Images</a></li>
                             <li><a class="dropdown-item" href="#soumettre_replanifier">Soumettre/Replanifier</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder pe-4" href="index.html#a_propos">À
+                            Propos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bolder pe-4" href="index.html#comment-utiliser">Comment Utiliser</a>
@@ -76,7 +85,7 @@
             Pour insérer une checkbox dans la version Html du PM, il faut mettre des paranthèses au début de la phrase
         </p>
 
-        <div id="code_preparation" class="container">
+        <div id="demo" class="container">
             <div id="outer-box" class=" row border border-3 rounded-3">
                 <div id="inner-left-box" class="col text-center border-end border-3">
                     <h4>Contenu PM.txt</h4>
@@ -113,7 +122,7 @@
         <p>
             Un PM contient plusieurs sections et devrait être structuré de la façon suivante:
         </p>
-        <div id="code_preparation" class="container">
+        <div id="demo1" class="container">
             <div id="outer-box1" class=" row">
                 <div id="inner-left-box1" class="col text-center border border-3 rounded-3">
                     <h4>Contenu PM.txt</h4>
@@ -173,26 +182,29 @@
                 obligatoirement être côchés pour soumettre le PM.
             </p>
             <h4>Fiche de communication</h4>
-            <div id="outer-box2" class="row">
-                <div id="inner-left-box2" class="col-8">
-                    <p>
-                        Cette section contient aussi le lien pour télécharger la fiche de communication(.xlsx). Le lien
-                        est statique et peut uniquement être changé dans le fichier htmlManip.cpp de l'outil de
-                        conversion.
-                        <br>
-                        <strong>Le lien est : O:/TFM_GESTION/PM/1_TEMPLATES/fiche_communication_ects.xlsx</strong>
-                        <br>
-                        <br>
-                        Si la fiche de communication doit être changé, il faut renommer la nouvelle avec le nom de
-                        l'ancienne et la mettre exactement au même endroit.
-                    </p>
-                </div>
-                <div id="inner-right-box2" class="col-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor" class="bi bi-filetype-xlsx"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM7.86 14.841a1.13 1.13 0 0 0 .401.823c.13.108.29.192.479.252.19.061.411.091.665.091.338 0 .624-.053.858-.158.237-.105.416-.252.54-.44a1.17 1.17 0 0 0 .187-.656c0-.224-.045-.41-.135-.56a1.002 1.002 0 0 0-.375-.357 2.028 2.028 0 0 0-.565-.21l-.621-.144a.97.97 0 0 1-.405-.176.37.37 0 0 1-.143-.299c0-.156.061-.284.184-.384.125-.101.296-.152.513-.152.143 0 .266.023.37.068a.624.624 0 0 1 .245.181.56.56 0 0 1 .12.258h.75a1.093 1.093 0 0 0-.199-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.552.05-.777.15-.224.099-.4.24-.527.421-.127.182-.19.395-.19.639 0 .201.04.376.123.524.082.149.199.27.351.367.153.095.332.167.54.213l.618.144c.207.049.36.113.462.193a.387.387 0 0 1 .153.326.512.512 0 0 1-.085.29.558.558 0 0 1-.255.193c-.111.047-.25.07-.413.07-.117 0-.224-.013-.32-.04a.837.837 0 0 1-.249-.115.578.578 0 0 1-.255-.384h-.764Zm-3.726-2.909h.893l-1.274 2.007 1.254 1.992h-.908l-.85-1.415h-.035l-.853 1.415H1.5l1.24-2.016-1.228-1.983h.931l.832 1.438h.036l.823-1.438Zm1.923 3.325h1.697v.674H5.266v-3.999h.791v3.325Zm7.636-3.325h.893l-1.274 2.007 1.254 1.992h-.908l-.85-1.415h-.035l-.853 1.415h-.861l1.24-2.016-1.228-1.983h.931l.832 1.438h.036l.823-1.438Z" />
-                    </svg>
+            <div id="demo2" class="container">
+                <div id="outer-box2" class="row">
+                    <div id="inner-left-box2" class="col-8">
+                        <p>
+                            Cette section contient aussi le lien pour télécharger la fiche de communication(.xlsx). Le
+                            lien
+                            est statique et peut uniquement être changé dans le fichier htmlManip.cpp de l'outil de
+                            conversion.
+                            <br>
+                            <strong>Le lien est : O:/TFM_GESTION/PM/1_TEMPLATES/fiche_communication_ects.xlsx</strong>
+                            <br>
+                            <br>
+                            Si la fiche de communication doit être changé, il faut renommer la nouvelle avec le nom de
+                            l'ancienne et la mettre exactement au même endroit.
+                        </p>
+                    </div>
+                    <div id="inner-right-box2" class="col-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor"
+                            class="bi bi-filetype-xlsx" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM7.86 14.841a1.13 1.13 0 0 0 .401.823c.13.108.29.192.479.252.19.061.411.091.665.091.338 0 .624-.053.858-.158.237-.105.416-.252.54-.44a1.17 1.17 0 0 0 .187-.656c0-.224-.045-.41-.135-.56a1.002 1.002 0 0 0-.375-.357 2.028 2.028 0 0 0-.565-.21l-.621-.144a.97.97 0 0 1-.405-.176.37.37 0 0 1-.143-.299c0-.156.061-.284.184-.384.125-.101.296-.152.513-.152.143 0 .266.023.37.068a.624.624 0 0 1 .245.181.56.56 0 0 1 .12.258h.75a1.093 1.093 0 0 0-.199-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.552.05-.777.15-.224.099-.4.24-.527.421-.127.182-.19.395-.19.639 0 .201.04.376.123.524.082.149.199.27.351.367.153.095.332.167.54.213l.618.144c.207.049.36.113.462.193a.387.387 0 0 1 .153.326.512.512 0 0 1-.085.29.558.558 0 0 1-.255.193c-.111.047-.25.07-.413.07-.117 0-.224-.013-.32-.04a.837.837 0 0 1-.249-.115.578.578 0 0 1-.255-.384h-.764Zm-3.726-2.909h.893l-1.274 2.007 1.254 1.992h-.908l-.85-1.415h-.035l-.853 1.415H1.5l1.24-2.016-1.228-1.983h.931l.832 1.438h.036l.823-1.438Zm1.923 3.325h1.697v.674H5.266v-3.999h.791v3.325Zm7.636-3.325h.893l-1.274 2.007 1.254 1.992h-.908l-.85-1.415h-.035l-.853 1.415h-.861l1.24-2.016-1.228-1.983h.931l.832 1.438h.036l.823-1.438Z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
 
@@ -231,35 +243,235 @@
                 être obligatoirement côchés pour la soumettre le PM.
             </p>
             <h4>Lien Cadenassage</h4>
-            <div id="outer-box3" class="row">
-                <div id="inner-left-box3" class="col-8">
-                    <p>
-                        Cette section contient aussi le lien de cadenassage. Ce lien doit être écrit dans le PM de la
-                        façon suivante:
-                        <br>
-                        -CADENASSAGE_LINK:www.somewebsite.com
-                        <br>
-                        C'est très important qu'il n'y a pas de fautes d'ortographes sinon le lien ne sera reconnu par
-                        l'outil de conversion.
-                        <br>
-                        Le PM.html affiche l'image de cadenassage qui est sur le drive O: au lien suivant:
-                        O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png
-                        <br>
-                        Si l'image de cadenassage doit être changé, il faut renommer la nouvelle avec le nom de
-                        l'ancienne et la mettre exactement au même endroit.
-                    </p>
-                </div>
-                <div id="inner-right-box3" class="col-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor"
-                        class="bi bi-file-earmark-lock2" viewBox="0 0 16 16">
-                        <path
-                            d="M10 7v1.076c.54.166 1 .597 1 1.224v2.4c0 .816-.781 1.3-1.5 1.3h-3c-.719 0-1.5-.484-1.5-1.3V9.3c0-.627.46-1.058 1-1.224V7a2 2 0 1 1 4 0zM7 7v1h2V7a1 1 0 0 0-2 0z" />
-                        <path
-                            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-                    </svg>
+            <div id="demo3" class="container">
+                <div id="outer-box3" class="row">
+                    <div id="inner-left-box3" class="col-8">
+                        <p>
+                            Cette section contient aussi le lien de cadenassage. Ce lien doit être écrit dans le PM de
+                            la
+                            façon suivante:
+                            <br>
+                            -CADENASSAGE_LINK:www.somewebsite.com
+                            <br>
+                            C'est très important qu'il n'y a pas de fautes d'ortographes sinon le lien ne sera reconnu
+                            par
+                            l'outil de conversion.
+                            <br>
+                            Le PM.html affiche l'image de cadenassage qui est sur le drive O: au lien suivant:
+                            O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png
+                            <br>
+                            Si l'image de cadenassage doit être changé, il faut renommer la nouvelle avec le nom de
+                            l'ancienne et la mettre exactement au même endroit.
+                        </p>
+                    </div>
+                    <div id="inner-right-box3" class="col-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="160" fill="currentColor"
+                            class="bi bi-file-earmark-lock2" viewBox="0 0 16 16">
+                            <path
+                                d="M10 7v1.076c.54.166 1 .597 1 1.224v2.4c0 .816-.781 1.3-1.5 1.3h-3c-.719 0-1.5-.484-1.5-1.3V9.3c0-.627.46-1.058 1-1.224V7a2 2 0 1 1 4 0zM7 7v1h2V7a1 1 0 0 0-2 0z" />
+                            <path
+                                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
+        <div id="formulaireA3" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Formulaire A3</h2>
+
+            La section Formulaire A3 est générée lors de la conversion d'un PM et non lors du chargement de la page web.
+            Cela veut dire que s'il faut changer un élément dans le formulaire, il faut relancer l'outil de conversion
+            pour mettre à jour le PM.
+            <br>
+            Pour modifier le formulaire il faut faire des changements dans le ficher à l'emplacement suivant:
+            <br>
+            O:/TFM_GESTION/PM/1_TEMPLATES/FormulaireA3/FormulaireA3.txt
+            <br>
+            Pour que la case "Oui" soit en rouge, il faut mettre un "Y" au début de la phrase dans le fichier
+            FormulaireA3.txt
+            <br>
+            Pour que la case "Non" soit en rouge, il faut mettre un "N" au début de la phrase dans le fichier
+            FormulaireA3.txt
+            <br>
+            Pour que aucune case soit en rouge, il faut pas mettre de "Y" ou "N" au début de la phrase dans le fichier
+            FormulaireA3.txt
+            <br>
+
+
+            Voici un exemple:
+
+            <div id="demo4" class="container">
+                <div id="outer-box4" class=" row border border-3 rounded-3">
+                    <div id="inner-left-box4" class="col text-start border-end border-3">
+                        <h4 class="text-center">Contenu FormulaireA3.txt</h4>
+
+                        <table>
+                            <tr> 
+                                <th style="width:72%">Questions</th>
+                                <th style="width:13%; text-align: center;"></th>
+                                <th style="width:15%; text-align: center;"></th>
+                            </tr>
+
+                            <tr >
+                                <td>YEst-ce j'ai besoin de EPI spécifique?</td>
+
+                            </tr>
+                            <tr style="height:29px;">
+                                <td>YEst-ce que je dois cadenasser?</td>
+                            </tr>
+                            <tr>
+                                <td>Est-ce qu'il y a d'autres sources d'énergie?</td>
+                            </tr>
+                            <tr>
+                                <td>Est-ce que je dois me procurer un permis de travail?</td>
+
+                            </tr>
+                            <tr >
+                                <td>YEst-ce que j'ai besoin d'aide?</td>
+                            </tr>
+                            <tr>
+                                <td>NEst-ce que mes outils sont appropriés et conformes?</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div id="inner right-box4" class="col text-start">
+                        <h4 class="text-center">Résultat PM.html</h4>
+
+
+                        <table>
+                            <tr>
+                                <th style="width:70%">Questions</th>
+                                <th style="width:15%; text-align: center;">Oui</th>
+                                <th style="width:15%; text-align: center;">Non</th>
+                            </tr>
+
+                            <tr>
+                                <td>Est-ce j'ai besoin de EPI spécifique?</td>
+                                <td>
+                                    <label class="form-control"
+                                        style="background-color: lightpink; display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkyes0" name="check0" required>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkno0" name="check0">
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Est-ce que je dois cadenasser?</td>
+                                <td>
+                                    <label class="form-control"
+                                        style="background-color: lightpink; display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkyes1" name="check1" required>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkno1" name="check1">
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Est-ce qu'il y a d'autres sources d'énergie?</td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkyes2" name="check2" required>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkno2" name="check2">
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Est-ce que je dois me procurer un permis de travail?</td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkyes3" name="check3" required>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkno3" name="check3">
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Est-ce que j'ai besoin d'aide?</td>
+                                <td>
+                                    <label class="form-control"
+                                        style="background-color: lightpink; display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkyes4" name="check4" required>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkno4" name="check4">
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Est-ce que mes outils sont appropriés et conformes?</td>
+                                <td>
+                                    <label class="form-control"
+                                        style="display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkyes5" name="check5" required>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="form-control"
+                                        style="background-color: lightpink; display:grid; grid-template-rows: auto; grid-template-columns:auto; justify-items: center;">
+                                        <input type="radio" id="checkno5" name="check5">
+                                    </label>
+                                </td>
+
+                            </tr>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div id="risques_et_methodes" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Risques et Méthodes</h2>
+            <p>
+                Il n'y a rien à écrire dans le PM.txt pour la section risques et méthodes.
+            </p>
+        </div>
+
     </div>
 
 
@@ -269,12 +481,8 @@
 
 
 
-    <div id="formulaireA3" class="container  px-2 my-5 py-5">
-        <h2>Section PM: Formulaire A3</h2>
-    </div>
-    <div id="risques_et_methodes" class="container  px-2 my-5 py-5">
-        <h2>Section PM: Risques et Méthodes</h2>
-    </div>
+
+    
     <div id="taches" class="container  px-2 my-5 py-5">
         <h2>Section PM: Tâches</h2>
     </div>
