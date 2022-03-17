@@ -309,13 +309,13 @@
                         <h4 class="text-center">Contenu FormulaireA3.txt</h4>
 
                         <table>
-                            <tr> 
+                            <tr>
                                 <th style="width:72%">Questions</th>
                                 <th style="width:13%; text-align: center;"></th>
                                 <th style="width:15%; text-align: center;"></th>
                             </tr>
 
-                            <tr >
+                            <tr>
                                 <td>YEst-ce j'ai besoin de EPI spécifique?</td>
 
                             </tr>
@@ -329,7 +329,7 @@
                                 <td>Est-ce que je dois me procurer un permis de travail?</td>
 
                             </tr>
-                            <tr >
+                            <tr>
                                 <td>YEst-ce que j'ai besoin d'aide?</td>
                             </tr>
                             <tr>
@@ -472,6 +472,225 @@
             </p>
         </div>
 
+
+
+
+
+        <div id="taches" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Tâches</h2>
+            La section Tâches a beaucoup de fonctionnalités mais, elle est très intuitive a utiliser.
+
+            Premièrement, il éxiste deux types de tâches. Une tâche principale et une tâche secondaire. On indique le
+            type de tâche à l'outil de conversion avec le préfixe de la tâche. Une tâche secondaire est légèrement
+            indentée pour la différencier de la tâche principale.
+
+            Voici un exemple pour montrer comment spécifier si une
+            tâche est principale ou secondaire.
+
+
+
+            <div id="demo5" class="container">
+                <div id="outer-box5" class=" row border border-3 rounded-3">
+                    <div id="inner-left-box5" class="col text-start border-end border-3">
+                        <h4 class="text-center">Contenu PM.txt</h4>
+                        <p>
+                            ( ) 1 - Tâche
+                        </p>
+                        <p>
+                            ( ) 1.a - Tâche
+                        </p>
+                        <p>
+                            ( ) 1.b - Tâche
+                        </p>
+                        <p>
+                            ( ) 2 - Tâche
+                        </p>
+                        <p>
+                            ( ) 3 - Tâche
+                        </p>
+                        <p>
+                            ( ) 3.a - Tâche
+                        </p>
+
+
+                    </div>
+                    <div id="inner right-box5" class="col text-start">
+                        <h4 class="text-center">Résultat PM.html</h4>
+                        <label class="py-2">
+                            <input class="form-check-input me-1" type="checkbox"> 1 - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 1.a - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 1.b - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2">
+                            <input class="form-check-input me-1" type="checkbox"> 2 - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2">
+                            <input class="form-check-input me-1" type="checkbox"> 3 - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 3.a - Tâche
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Insérer un champ de texte</h4>
+            <p>Pour ajouter un champ de texte, il faut ajouter:
+                -INSERT_TEXTBOX
+                à l'endroit qu'on le veut dans le PM.txt
+
+                Aussi, si on veut ajouter un placeholder au champ de texte, on peut l'écrire après
+                -INSERT_TEXTBOXthis is a placeholder!
+
+                Voici un exemple qui montre une tâche avec un textbox ajouter:
+
+            </p>
+            <div id="demo6" class="container">
+                <div id="outer-box6" class=" row border border-3 rounded-3">
+                    <div id="inner-left-box6" class="col text-start border-end border-3">
+                        <h4 class="text-center">Contenu PM.txt</h4>
+                        <p>
+                            ( ) 1 - Tâche
+                            <br>
+                            -INSERT_TEXTBOXÉcrire le voltage de #1 ici!
+                        </p>
+                        <p>
+                            ( ) 1a - Tâche
+                        </p>
+                        <p>
+                            ( ) 1b - Tâche
+                        </p>
+                    </div>
+                    <div id="inner right-box6" class="col text-start">
+                        <h4 class="text-center">Résultat PM.html</h4>
+                        <label class="py-2">
+                            <input class="form-check-input me-1" type="checkbox"> 1 - Tâche
+                        </label>
+                        <br>
+                        <input class=" me-1" type="text" placeholder="Écrire le voltage de #1 ici!">
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 1.a - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 1.b - Tâche
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Insérer une image</h4>
+            <p>Il est possible d'ajouter des images a des tâches pour les expliquer. Il est déconseillé de mettre
+                beaucoup d'image dans un PM parce que une page HTML avec beaucoup de lien externe va prendre beaucoup de
+                temps à charger.
+                Pour ajouter une image, il faut ajouter:
+                -INSERT_PICTURE
+                dans le PM.txt suivi par le lien de l'image.
+                Par exemple,
+                -INSERT_PICTURE
+            </p>
+            <div id="demo7" class="container">
+
+                <div id="outer-box7" class=" row border border-3 rounded-3">
+
+                    <div id="inner-left-box7" class="col-6 text-start border-end border-3">
+                        <h4 class="text-center">Contenu PM.txt</h4>
+                        <p>
+                            ( ) 1 - Tâche
+
+
+                        </p>
+
+                        <p>
+                            ( ) 1.a - Tâche
+                            <br>
+                            -INSERT_PICTUREO:\TFM_GESTI...
+                        <p>
+                            ( ) 1.b - Tâche
+                        </p>
+                    </div>
+                    <div id="inner right-box7" class="col-6 text-start">
+                        <h4 class="text-center">Résultat PM.html</h4>
+                        <label class="py-2">
+                            <input class="form-check-input me-1" type="checkbox"> 1 - Tâche
+                        </label>
+                        <br>
+                        <img src="O:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\Pratt_&_Whitney_logo.png"
+                            style="height:100px">
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 1.a - Tâche
+                        </label>
+                        <br>
+                        <label class="py-2" style="padding-left:20px;">
+                            <input class="form-check-input me-1" type="checkbox"> 1.b - Tâche
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="infos_soumission" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Infos Soumission</h2>
+            <p>Il n'y a rien à écrire dans le PM.txt pour la section infos soumission</p>
+        </div>
+
+
+        <div id="ajouter_images" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Ajouter des Images</h2>
+            <p>Il n'y a rien à écrire dans le PM.txt pour la section infos soumission</p>
+            <p>C'est important de remarquer que les images qui seront upload de cette manère ne seront pas enregistré
+                dans le template du PM.
+                C'est vraiment juste pour que les techniciens puissent ajouter des photos à leur soumission.
+
+            </p>
+            <p>Pour ajouter des photos au template il faut ajouter avec -INSERT_PICTURE dans le PM.txt</p>
+        </div>
+
+
+
+        <div id="soumettre_replanifier" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Soumettre/Replanifier</h2>
+            <h4>Bouton Soumettre</h4>
+            <p>
+                Le bouton Soumettre est relié à une très grosse fonction JavaScript. Cette fonction vérifie les checkbox
+                avec le class name "mustcheck", les radiobuttons du formulaire A3. Ensuite, elle vérifie si un checkbox
+                "Avis Créé" est coché,l'attribut "required" est donné au champ de text respectif. Par la suite, la
+                fonction vérifie si les cases Remplacé ou Réparé sont cochées. S'ils le sont, l'attribut "required" est
+                donné au textarea respectif. Ensuite, les champs de text Infos Soumission sont aussi vérifié.
+
+                Finalement, si tout est bien rempli, la fonction "window.print()" est appelée pour permettre à
+                l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier Téléchargment
+                comme emplacement pour le pdf.
+                Après l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
+                téléchargement de "FileClient.hta" va commencer. On va en parler plus loin dans la documentation.
+
+
+            </p>
+            <h4>Bouton Replanifier</h4>
+            <p>Le bouton Replanifier est relié a une fonction JavaScript qui vérifie uniquement si les champs de text
+                Infos Soumission sont remplis. S'ils le sont, la fonction "window.print()" est
+                appelée pour permettre à
+                l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier Téléchargment
+                comme emplacement pour le pdf.
+                Après que l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
+                téléchargement de "EmailClient.hta" va commencer. On va en parler plus loin dans la documentation. </p>
+        </div>
+
+
+
+
     </div>
 
 
@@ -482,25 +701,8 @@
 
 
 
-    
-    <div id="taches" class="container  px-2 my-5 py-5">
-        <h2>Section PM: Tâches</h2>
-    </div>
-
-    <div id="infos_soumission" class="container  px-2 my-5 py-5">
-        <h2>Section PM: Infos Soumission</h2>
-    </div>
 
 
-    <div id="ajouter_images" class="container  px-2 my-5 py-5">
-        <h2>Section PM: Ajouter des Images</h2>
-    </div>
-
-
-
-    <div id="soumettre_replanifier" class="container  px-2 my-5 py-5">
-        <h2>Section PM: Soumettre/Replanifier</h2>
-    </div>
 
 
 
