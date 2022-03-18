@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Documentation Outil de Conversion PM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded py-3
+            py-lg-5 border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand ps-5 fw-bolder" href="index.html">
+                Documentation Outil de Conversion PM
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link fw-bolder pe-0" href="guide_de_style.html">Guide de Style</a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class=" dropdown-toggle nav-link fw-bolder ps-0 pe-4" href="#" id="dropdown10"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        </a>
+
+
+
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                            <li><a class="dropdown-item" href="guide#preparation">Préparation</a></li>
+                            <li><a class="dropdown-item" href="#documents_references">Documents Références</a></li>
+                            <li><a class="dropdown-item" href="#consommables">Consommables</a></li>
+                            <li><a class="dropdown-item" href="#pieces">Pièces</a></li>
+                            <li><a class="dropdown-item" href="#outils">Outils</a></li>
+                            <li><a class="dropdown-item" href="#securite">Sécurité</a></li>
+                            <li><a class="dropdown-item" href="#formulaireA3">Formulaire A3</a></li>
+                            <li><a class="dropdown-item" href="#risques_et_methodes">Risques et Méthodes de Contrôle</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#taches">Tâches</a></li>
+                            <li><a class="dropdown-item" href="#infos_soumission">Infos Soumission</a></li>
+                            <li><a class="dropdown-item" href="#ajouter_images">Ajouter des Images</a></li>
+                            <li><a class="dropdown-item" href="#soumettre_replanifier">Soumettre/Replanifier</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder pe-4" href="app_net.html">Application .NET</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder pe-4" href="index.html#comment-utiliser">Comment Utiliser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder pe-4" href="index.html#a_propos">À
+                            Propos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div id="hta_net" class="container px-2 my-5 py-5">
+        <h1>Application .NET</h1>
+        <p>
+            Cette section de la documentation explique comment le PM.html interagit avec les applications EmailClient et
+            FileClient (.exe)
+        </p>
+    </div>
+
+    <div class="container  px-2 my-5 py-5">
+        <h3>C'est quoi un programme .NET?</h3>
+        <p>
+            Le .NET Framework est un cadriciel pouvant être utilisé par un système d'exploitation Microsoft Windows. Il
+            a
+            pour but de faciliter la tâche des développeurs en introduisant des facilités pour le
+            développement, le déploiement et la maintenance d'application Windows.
+
+            <br>
+            Il est possible d'utiliser plusieurs languages de programmation pour créer des applications basées sur le
+            .NET Framework.
+            Le C# a été choisi pour cette application parce que l'outil de conversion des PM est en C++ et les deux
+            langues de programmation ont une syntaxe similaire.
+        </p>
+    </div>
+
+
+    <div class="container  px-2 my-5 py-5">
+        <h2>Fonctionnement de EmailClient</h2>
+        <p>
+            Lorsque l'utilisateur appuie sur le bouton <a
+                href="guide_de_style.html#soumettre_replanifier">Replanifier</a>, du code JavaScript est exécuté. Si
+            toutes les conditions sont respectées, la fonction JavaScript va permettre l'enregistrement du PDF.
+            L'utilisateur va devoir sélectionner le dossier téléchargement et confirmer l'enregistrement. Quand la
+            fenêtre de sauvegarde ferme, une autre fonction JavaScript va être appelée. Cette fonction est unique au
+            bouton Replanifier. La fonction, fera débuter le téléchargemnt du fichier EmailClient.exe
+
+            <br>
+            L'utilisateur devra ensuite lancer cette application. 
+        </p>
+    </div>
+
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
