@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Documentation Outil de Conversion PM</title>
+    <title>Outil de Conversion PM</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -18,7 +18,7 @@
             py-lg-5 border-bottom">
         <div class="container-fluid">
             <a class="navbar-brand ps-5 fw-bolder" href="index.html">
-                Documentation Outil de Conversion PM
+                Outil de Conversion PM
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
                         <a class="nav-link fw-bolder pe-4" href="index.html#a_propos">À
                             Propos</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -79,10 +79,49 @@
 
     <div id="guide_de_style" class="container px-2 my-5 py-5">
         <h1>Guide de Style</h1>
-        <p>
+        <p class="display-6">
             Cette section de la documentation explique comment bien rédiger un PM pour qu'il soit bien reconnu par
-            l'outil de conversion. Les fonctionnalités des sections seront également abordées
+            l'outil de conversion.
         </p>
+    </div>
+
+    <div id="prerequis" class="container  px-2 my-5 py-5">
+        <h2>Prérequis</h2>
+        <div class="row">
+            <div class="col">
+                <p class="justify">
+                    Pour créer et modifier les PM, il est important d'utiliser un éditeur de texte qui peut modifier le
+                    encoding
+                    du fichier.
+                    <br>
+                    <strong>L'éditeur recommandé pour cette tâche est Notepad++</strong>
+                    <br>
+                    <br>
+                    Il est aussi possible d'utiliser Visual Studio Code ou Notepad.
+                    Il est fortement déconseillé d'utiliser Microsoft Word ou Wordpad.
+                    <br>
+                    <br>
+                    Le encoding qui doit être utilisé est Windows-1252 (ou ANSI). Si le encoding UTF-8 est utilisé, il y
+                    aura
+                    des problèmes d'affichage pour les charactères avec des accents.
+                    <br>
+                    <br>
+                    <strong>À Noter: </strong>Notepad++, Visual Studio Code et Notepad permettent de changer le encoding
+                    d'un fichier.
+                </p>
+            </div>
+
+            <div class="col">
+                <a class="img_link" target="_blank" href="https://notepad-plus-plus.org/downloads/">
+                    <img class="editor_icons" src="images/npp_icon.png">
+                </a>
+                <a class="img_link" target="_blank" href="https://code.visualstudio.com/">
+                    <img class="editor_icons" src="images/vscode_icon.png">
+                </a>
+
+            </div>
+        </div>
+
     </div>
 
 
@@ -127,12 +166,14 @@
 
     <div id="sections_pm" class="container px-2 my-5 py-5">
         <h2>Les Sections d'un PM</h2>
-        <p>
-            Un PM contient plusieurs sections et devrait être structuré de la façon suivante:
-        </p>
+        <div class="col-8">
+            <p class="justify">
+                Un PM contient plusieurs sections et devrait être structuré de la façon suivante:
+            </p>
+        </div>
         <div id="demo1" class="container">
             <div id="outer-box1" class=" row">
-                <div id="inner-left-box1" class="col text-center border border-3 rounded-3">
+                <div id="inner-left-box1" class="col-6 text-center border border-3 rounded-3">
                     <h4>Contenu PM.txt</h4>
                     <p class="text-start">
                         << PRÉPARATION>>
@@ -163,17 +204,23 @@
                     </p>
 
                 </div>
-                <div id="inner-right-box1" class="col">
+                <div id="inner-right-box1" class="col-6">
+                    <div class="col-8 mx-auto mt-5">
+                        <p class="justify">
+                            Les sections que vous voyez à gauche sont les plus communes parmi les PM. Alors, ils ont
+                            des filtres spécifiques dont on parlera en détails plus loin dans cette section. Veuillez
+                            notez
+                            qu'il est important de ne pas faire des fautes d'ortographes dans les titres des sections.
+                        </p>
 
-                    <p>
-                        Les sections que vous voyez à gauche sont les plus communes parmi les PM. Alors, ils ont
-                        des filtres spécifiques dont on parlera en détails plus loin dans cette section. Veuillez notez
-                        qu'il est important de ne pas faire des fautes d'ortographes dans les titres des sections.
-                    </p>
+                        <p class="justify">Si vous mettez un autre mot entre crochets, il serra reconnu quand même par
+                            le
+                            filtre
+                            <a href="#">Unknowns</a>.
+                        </p>
+                    </div>
 
-                    <p>Si vous mettez un autre mot entre crochets, il serra reconnu quand même par le filtre
-                        <a href="#">"Unknowns"</a>.
-                    </p>
+
 
                 </div>
 
@@ -185,15 +232,17 @@
 
         <div id="preparation" class="container px-2 my-5 py-5">
             <h2>Section PM: Préparation</h2>
-            <p>
-                La section Préparation du PM ajoute automatiquement des checkboxes. Ces checkboxes doivent
-                obligatoirement être côchés pour soumettre le PM.
-            </p>
+            <div class="col-8">
+                <p class="justify">
+                    La section Préparation du PM ajoute automatiquement des checkboxes. Ces checkboxes doivent
+                    obligatoirement être côchés pour soumettre le PM.
+                </p>
+            </div>
             <h4>Fiche de communication</h4>
             <div id="demo2" class="container">
                 <div id="outer-box2" class="row">
-                    <div id="inner-left-box2" class="col-8">
-                        <p>
+                    <div id="inner-left-box2" class="col-6">
+                        <p class="justify">
                             Cette section contient aussi le lien pour télécharger la fiche de communication(.xlsx). Le
                             lien
                             est statique et peut uniquement être changé dans le fichier htmlManip.cpp de l'outil de
@@ -246,27 +295,32 @@
 
         <div id="securite" class="container  px-2 my-5 py-5">
             <h2>Section PM: Sécurité</h2>
-            <p>
-                La section Sécurité, comme la section Préparation, ajoute automatiquement des checkboxes qui doivent
-                être obligatoirement côchés pour la soumettre le PM.
-            </p>
+            <div class="col-8">
+                <p class="justify">
+                    La section Sécurité, comme la section Préparation, ajoute automatiquement des checkboxes qui doivent
+                    être obligatoirement côchés pour la soumettre le PM.
+                </p>
+            </div>
             <h4>Lien Cadenassage</h4>
             <div id="demo3" class="container">
                 <div id="outer-box3" class="row">
-                    <div id="inner-left-box3" class="col-8">
-                        <p>
+                    <div id="inner-left-box3" class="col-6">
+                        <p class="justify">
                             Cette section contient aussi le lien de cadenassage. Ce lien doit être écrit dans le PM de
                             la
                             façon suivante:
                             <br>
-                            -CADENASSAGE_LINK:www.somewebsite.com
+                            <strong>-CADENASSAGE_LINK:www.somewebsite.com</strong>
+                            <br>
                             <br>
                             C'est très important qu'il n'y a pas de fautes d'ortographes sinon le lien ne sera reconnu
                             par
                             l'outil de conversion.
-                            <br>
+
                             Le PM.html affiche l'image de cadenassage qui est sur le drive O: au lien suivant:
-                            O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png
+                            <br>
+                            <strong>TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png</strong>
+                            <br>
                             <br>
                             Si l'image de cadenassage doit être changé, il faut renommer la nouvelle avec le nom de
                             l'ancienne et la mettre exactement au même endroit.
@@ -289,28 +343,17 @@
 
         <div id="formulaireA3" class="container  px-2 my-5 py-5">
             <h2>Section PM: Formulaire A3</h2>
-
-            La section Formulaire A3 est générée lors de la conversion d'un PM et non lors du chargement de la page web.
-            Cela veut dire que s'il faut changer un élément dans le formulaire, il faut relancer l'outil de conversion
-            pour mettre à jour le PM.
-            <br>
-            Pour modifier le formulaire il faut faire des changements dans le ficher à l'emplacement suivant:
-            <br>
-            O:/TFM_GESTION/PM/1_TEMPLATES/FormulaireA3/FormulaireA3.txt
-            <br>
-            Pour que la case "Oui" soit en rouge, il faut mettre un "Y" au début de la phrase dans le fichier
-            FormulaireA3.txt
-            <br>
-            Pour que la case "Non" soit en rouge, il faut mettre un "N" au début de la phrase dans le fichier
-            FormulaireA3.txt
-            <br>
-            Pour que aucune case soit en rouge, il faut pas mettre de "Y" ou "N" au début de la phrase dans le fichier
-            FormulaireA3.txt
-            <br>
-
-
-            Voici un exemple:
-
+            <div class="col-8">
+                <p class="justify">
+                    La section Formulaire A3 est générée lors de la conversion d'un PM et non lors du chargement de la
+                    page
+                    web.
+                    Cela veut dire que s'il faut changer un élément dans le formulaire, il faut relancer l'outil de
+                    conversion
+                    pour mettre à jour le PM.
+                    <br>
+                </p>
+            </div>
             <div id="demo4" class="container">
                 <div id="outer-box4" class=" row border border-3 rounded-3">
                     <div id="inner-left-box4" class="col text-start border-end border-3">
@@ -467,8 +510,24 @@
 
 
             </div>
+            <div class="div col-4 pt-3">
+                <h4>Modifier le Formulaire A3</h4>
+                <p class="justify">
+                    Pour modifier le formulaire il faut faire des changements dans le ficher à l'emplacement suivant:
+                    <br>
+                    <strong>O:/TFM_GESTION/PM/1_TEMPLATES/FormulaireA3/FormulaireA3.txt</strong>
+                    <br>
+                    <br>
+                    Pour que la case "Oui" soit en rouge, il faut mettre un "Y" au début de la phrase dans le fichier
+                    FormulaireA3.txt. Pour que la case "Non" soit en rouge, il faut mettre un "N" au début de la phrase
+                    dans le fichier
+                    FormulaireA3.txt. Pour que aucune case soit en rouge, il faut pas mettre de "Y" ou "N" au début de
+                    la phrase dans le
+                    fichier FormulaireA3.txt
+                    <br>
+                </p>
 
-
+            </div>
         </div>
 
 
@@ -486,14 +545,21 @@
 
         <div id="taches" class="container  px-2 my-5 py-5">
             <h2>Section PM: Tâches</h2>
-            La section Tâches a beaucoup de fonctionnalités mais, elle est très intuitive a utiliser.
+            <div class="col-8">
+                <p class="justify">
+                    La section Tâches a beaucoup de fonctionnalités mais, elle est très intuitive a utiliser.
 
-            Premièrement, il éxiste deux types de tâches. Une tâche principale et une tâche secondaire. On indique le
-            type de tâche à l'outil de conversion avec le préfixe de la tâche. Une tâche secondaire est légèrement
-            indentée pour la différencier de la tâche principale.
+                    Premièrement, il éxiste deux types de tâches. Une tâche principale et une tâche secondaire. On
+                    indique
+                    le
+                    type de tâche à l'outil de conversion avec le préfixe de la tâche. Une tâche secondaire est
+                    légèrement
+                    indentée pour la différencier de la tâche principale.
 
-            Voici un exemple pour montrer comment spécifier si une
-            tâche est principale ou secondaire.
+                    Voici un exemple pour montrer comment spécifier si une
+                    tâche est principale ou secondaire.
+                </p>
+            </div>
 
 
 
@@ -551,17 +617,23 @@
                 </div>
             </div>
 
-            <h4>Insérer un champ de texte</h4>
-            <p>Pour ajouter un champ de texte, il faut ajouter:
-                -INSERT_TEXTBOX
-                à l'endroit qu'on le veut dans le PM.txt
+            <div class="col-8">
+                <h4 class="pt-3">Insérer un champ de texte</h4>
+                <p class="justify">Pour ajouter un champ de texte, il faut ajouter:
+                    <br>
+                    <strong>-INSERT_TEXTBOX</strong>
+                    <br>
+                    <br>
 
-                Aussi, si on veut ajouter un placeholder au champ de texte, on peut l'écrire après
-                -INSERT_TEXTBOXthis is a placeholder!
+                    Aussi, si on veut ajouter un placeholder au champ de texte, on peut l'écrire après
+                    <br>
+                    <strong>-INSERT_TEXTBOXthis is a placeholder!</strong>
+                    <br>
+                    <br>
+                    Voici un exemple qui montre une tâche avec un textbox ajouter:
 
-                Voici un exemple qui montre une tâche avec un textbox ajouter:
-
-            </p>
+                </p>
+            </div>
             <div id="demo6" class="container">
                 <div id="outer-box6" class=" row border border-3 rounded-3">
                     <div id="inner-left-box6" class="col text-start border-end border-3">
@@ -596,17 +668,21 @@
                     </div>
                 </div>
             </div>
+            <div id="insert_image" class="col-8">
+                <h4 class="pt-3">Insérer une image</h4>
+                <p class="justify">
+                    Il est possible d'ajouter des images a des tâches pour les expliquer. Il est déconseillé de mettre
+                    beaucoup d'image dans un PM parce que une page HTML avec beaucoup de lien externe va prendre
+                    beaucoup de
+                    temps à charger.
+                    <br>
+                    <br>
+                    Pour ajouter une image, il faut ajouter le mot-clé suivi par le lien de l'image:
+                    <br>
+                    <strong>-INSERT_PICTUREO:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\Logo.png</strong>
 
-            <h4>Insérer une image</h4>
-            <p>Il est possible d'ajouter des images a des tâches pour les expliquer. Il est déconseillé de mettre
-                beaucoup d'image dans un PM parce que une page HTML avec beaucoup de lien externe va prendre beaucoup de
-                temps à charger.
-                Pour ajouter une image, il faut ajouter:
-                -INSERT_PICTURE
-                dans le PM.txt suivi par le lien de l'image.
-                Par exemple,
-                -INSERT_PICTURE
-            </p>
+                </p>
+            </div>
             <div id="demo7" class="container">
 
                 <div id="outer-box7" class=" row border border-3 rounded-3">
@@ -656,14 +732,18 @@
 
 
         <div id="ajouter_images" class="container  px-2 my-5 py-5">
-            <h2>Section PM: Ajouter des Images</h2>
-            <p>Il n'y a rien à écrire dans le PM.txt pour la section infos soumission</p>
-            <p>C'est important de remarquer que les images qui seront upload de cette manère ne seront pas enregistré
-                dans le template du PM.
-                C'est vraiment juste pour que les techniciens puissent ajouter des photos à leur soumission.
+            <div class="col-8">
+                <h2>Section PM: Ajouter des Images</h2>
+                <p class="justify">Il n'y a rien à écrire dans le PM.txt pour la section infos soumission</p>
+                <p class="justify">
+                    C'est important de remarquer que les images qui seront upload de cette manière ne seront pas
+                    enregistré
+                    dans le template du PM.
+                    C'est vraiment juste pour que les techniciens puissent ajouter des photos à leur soumission.
 
-            </p>
-            <p>Pour ajouter des photos au template il faut ajouter avec -INSERT_PICTURE dans le PM.txt</p>
+                </p>
+                <p>Pour ajouter des photos au template, voir <a href="#insert_image">cette section</a>.</p>
+            </div>
         </div>
 
 
@@ -671,34 +751,60 @@
         <div id="soumettre_replanifier" class="container  px-2 my-5 py-5">
             <h2>Section PM: Soumettre/Replanifier</h2>
             <h4>Bouton Soumettre</h4>
-            <p>
-                Le bouton Soumettre est relié à une très grosse fonction JavaScript. Cette fonction vérifie les checkbox
-                avec le class name "mustcheck", les radiobuttons du formulaire A3. Ensuite, elle vérifie si un checkbox
-                "Avis Créé" est coché,l'attribut "required" est donné au champ de text respectif. Par la suite, la
-                fonction vérifie si les cases Remplacé ou Réparé sont cochées. S'ils le sont, l'attribut "required" est
-                donné au textarea respectif. Ensuite, les champs de text Infos Soumission sont aussi vérifié.
+            <div class="col-8">
+                <p class="justify">
+                    Le bouton Soumettre est relié à une très grosse fonction JavaScript. Cette fonction vérifie les
+                    checkbox avec le class name "mustcheck", les radiobuttons du formulaire A3. Ensuite, elle vérifie si
+                    un
+                    checkbox
+                    "Avis Créé" est coché, l'attribut "required" est donné au champ de text respectif. Par la suite, la
+                    fonction vérifie si les cases Remplacé ou Réparé sont cochées. S'ils le sont, l'attribut "required"
+                    est
+                    donné au textarea respectif. Ensuite, les champs de text Infos Soumission sont vérifiés.
 
-                Finalement, si tout est bien rempli, la fonction "window.print()" est appelée pour permettre à
-                l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier Téléchargment
-                comme emplacement pour le pdf.
-                Après l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
-                téléchargement de "FileClient.hta" va commencer. On va en parler plus loin dans la documentation.
+                    Finalement, si tout est bien rempli, la fonction "window.print()" est appelée pour permettre à
+                    l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier
+                    Téléchargment
+                    comme emplacement pour le pdf.
+                    <br>
+                    <br>
+                    Après l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
+                    téléchargement de "FileClient.hta" va commencer. On en parle dans <a href="app_net.html">cette
+                        section</a>.
 
 
-            </p>
-            <h4>Bouton Replanifier</h4>
-            <p>
-                Le bouton Replanifier est relié a une fonction JavaScript qui vérifie uniquement si les champs de text
-                Infos Soumission sont remplis. S'ils le sont, la fonction "window.print()" est
-                appelée pour permettre à
-                l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier Téléchargment
-                comme emplacement pour le pdf.
-                Après que l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
-                téléchargement de "EmailClient.hta" va commencer. On va en parler plus loin dans la documentation. 
-            </p>
+                </p>
+                <h4>Bouton Replanifier</h4>
+                <p class="justify">
+                    Le bouton Replanifier est relié a une fonction JavaScript qui vérifie uniquement si les champs de
+                    text
+                    Infos Soumission sont remplis. S'ils le sont, la fonction "window.print()" est
+                    appelée pour permettre à
+                    l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier
+                    Téléchargment
+                    comme emplacement pour le pdf.
+                    <br>
+                    <br>
+                    Après que l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
+                    téléchargement de "EmailClient.hta" va commencer. On en parle dans <a href="app_net.html">cette
+                        section</a>.
+                </p>
+            </div>
         </div>
 
 
+
+
+
+        <div id="unknowns" class="container  px-2 my-5 py-5">
+            <h2>Section PM: Unknowns</h2>
+            <div class="col-8">
+                <p class="justify">
+            
+                </p>
+               
+            </div>
+        </div>
 
 
     </div>
