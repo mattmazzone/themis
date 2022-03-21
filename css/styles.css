@@ -2,3 +2,20 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
+.img_link{
+    color: white;
+    text-decoration: none;
+    padding:50px;
+}
+.editor_icons {
+    height: 160px; 
+    border-radius: 10px;
+    
+    
+}
+.editor_icons:hover {
+  
+    background-color: rgb(248, 249, 250); 
+
+}
