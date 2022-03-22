@@ -105,7 +105,9 @@ void HtmlGenerator::addHeadHtml(bool release) {
 		}
 		textarea{
 		border: 0.15em solid currentColor;
-		  border-radius: 0.15em;
+		border-radius: 0.15em;
+		display:grid;
+		margin-bottom: 10px;
 
 		}
 		#top-logo {
@@ -1546,7 +1548,22 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	
 		document.title = printTitle;
 		window.print();  
-		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/FileClient.hta");
+
+		let path = "O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/FileClient.exe"
+		let filename = "FileClient.exe"
+		// Create a new link
+		const anchor = document.createElement('a');
+    	anchor.href = path;
+    	anchor.download = filename;
+
+    	// Append to the DOM
+    	document.body.appendChild(anchor);
+
+   		 // Trigger `click` event
+    	anchor.click();
+
+    	// Remove element from DOM
+    	document.body.removeChild(anchor);
 	}
 	
 	
@@ -1585,7 +1602,21 @@ void HtmlGenerator::addSubmitbuttonHtml(bool release) {
 	
 		document.title = printTitle;
 		window.print();  
-		window.open("O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/EmailClient.hta");
+		let path = "O:/TFM_GESTION/PM/1_TEMPLATES/WebCompanion/EmailClient.exe"
+		let filename = "EmailClient.exe"
+		// Create a new link
+		const anchor = document.createElement('a');
+    	anchor.href = path;
+    	anchor.download = filename;
+
+    	// Append to the DOM
+    	document.body.appendChild(anchor);
+
+   		 // Trigger `click` event
+    	anchor.click();
+
+    	// Remove element from DOM
+    	document.body.removeChild(anchor);
 	}
 	
 	
@@ -1645,7 +1676,7 @@ bool HtmlGenerator::addTextFieldHtml(std::wstring inp) {
 
 	size_t found = inp.find(L"-INSERT_TEXTBOX");
 	if (found != std::string::npos) {
-		buffer << R"(<textarea rows="2" cols="75" placeholder=")" << inp.substr(15, inp.length()) << R"("></textarea>)";
+		buffer << R"(<textarea style="clear:both" rows="2" cols="75" placeholder=")" << inp.substr(15, inp.length()) << R"("></textarea>)";
 		SetConsoleTextAttribute(hConsole, green);
 		std::wcout << L"Inserting Text Area..." << std::endl;
 		SetConsoleTextAttribute(hConsole, white);
@@ -1760,10 +1791,10 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 	for (size_t i = 0; i < tachesStrings.size(); i++) {
 
 		if (addTextFieldHtml(tachesStrings[i])) {
-			i++;
+			continue;
 		}
 		if (addPictureHtml(tachesStrings[i])) {
-			i++;
+			continue;
 		}
 
 		size_t found_checkmark = tachesStrings[i].find(L"( )");
