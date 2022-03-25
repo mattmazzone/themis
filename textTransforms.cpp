@@ -136,7 +136,7 @@ std::vector<std::wstring> Reformater::reformatGood() {
 		inFile.close();
 	}
 	else {
-		std::cout << "Unable to open file";
+		std::wcout << L"Unable to open file";
 	}
 	
 	
@@ -280,11 +280,11 @@ std::vector<std::wstring> Reformater::reformatGood() {
 
 	
 
-
+	/*
 	 for (auto i : formattedTextFile){
 		std::wcout<<i <<std::endl;
 	}
-	
+	*/
 
 	return formattedTextFile;
 

@@ -76,7 +76,7 @@ public:
 
 	void callInOrder(bool release);
 
-	void writeBuffertohtml(bool release);
+	void writeBuffertohtml(bool release, bool progressBar);
 };
 
 

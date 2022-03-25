@@ -1676,7 +1676,7 @@ bool HtmlGenerator::addTextFieldHtml(std::wstring inp) {
 
 	size_t found = inp.find(L"-INSERT_TEXTBOX");
 	if (found != std::string::npos) {
-		buffer << R"(<textarea style="clear:both" rows="2" cols="75" placeholder=")" << inp.substr(15, inp.length()) << R"("></textarea>)";
+		buffer << R"(<textarea style="clear:both" rows="2" cols="75" placeholder=")" << inp.substr(15, inp.length()) << R"("required></textarea>)";
 		SetConsoleTextAttribute(hConsole, green);
 		std::wcout << L"Inserting Text Area..." << std::endl;
 		SetConsoleTextAttribute(hConsole, white);
@@ -2336,7 +2336,7 @@ void HtmlGenerator::callInOrder(bool release) {
 
 }
 
-void HtmlGenerator::writeBuffertohtml(bool release) {
+void HtmlGenerator::writeBuffertohtml(bool release, bool progressBar) {
 
 	//Write buffer to created file
 	std::wofstream outFile(outputPath);
@@ -2348,17 +2348,17 @@ void HtmlGenerator::writeBuffertohtml(bool release) {
 
 
 
+		if (progressBar) {
+			SetConsoleTextAttribute(hConsole, 32);
+			for (int i = 0; i < 70; i++) {
 
-		SetConsoleTextAttribute(hConsole, 32);
-		for (int i = 0; i < 70; i++) {
-			
-		
-			std::wcout << L" ";
-			Sleep(10);
+
+				std::wcout << L" ";
+				Sleep(10);
+			}
+
+			SetConsoleTextAttribute(hConsole, white);
 		}
-
-		SetConsoleTextAttribute(hConsole, white);
-
 		std::wcout << std::endl;
 
 
