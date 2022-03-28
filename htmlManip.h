@@ -73,6 +73,7 @@ public:
 	void addPagebreakHtml(bool release);                //Static
 	bool addTextFieldHtml(std::wstring);
 	bool addPictureHtml(std::wstring);					//Static
+	bool addVideoHtml(std::wstring);
 
 	void callInOrder(bool release);
 

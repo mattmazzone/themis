@@ -1709,6 +1709,26 @@ bool HtmlGenerator::addPictureHtml(std::wstring inp) {
 
 }
 
+bool HtmlGenerator::addVideoHtml(std::wstring inp)
+{
+	size_t found = inp.find(L"-INSERT_VIDEO");
+	if (found != std::string::npos) {
+		buffer << R"(
+		<video width="320" height="240" controls style="padding: 30px;"> 
+			<source src=")" << inp.substr(13, inp.length()) << R"(">
+		</video>)";
+		SetConsoleTextAttribute(hConsole, green);
+		std::wcout << L"Inserting Video..." << std::endl;
+		SetConsoleTextAttribute(hConsole, white);
+
+		return true;
+	}
+	else {
+		return false;
+	}
+	
+}
+
 void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
 	
@@ -1794,6 +1814,9 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 			continue;
 		}
 		if (addPictureHtml(tachesStrings[i])) {
+			continue;
+		}
+		if (addVideoHtml(tachesStrings[i])) {
 			continue;
 		}
 
@@ -2003,11 +2026,15 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 
 	for (size_t i = 0; i < unknownStrings.size(); i++) {
 
-		if (addTextFieldHtml(unknownStrings[i]) == true) {
-
-		}
-		else {
-
+			if (addTextFieldHtml(unknownStrings[i])) {
+				continue;
+			}
+			if (addPictureHtml(unknownStrings[i])) {
+				continue;
+			}
+			if (addVideoHtml(unknownStrings[i])) {
+				continue;
+			}
 
 
 			size_t found_checkmark = unknownStrings[i].find(L"( )");
@@ -2098,7 +2125,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 				buffer << R"(
                 <p>)" << unknownStrings[i] << R"(</p>)" << std::endl;
 			}
-		}
+		
 
 		
 

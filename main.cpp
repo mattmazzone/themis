@@ -61,7 +61,7 @@ int main()
 
 	case 2:
 	{
-		std::filesystem::current_path("C:/Users/pw192717/Desktop/PWC-TFE-0001-TC02 - Test");
+		std::filesystem::current_path();
 		wstring path;
 		int fileCounter = 1;
 
@@ -96,6 +96,7 @@ int main()
 		auto end = std::chrono::steady_clock::now();
 		std::chrono::duration<double> elapsed_seconds = end - start;
 		std::wcout << L"Elapsed time: " << elapsed_seconds.count() << L"s for " << fileCounter << L" files";
+		system("pause");
 	}
 	break;
 
