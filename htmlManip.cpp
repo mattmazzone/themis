@@ -1781,10 +1781,20 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 		int counter = 0;
 
 
-		for (int j = 0; j < 5; j++) {
-			if (isdigit(str[j])) {
-				counter = j;
+		if (str.size() > 5) {
+			for (int j = 0; j < 5; j++) {
+				if (isdigit(str[j])) {
+					counter = j;
+				}
 			}
+		}
+		else {
+			for (int j = 0; j < str.size(); j++) {
+				if (isdigit(str[j])) {
+					counter = j;
+				}
+			}
+
 		}
 
 		if (isdigit(str[counter]) && isalpha(str[counter + 1])) {
@@ -1985,10 +1995,20 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 		int counter = 0;
 
 
-		for (int j = 0; j < 5; j++) {
-			if (isdigit(str[j])) {
-				counter = j;
+		if (str.size() > 5) {
+			for (int j = 0; j < 5; j++) {
+				if (isdigit(str[j])) {
+					counter = j;
+				}
 			}
+		}
+		else {
+			for (int j = 0; j < str.size(); j++) {
+				if (isdigit(str[j])) {
+					counter = j;
+				}
+			}
+
 		}
 
 		if (isdigit(str[counter]) && isalpha(str[counter + 1])) {
