@@ -14,6 +14,8 @@
 #include "textTransforms.h"
 #include "menuApp.h"
 
+#include "makePdf.h"
+
 
 using namespace std;
 
@@ -32,6 +34,10 @@ int main()
 	switch (myApp.mainMenu()) {
 	case 1:
 	{
+		ExampleComplex();
+
+
+
 		wstring path;
 		path = myApp.selectFile(L".txt");
 
