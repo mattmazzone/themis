@@ -367,8 +367,14 @@ void HtmlGenerator::addPreparationHtml(bool release, int start, int end) {
 	}
 	//Section title to buffer
 	buffer << R"(
-      <div id="Preparation" class="dontbreak">
-         <h3 style="text-align: left; text-decoration: underline;">Préparation</h3>)";
+      <div id="Preparation" style="clear: both" class="dontbreak">
+		<h3 style="text-align: left; text-decoration: underline;">Liens Utiles</h3>
+		<a  class="form-link" href="https://collaboration.pwc.ca/team/D3700Common/_layouts/15/WopiFrame2.aspx?sourcedoc=%7B990BBA5B-1C85-4D5C-987D-553DD4B8AE29%7D&file=Test_Facilities_Support_WBS_-_Pl_1.xls&action=default&DefaultItemOpen=1">Lien WBS</a>
+		<br>
+		<a  class="form-link" href="https://apps.spheracloud.net/communicator/login.aspx?userid=tDegwx6jma0A&companyid=x/lcTZG/Gh4A&method=home">Lien Simdut</a>
+		 
+
+        <h3 style="text-align: left; text-decoration: underline;">Préparation</h3>)";
 
 	//Write array to buffer
 	for (size_t i = 0; i != prepStrings.size(); i++) {
@@ -429,7 +435,7 @@ void HtmlGenerator::addPiecesHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-        <div id="Pieces" class="dontbreak">
+        <div id="Pieces" style="clear: both" class="dontbreak">
 	        <h3 style="text-align: left; text-decoration: underline;">Pièces</h3>
 	        
     )" << std::endl;
@@ -490,7 +496,7 @@ void HtmlGenerator::addConsommablesHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-      <div id="Consommables" class="dontbreak">
+      <div id="Consommables" style="clear: both" class="dontbreak">
          <h3 style="text-align: left; text-decoration: underline;">Consommables</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -546,7 +552,7 @@ void HtmlGenerator::addOutilsHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-        <div id="Outils" class="dontbreak">
+        <div id="Outils" style="clear: both" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Outils</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -602,7 +608,7 @@ void HtmlGenerator::addDocrefHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-      <div id="DocRef" class="dontbreak">
+      <div id="DocRef" style="clear: both" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Documents Références</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -661,7 +667,7 @@ void HtmlGenerator::addSecuriteHtml(bool release, int start, int end) {
 	}
 	//Section title to buffer
 	buffer << R"(
-        <div id="Securite" class="dontbreak">
+        <div id="Securite" style="clear: both" class="dontbreak">
         	<h3 style="text-align: left; text-decoration: underline;">Sécurité</h3>)" << std::endl;
 
 	//Write array to buffer
@@ -1281,7 +1287,7 @@ void HtmlGenerator::addCadenassageHtml(bool release) {
 
 	if (cadenasURL != L"") {
 		buffer << R"(
-  <div style="float: left; padding: 50px;" id="cadenassage" class="dontbreak">
+  <div style="float: left; padding: 50px;" style="clear: both" id="cadenassage" class="dontbreak">
       <a href=")" << cadenasURL << R"(" target="_blank"><img id="imgCadenassage" src="O:/TFM_GESTION/PM/1_TEMPLATES/LogoPratt/logo_cadenas.png" alt="cadenas_logo"></a>
    </div>
    )" << std::endl;
@@ -1831,7 +1837,7 @@ void HtmlGenerator::addTachesHtml(bool release, int start, int end) {
 
 	//Section title to buffer
 	buffer << R"(
-      <div id="Taches" class="breakbefore">
+      <div id="Taches" style="clear: both" class="breakbefore">
          <h3 style="text-align: left; text-decoration: underline;">Tâches</h3>)";
 
 	for (size_t i = 0; i < tachesStrings.size(); i++) {
@@ -2053,7 +2059,7 @@ void HtmlGenerator::addUnknownsHtml(bool release, int start, int end) {
 	input = input.substr(2, input.size() - 4);
 
 	buffer << R"(
-        <div id="unknownSection)" << unknownSectionCounter << R"(" class="breakbefore">
+        <div id="unknownSection)" << unknownSectionCounter << R"(" style="clear: both" class="breakbefore">
 	<h3 style="text-align: left; text-decoration: underline;">)" << input << R"(</h3>)";
 
 
