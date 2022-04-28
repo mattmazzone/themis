@@ -42,20 +42,21 @@
                             <li><a class="dropdown-item" href="guide_de_style.html#preparation">Préparation</a></li>
                             <li><a class="dropdown-item" href="guide_de_style.html#documents_references">Documents
                                     Références</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#consommables">Consommables</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#pieces">Pièces</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#outils">Outils</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#securite">Sécurité</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#formulaireA3">Formulaire A3</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#risques_et_methodes">Risques et
+                            <li><a class="dropdown-item" href="guide_de_style.html#consommables">Consommables</a></li>
+                            <li><a class="dropdown-item" href="guide_de_style.html#pieces">Pièces</a></li>
+                            <li><a class="dropdown-item" href="guide_de_style.html#outils">Outils</a></li>
+                            <li><a class="dropdown-item" href="guide_de_style.html#securite">Sécurité</a></li>
+                            <li><a class="dropdown-item" href="guide_de_style.html#formulaireA3">Formulaire A3</a></li>
+                            <li><a class="dropdown-item" href="guide_de_style.html#risques_et_methodes">Risques et
                                     Méthodes de Contrôle</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#taches">Tâches</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#infos_soumission">Infos
+                            <li><a class="dropdown-item" href="guide_de_style.html#taches">Tâches</a></li>
+                            <li><a class="dropdown-item" href="guide_de_style.html#infos_soumission">Infos
                                     Soumission</a></li>
-                            <li><a class="dropdown-item" href="guide_de_style.html/#ajouter_images">Ajouter des
+                            <li><a class="dropdown-item" href="guide_de_style.html#ajouter_images">Ajouter des
                                     Images</a></li>
+                                    <li><a class="dropdown-item" href="guide_de_style.html#ajouter_videos">Ajouter des Vidéos</a></li>
                             <li><a class="dropdown-item"
-                                    href="guide_de_style.html/#soumettre_replanifier">Soumettre/Replanifier</a></li>
+                                    href="guide_de_style.html#soumettre_replanifier">Soumettre/Replanifier</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -81,7 +82,7 @@
         <h1>Guide de Style</h1>
         <p class="display-6">
             Cette section de la documentation explique comment bien rédiger un PM pour qu'il soit bien reconnu par
-            l'outil de conversion.
+            l'Outil de Conversion.
         </p>
     </div>
 
@@ -673,7 +674,7 @@
             <div id="insert_image" class="col-8">
                 <h4 class="pt-3">Insérer une image</h4>
                 <p class="justify">
-                    Il est possible d'ajouter des images a des tâches pour les expliquer. Il est déconseillé de mettre
+                    Il est possible d'ajouter des images à des tâches pour les expliquer. Il est déconseillé de mettre
                     beaucoup d'image dans un PM parce que une page HTML avec beaucoup de lien externe va prendre
                     beaucoup de
                     temps à charger.
@@ -682,6 +683,22 @@
                     Pour ajouter une image, il faut ajouter le mot-clé suivi par le lien de l'image:
                     <br>
                     <p>-INSERT_PICTUREO:\TFM_GESTION\PM\1_TEMPLATES\LogoPratt\Logo.png</p>
+
+                </p>
+            </div>
+
+
+            <div id="insert_videos" class="col-8">
+                <h4 class="pt-3">Insérer une vidéo</h4>
+                <p class="justify">
+                    Il est possible d'ajouter des images à des tâches pour les expliquer. Il est déconseillé de mettre
+                    beaucoup de vidéos dans un PM parce que une page HTML avec beaucoup de lien externe va prendre
+                    beaucoup de temps à charger.
+                    <br>
+                    <br>
+                    Pour ajouter une vidéo, il faut ajouter le mot-clé suivi par le lien de l'image:
+                    <br>
+                    <p>-INSERT_VIDEOhttps://www.youtube.com/watch?v=p44dx-hXuHs&ab_channel=SpaceConcordia</p>
 
                 </p>
             </div>
@@ -765,13 +782,13 @@
                     donné au textarea respectif. Ensuite, les champs de text Infos Soumission sont vérifiés.
 
                     Finalement, si tout est bien rempli, la fonction "window.print()" est appelée pour permettre à
-                    l'utilisateur d'enregistrer sa page en pdf. L'utilisateur devrait selectionner le dossier
+                    l'utilisateur d'enregistrer sa page en pdf. L'utilisateur <b>doit selectionner le dossier
                     Téléchargment
-                    comme emplacement pour le pdf.
+                    comme emplacement pour le pdf. </b>
                     <br>
                     <br>
                     Après l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
-                    téléchargement de "FileClient.hta" va commencer. On en parle dans <a href="app_net.html">cette
+                    téléchargement de "FileClient.exe" va commencer. On en parle dans <a href="app_net.html">cette
                         section</a>.
 
 
@@ -788,7 +805,7 @@
                     <br>
                     <br>
                     Après que l'utilisateur appuie sur enregistrer, la fenêtre d'impression va fermer et un
-                    téléchargement de "EmailClient.hta" va commencer. On en parle dans <a href="app_net.html">cette
+                    téléchargement de "EmailClient.exe" va commencer. On en parle dans <a href="app_net.html">cette
                         section</a>.
                 </p>
             </div>
